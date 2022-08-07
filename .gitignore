@@ -57,3 +57,6 @@ ios/Runner/GoogleService-Info.plist
 ios/firebase_app_id_file.json
 ios/Podfile
 lib/firebase_options.dart
+
+# プロトタイプ用プログラムはGitの管理から外しておく
+lib/proto
