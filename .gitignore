@@ -50,3 +50,10 @@ app.*.map.json
 /linux
 /windows
 /macos
+
+# Firebase等の設定ファイルは要らないのでGitの管理から外しておく
+android/app/google-services.json
+ios/Runner/GoogleService-Info.plist
+ios/firebase_app_id_file.json
+ios/Podfile
+lib/firebase_options.dart
