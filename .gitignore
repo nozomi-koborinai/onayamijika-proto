@@ -63,4 +63,7 @@ ios/Runner.xcworkspace
 lib/proto
 
 # ビルド設定ファイルもGitの管理から外しておく
-android/app/build.gradle
+android/app
+ios/Runner
+ios/Runner.xcodeproj
+ios/Runner.xcworkspace
