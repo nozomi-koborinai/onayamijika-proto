@@ -67,3 +67,4 @@ android/app
 ios/Runner
 ios/Runner.xcodeproj
 ios/Runner.xcworkspace
+ios/Flutter/Debug.xcconfig
