@@ -68,3 +68,6 @@ ios/Runner
 ios/Runner.xcodeproj
 ios/Runner.xcworkspace
 ios/Flutter/Debug.xcconfig
+
+# VSCode設定ファイルもGitの管理から外しておく
+.vscode
