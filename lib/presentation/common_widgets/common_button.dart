@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:onayamijika/utils/hex_color.dart';
+import 'package:onayamijika/utils/app_values.dart';
 
 class CommonRegistButton extends StatelessWidget {
   final String caption;
@@ -12,8 +12,8 @@ class CommonRegistButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        primary: HexColor('a1eafb'),
-        onPrimary: HexColor('ffffff'),
+        primary: AppColors.purple,
+        onPrimary: AppColors.white,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
         ),

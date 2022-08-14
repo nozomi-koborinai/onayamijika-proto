@@ -46,10 +46,13 @@ class SignUpPage extends ConsumerWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 15.0),
-            child: CommonRegistButton(
-                caption: '登録',
-                onPressed: () async => vm.onPressedFromRegist(context)),
+            padding: const EdgeInsets.only(top: 50.0),
+            child: SizedBox(
+              width: 75,
+              child: CommonRegistButton(
+                  caption: '登録',
+                  onPressed: () async => vm.onPressedFromRegist(context)),
+            ),
           ),
         ]),
       ),

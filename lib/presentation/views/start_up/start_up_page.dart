@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:onayamijika/presentation/common_widgets/common_app_bar.dart';
 import 'package:onayamijika/presentation/views/start_up/log_in_page.dart';
 import 'package:onayamijika/presentation/views/start_up/sign_up_page.dart';
-import 'package:onayamijika/utils/hex_color.dart';
+import 'package:onayamijika/utils/app_values.dart';
 
 class StartUpPage extends ConsumerWidget {
   const StartUpPage({Key? key}) : super(key: key);
@@ -29,7 +29,7 @@ class StartUpPage extends ConsumerWidget {
                 'Welcome\nto オナヤミジカ',
                 style: TextStyle(
                   fontSize: 30,
-                  color: HexColor('696969'),
+                  color: AppColors.gray,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -43,8 +43,8 @@ class StartUpPage extends ConsumerWidget {
                 width: double.infinity,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    primary: HexColor('cabbe9'),
-                    onPrimary: HexColor('ffffff'),
+                    primary: AppColors.purple,
+                    onPrimary: AppColors.white,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
@@ -70,8 +70,8 @@ class StartUpPage extends ConsumerWidget {
                 width: double.infinity,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    primary: HexColor('#fdfdfd'),
-                    onPrimary: HexColor('696969'),
+                    primary: AppColors.white,
+                    onPrimary: AppColors.gray,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),

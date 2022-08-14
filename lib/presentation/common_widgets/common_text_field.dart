@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:onayamijika/utils/hex_color.dart';
+import 'package:onayamijika/utils/app_values.dart';
 
 /// アプリ内共通で使用するテキストフィールド
 class CommonTextField extends StatefulWidget {
@@ -33,20 +33,21 @@ class _CommonTextFieldState extends State<CommonTextField> {
       decoration: InputDecoration(
           labelText: widget.labelText,
           hintText: widget.hintText,
-          labelStyle: TextStyle(color: HexColor('696969')),
+          labelStyle: TextStyle(color: AppColors.gray),
           focusedBorder: OutlineInputBorder(
             borderRadius: const BorderRadius.all(Radius.circular(10.0)),
-            borderSide: BorderSide(width: 1, color: HexColor('696969')),
+            borderSide: BorderSide(width: 1, color: AppColors.purple),
           ),
           enabledBorder: OutlineInputBorder(
             borderRadius: const BorderRadius.all(Radius.circular(10.0)),
-            borderSide: BorderSide(width: 1, color: HexColor('696969')),
+            borderSide: BorderSide(width: 1, color: AppColors.purple),
           ),
           border: const OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(10.0)),
           ),
           suffixIcon: widget.isPasswordText
               ? IconButton(
+                  color: AppColors.gray,
                   icon: Icon(widget._isObscure
                       ? Icons.visibility_off
                       : Icons.visibility),

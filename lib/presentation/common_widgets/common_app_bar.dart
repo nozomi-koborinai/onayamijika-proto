@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:onayamijika/utils/hex_color.dart';
+import 'package:onayamijika/utils/app_values.dart';
 
 /// アプリ内共通のアプリバー
 class CommonAppBar extends StatelessWidget with PreferredSizeWidget {
@@ -15,10 +15,10 @@ class CommonAppBar extends StatelessWidget with PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       centerTitle: true,
-      iconTheme: IconThemeData(color: HexColor('696969')),
+      iconTheme: IconThemeData(color: AppColors.gray),
       title: Text(
         title,
-        style: TextStyle(color: HexColor('696969')),
+        style: TextStyle(color: AppColors.gray),
       ),
       backgroundColor: Theme.of(context).canvasColor,
       elevation: isDispBoundary ? 2 : 0,
