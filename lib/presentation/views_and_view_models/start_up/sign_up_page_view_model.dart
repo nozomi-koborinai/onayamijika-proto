@@ -22,7 +22,7 @@ class SignUpPageViewModel {
       ref.watch(passWordIdControllerStateProvider.state).state;
 
   /// 登録ボタン押下時
-  void onPressedFromRegist(BuildContext context) async {
+  Future<void> onPressedFromRegist(BuildContext context) async {
     // 登録処理
     // 失敗したら以降の処理はやる必要ないのでここで処理終了
     if (!await userRegist()) return;

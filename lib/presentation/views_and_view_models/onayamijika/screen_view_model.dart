@@ -1,5 +1,7 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:onayamijika/presentation/presentation_providers.dart';
+import 'package:onayamijika/presentation/views_and_view_models/onayamijika/card_making_page.dart';
 
 /// ScreenViewModelのインスタンスを返却するプロバイダ
 final screenViewModelProvider =
@@ -16,8 +18,14 @@ class ScreenViewModel {
   set selectedIndex(int index) =>
       ref.watch(selectedIndexProvider.state).state = index;
 
-  /// ボトムバー要素タップ時
+  /// ボトムバー要素押下時時
   void onTap(int index) {
     selectedIndex = index;
+  }
+
+  /// カード作成ボタン押下時
+  Future<void> onPressed(BuildContext context) async {
+    await Navigator.push(context,
+        MaterialPageRoute(builder: (content) => const CardMakingPage()));
   }
 }

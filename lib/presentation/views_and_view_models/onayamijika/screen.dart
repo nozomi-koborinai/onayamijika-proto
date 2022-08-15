@@ -48,10 +48,8 @@ class Screen extends ConsumerWidget {
           onTap: (index) => vm.onTap(index),
         ),
       ),
-      floatingActionButton: CommonFloatingActionButton(onPressed: () async {
-        await Navigator.push(context,
-            MaterialPageRoute(builder: (content) => const OnayamiCardsPage()));
-      }),
+      floatingActionButton:
+          CommonFloatingActionButton(onPressed: () => vm.onPressed(context)),
     );
   }
 }
