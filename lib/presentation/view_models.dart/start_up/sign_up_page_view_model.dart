@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:onayamijika/presentation/presentation_providers.dart';
-import 'package:onayamijika/presentation/views/onayamijika/onayami_cards_page.dart';
+import 'package:onayamijika/presentation/views/onayamijika/screen.dart';
 
 /// SignUpPageViewModelのインスタンスを返却するプロバイダ
 final signUpPageViewModelProvider =
@@ -37,7 +37,7 @@ class SignUpPageViewModel {
     await Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => const OnayamiCardsPage(),
+        builder: (context) => Screen(),
       ),
     );
   }

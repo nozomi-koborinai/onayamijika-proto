@@ -23,3 +23,21 @@ class CommonRegistButton extends StatelessWidget {
     );
   }
 }
+
+class CommonFloatingActionButton extends StatelessWidget {
+  final Function() onPressed;
+  const CommonFloatingActionButton({required this.onPressed, Key? key})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return FloatingActionButton(
+      backgroundColor: AppColors.purple,
+      onPressed: () => onPressed.call(),
+      child: const Icon(
+        Icons.add_card_outlined,
+        color: Colors.white,
+      ),
+    );
+  }
+}

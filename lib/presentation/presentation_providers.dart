@@ -12,3 +12,6 @@ final userIdControllerStateProvider = StateProvider<TextEditingController>(
 /// パスワードテキストコントローラ
 final passWordIdControllerStateProvider = StateProvider<TextEditingController>(
     (_) => TextEditingController(text: ''));
+
+/// 選択Index
+final selectedIndexProvider = StateProvider<int>((_) => 0);
