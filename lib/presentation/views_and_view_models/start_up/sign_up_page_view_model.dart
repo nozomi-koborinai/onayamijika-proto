@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:onayamijika/presentation/presentation_providers.dart';
-import 'package:onayamijika/presentation/views/onayamijika/screen.dart';
+import 'package:onayamijika/presentation/views_and_view_models/onayamijika/screen.dart';
 
 /// SignUpPageViewModelのインスタンスを返却するプロバイダ
 final signUpPageViewModelProvider =

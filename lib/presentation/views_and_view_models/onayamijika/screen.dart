@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:onayamijika/presentation/common_widgets/common_button.dart';
-import 'package:onayamijika/presentation/view_models.dart/onayamijika/screen_view_model.dart';
-import 'package:onayamijika/presentation/views/onayamijika/alert_page.dart';
-import 'package:onayamijika/presentation/views/onayamijika/onayami_cards_page.dart';
-import 'package:onayamijika/presentation/views/onayamijika/profile_page.dart';
+import 'package:onayamijika/presentation/views_and_view_models/onayamijika/alert_page.dart';
+import 'package:onayamijika/presentation/views_and_view_models/onayamijika/onayami_cards_page.dart';
+import 'package:onayamijika/presentation/views_and_view_models/onayamijika/profile_page.dart';
+import 'package:onayamijika/presentation/views_and_view_models/onayamijika/screen_view_model.dart';
 import 'package:onayamijika/utils/app_values.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 

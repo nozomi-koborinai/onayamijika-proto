@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:onayamijika/presentation/common_widgets/common_app_bar.dart';
 import 'package:onayamijika/presentation/common_widgets/common_button.dart';
 import 'package:onayamijika/presentation/common_widgets/common_text_field.dart';
-import 'package:onayamijika/presentation/view_models.dart/start_up/sign_up_page_view_model.dart';
+import 'package:onayamijika/presentation/views_and_view_models/start_up/sign_up_page_view_model.dart';
 
 class SignUpPage extends ConsumerWidget {
   const SignUpPage({Key? key}) : super(key: key);
