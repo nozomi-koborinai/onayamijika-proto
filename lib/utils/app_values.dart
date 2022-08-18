@@ -7,8 +7,12 @@ class AppColors {
   static final Color pink = HexColor('ffcef3');
   static final Color purple = HexColor('cabbe9');
   static final Color lightBlue = HexColor('a1eafb');
+  static final Color superLightBrown = HexColor('#f7e8e8');
   static final Color gray = HexColor('696969');
   static final Color white = HexColor('fdfdfd');
+
+  // 渋めの色
+  static final Color soberPurple = HexColor('#9e579d');
 
   // 強調色
   static final Color intensePink = HexColor('f469a9');

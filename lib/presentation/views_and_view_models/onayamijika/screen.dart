@@ -21,35 +21,34 @@ class Screen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final ScreenViewModel vm = ref.watch(screenViewModelProvider);
     return Scaffold(
-      body: SafeArea(
-        bottom: true,
-        child: pageList[vm.selectedIndex],
-      ),
-      bottomNavigationBar: SizedBox(
-        height: 100,
-        child: SalomonBottomBar(
-          selectedColorOpacity: 0.15,
-          unselectedItemColor: AppColors.gray,
-          items: [
-            SalomonBottomBarItem(
-                icon: const Icon(Icons.home_outlined),
-                title: const Text('Home'),
-                selectedColor: AppColors.intensePurple),
-            SalomonBottomBarItem(
-                icon: const Icon(Icons.add_alert_outlined),
-                title: const Text('通知'),
-                selectedColor: AppColors.intenseBlue),
-            SalomonBottomBarItem(
-                icon: const Icon(Icons.person_outline),
-                title: const Text('あなた'),
-                selectedColor: AppColors.intensePink),
-          ],
-          currentIndex: vm.selectedIndex,
-          onTap: (index) => vm.onTap(index),
+        body: SafeArea(
+          bottom: true,
+          child: pageList[vm.selectedIndex],
         ),
-      ),
-      floatingActionButton:
-          CommonFloatingActionButton(onPressed: () => vm.onPressed(context)),
-    );
+        bottomNavigationBar: SizedBox(
+          height: 100,
+          child: SalomonBottomBar(
+            selectedColorOpacity: 0.15,
+            unselectedItemColor: AppColors.gray,
+            items: [
+              SalomonBottomBarItem(
+                  icon: const Icon(Icons.home_outlined),
+                  title: const Text('Home'),
+                  selectedColor: AppColors.intensePurple),
+              SalomonBottomBarItem(
+                  icon: const Icon(Icons.add_alert_outlined),
+                  title: const Text('通知'),
+                  selectedColor: AppColors.intenseBlue),
+              SalomonBottomBarItem(
+                  icon: const Icon(Icons.person_outline),
+                  title: const Text('あなた'),
+                  selectedColor: AppColors.intensePink),
+            ],
+            currentIndex: vm.selectedIndex,
+            onTap: (index) => vm.onTap(index),
+          ),
+        ),
+        floatingActionButton:
+            CommonFloatingActionButton(onPressed: () => vm.onPressed(context)));
   }
 }
