@@ -1,8 +1,10 @@
+import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:onayamijika/presentation/common_widgets/common_app_bar.dart';
 import 'package:onayamijika/presentation/common_widgets/onayami_card.dart';
 import 'package:onayamijika/presentation/views_and_view_models/onayamijika/onayami_cards_page_view_model.dart';
+import 'package:onayamijika/utils/app_values.dart';
 
 class OnayamiCardsPage extends ConsumerWidget {
   const OnayamiCardsPage({Key? key}) : super(key: key);
@@ -10,34 +12,61 @@ class OnayamiCardsPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final vm = ref.watch(onayamiCardsPageViewModelProvider);
+
+    var cards = [
+      OnayamiCard(
+          cardName: 'わんこそば100杯いけません',
+          accountImageUrl:
+              'https://avatars.githubusercontent.com/u/39579511?v=4',
+          accountName: 'cobo',
+          distance: '6km',
+          content: 'わんこそば100杯いく食べ方が知りたいです',
+          cardColor: AppColors.intenseBlue),
+      OnayamiCard(
+          cardName: '仕事終わらん',
+          accountImageUrl: 'https://pro-foto.jp/img/category_tn_35.jpg',
+          accountName: 'cobo',
+          distance: '6km',
+          content: 'どうやって終わるのかな？',
+          cardColor: AppColors.salmonPink),
+      OnayamiCard(
+          cardName: '仕事終わらん',
+          accountImageUrl: 'https://pro-foto.jp/img/category_tn_35.jpg',
+          accountName: 'cobo',
+          distance: '6km',
+          content: 'どうやって終わるのかな？',
+          cardColor: AppColors.skyGreen),
+    ];
+
     return Scaffold(
-      appBar: CommonAppBar(title: 'お悩みカード一覧'),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            OnayamiCard(
-                icon: Icons.android,
-                distance: '4km',
-                cardName: 'テストくん',
-                content: '周りの目線が怖いです😭\n助けて下さい',
+      appBar: CommonAppBar(
+        title: 'お悩みカード一覧',
+        automaticallyImplyLeading: false,
+        isAddCardsButton: true,
+      ),
+      body: Column(
+        children: [
+          Expanded(
+            child: Swiper(
+              itemBuilder: (context, index) {
+                return cards[index];
+              },
+              itemCount: cards.length,
+              viewportFraction: 0.8,
+              scale: 0.9,
+            ),
+          ),
+          Container(
+            height: 40,
+            margin: const EdgeInsets.only(bottom: 8),
+            child: FloatingActionButton.extended(
                 heroTag: '1',
+                backgroundColor: AppColors.purple,
+                icon: const Icon(Icons.add_reaction_outlined), //アイコンは無しでもOK
+                label: const Text('お悩み解決シールを送る'),
                 onPressed: () => vm.onPressed(context)),
-            OnayamiCard(
-                icon: Icons.headset_mic,
-                distance: '15km',
-                cardName: '過敏',
-                content: '集中できないことが多いです。\nどうすればいい？',
-                heroTag: '2',
-                onPressed: () => vm.onPressed(context)),
-            OnayamiCard(
-                icon: Icons.account_box_outlined,
-                distance: '21km',
-                cardName: 'てすとちゃん',
-                content: '足の怪我で週一回の買い物ができません。ものを持ってくれる方いませんか。',
-                heroTag: '3',
-                onPressed: () => vm.onPressed(context)),
-          ],
-        ),
+          )
+        ],
       ),
     );
   }

@@ -7,7 +7,10 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CommonAppBar(title: 'プロフィール'),
+      appBar: CommonAppBar(
+        title: 'プロフィール',
+        isAddCardsButton: true,
+      ),
     );
   }
 }

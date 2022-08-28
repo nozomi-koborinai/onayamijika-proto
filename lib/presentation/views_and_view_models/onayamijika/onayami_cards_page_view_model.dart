@@ -26,7 +26,7 @@ class OnayamiCardsPageViewModel {
           height: 600,
           alignment: Alignment.center,
           decoration: BoxDecoration(
-            color: AppColors.superLightBrown,
+            color: AppColors.lightGray,
             borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(70),
             ),
