@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:onayamijika/presentation/common_widgets/common_app_bar.dart';
-import 'package:onayamijika/presentation/views_and_view_models/start_up/log_in_page.dart';
-import 'package:onayamijika/presentation/views_and_view_models/start_up/sign_up_page.dart';
+import 'package:onayamijika/presentation/components/common_app_bar.dart';
+import 'package:onayamijika/presentation/views/start_up/log_in_page.dart';
+import 'package:onayamijika/presentation/views/start_up/sign_up_page.dart';
 import 'package:onayamijika/utils/app_values.dart';
 
 class StartUpPage extends ConsumerWidget {

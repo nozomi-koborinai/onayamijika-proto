@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:onayamijika/presentation/views_and_view_models/onayamijika/card_making_page.dart';
+import 'package:onayamijika/presentation/views/onayamijika/card_making_page.dart';
 import 'package:onayamijika/utils/app_values.dart';
 
 /// アプリ内共通のアプリバー

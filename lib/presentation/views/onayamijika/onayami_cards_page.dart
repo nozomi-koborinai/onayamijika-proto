@@ -1,9 +1,9 @@
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:onayamijika/presentation/common_widgets/common_app_bar.dart';
-import 'package:onayamijika/presentation/common_widgets/onayami_card.dart';
-import 'package:onayamijika/presentation/views_and_view_models/onayamijika/onayami_cards_page_view_model.dart';
+import 'package:onayamijika/presentation/components/common_app_bar.dart';
+import 'package:onayamijika/presentation/components/onayami_card.dart';
+import 'package:onayamijika/presentation/views/onayamijika/onayami_cards_page_view_model.dart';
 import 'package:onayamijika/utils/app_values.dart';
 
 class OnayamiCardsPage extends ConsumerWidget {
@@ -31,7 +31,8 @@ class OnayamiCardsPage extends ConsumerWidget {
           cardColor: AppColors.salmonPink),
       OnayamiCard(
           cardName: '仕事終わらん',
-          accountImageUrl: 'https://pro-foto.jp/img/category_tn_35.jpg',
+          accountImageUrl:
+              'https://www.pakutaso.com/shared/img/thumb/KUMA1892073_TP_V.jpg',
           accountName: 'cobo',
           distance: '6km',
           content: 'どうやって終わるのかな？',

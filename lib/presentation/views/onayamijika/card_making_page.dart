@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:onayamijika/presentation/common_widgets/common_app_bar.dart';
+import 'package:onayamijika/presentation/components/common_app_bar.dart';
 
 class CardMakingPage extends StatelessWidget {
   const CardMakingPage({Key? key}) : super(key: key);
