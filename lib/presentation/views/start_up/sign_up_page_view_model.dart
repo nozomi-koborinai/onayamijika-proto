@@ -1,11 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:onayamijika/presentation/presentation_providers.dart';
 import 'package:onayamijika/presentation/views/onayamijika/screen.dart';
 
 /// SignUpPageViewModelのインスタンスを返却するプロバイダ
 final signUpPageViewModelProvider =
     Provider<SignUpPageViewModel>((ref) => SignUpPageViewModel(ref: ref));
+
+/// メールアドレステキストコントローラ
+final emailControllerStateProvider = StateProvider<TextEditingController>(
+    (_) => TextEditingController(text: ''));
+
+/// ユーザIDテキストコントローラ
+final userIdControllerStateProvider = StateProvider<TextEditingController>(
+    (_) => TextEditingController(text: ''));
+
+/// パスワードテキストコントローラ
+final passWordIdControllerStateProvider = StateProvider<TextEditingController>(
+    (_) => TextEditingController(text: ''));
 
 class SignUpPageViewModel {
   final ProviderRef ref;

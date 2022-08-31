@@ -2,7 +2,6 @@ import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:onayamijika/presentation/components/common_app_bar.dart';
-import 'package:onayamijika/presentation/components/onayami_card.dart';
 import 'package:onayamijika/presentation/views/onayamijika/onayami_cards_page_view_model.dart';
 import 'package:onayamijika/utils/app_values.dart';
 
@@ -12,32 +11,6 @@ class OnayamiCardsPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final vm = ref.watch(onayamiCardsPageViewModelProvider);
-
-    var cards = [
-      OnayamiCard(
-          cardName: 'わんこそば100杯いけません',
-          accountImageUrl:
-              'https://avatars.githubusercontent.com/u/39579511?v=4',
-          accountName: 'cobo',
-          distance: '6km',
-          content: 'わんこそば100杯いく食べ方が知りたいです',
-          cardColor: AppColors.intenseBlue),
-      OnayamiCard(
-          cardName: '仕事終わらん',
-          accountImageUrl: 'https://pro-foto.jp/img/category_tn_35.jpg',
-          accountName: 'cobo',
-          distance: '6km',
-          content: 'どうやって終わるのかな？',
-          cardColor: AppColors.salmonPink),
-      OnayamiCard(
-          cardName: '仕事終わらん',
-          accountImageUrl:
-              'https://www.pakutaso.com/shared/img/thumb/KUMA1892073_TP_V.jpg',
-          accountName: 'cobo',
-          distance: '6km',
-          content: 'どうやって終わるのかな？',
-          cardColor: AppColors.skyGreen),
-    ];
 
     return Scaffold(
       appBar: CommonAppBar(
@@ -50,11 +23,12 @@ class OnayamiCardsPage extends ConsumerWidget {
           Expanded(
             child: Swiper(
               itemBuilder: (context, index) {
-                return cards[index];
+                return vm.cards[index];
               },
-              itemCount: cards.length,
+              itemCount: vm.cards.length,
               viewportFraction: 0.8,
               scale: 0.9,
+              onIndexChanged: (int value) => vm.selectedCard = vm.cards[value],
             ),
           ),
           Container(
