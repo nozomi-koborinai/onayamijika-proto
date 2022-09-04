@@ -55,6 +55,7 @@ class OnayamiCardsPageViewModel {
       backgroundColor: Colors.transparent,
       isScrollControlled: true,
       context: context,
+      enableDrag: false,
       builder: (BuildContext context) {
         return SealMakingSheet(targetCard: selectedCard);
       },

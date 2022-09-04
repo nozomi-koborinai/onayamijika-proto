@@ -13,9 +13,9 @@ final sendNameProvider = Provider<String>((_) => '');
 final sendOnayamiTitleProvider = Provider<String>((_) => '');
 
 class SealMakingSheetViewModel {
-  final ProviderRef ref;
-  final OnayamiCard targetCard;
-
   /// constructor
   SealMakingSheetViewModel({required this.ref, required this.targetCard});
+
+  final ProviderRef ref;
+  final OnayamiCard targetCard;
 }
