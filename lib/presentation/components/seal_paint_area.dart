@@ -11,7 +11,7 @@ class SealPaintArea extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(sealPaintStateNotifierProvider);
-    final controller = ref.watch(sealPaintStateNotifierProvider.notifier);
+    final controller = ref.read(sealPaintStateNotifierProvider.notifier);
 
     return SizedBox(
       height: height,

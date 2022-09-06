@@ -1,6 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:onayamijika/utils/app_values.dart';
 
+class CommonCircleButton extends StatelessWidget {
+  final IconData iconData;
+  final Function onPressed;
+  const CommonCircleButton(
+      {required this.iconData, required this.onPressed, super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      style: ButtonStyle(
+        shape: MaterialStateProperty.all<CircleBorder>(
+          const CircleBorder(),
+        ),
+      ),
+      onPressed: () => onPressed.call(),
+      child: Icon(iconData),
+    );
+  }
+}
+
 class CommonRegistButton extends StatelessWidget {
   final String caption;
   final Function onPressed;
@@ -12,8 +32,8 @@ class CommonRegistButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        primary: AppColors.purple,
-        onPrimary: AppColors.white,
+        foregroundColor: AppColors.white,
+        backgroundColor: AppColors.purple,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
         ),
