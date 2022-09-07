@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:onayamijika/presentation/components/common_button.dart';
+import 'package:onayamijika/presentation/components/paint_tools/tool_buttons.dart';
 import 'package:onayamijika/presentation/states/seal_paint_state.dart';
 import 'package:onayamijika/utils/app_values.dart';
 
@@ -10,60 +12,48 @@ class SealHeaderArea extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(sealPaintStateNotifierProvider);
     final controller = ref.read(sealPaintStateNotifierProvider.notifier);
 
     return SizedBox(
       height: height,
       width: MediaQuery.of(context).size.width,
-      child: Column(
-        children: [
-          //   Slider(
-          //   value: ColorHelper.colorToHue(colorPallete.selectedColor),
-          //   onChanged: (value) => _onChanged(context, value),
-          //   min: 0,
-          //   max: 360,
-          // ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              ElevatedButton(
-                onPressed: controller.undo,
-                style: ElevatedButton.styleFrom(
-                  foregroundColor: Colors.white,
-                  backgroundColor: state.paintList.isNotEmpty
-                      ? AppColors.purple
-                      : Colors.grey[200],
-                  shape: const CircleBorder(),
-                  padding: const EdgeInsets.all(10),
-                ),
-                child: const Icon(Icons.undo, size: 40),
+      child: Padding(
+        padding: const EdgeInsets.only(top: 4),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(left: 10),
+              child: Opacity(
+                opacity: 0.35,
+                child: CommonCircleButton(
+                    iconData: Icons.arrow_back_ios_outlined,
+                    onPressed: () => Navigator.pop(context),
+                    backgroundColor: AppColors.gray,
+                    foregroundColor: AppColors.white,
+                    size: 20),
               ),
-              ElevatedButton(
-                onPressed: controller.redo,
-                style: ElevatedButton.styleFrom(
-                  foregroundColor: Colors.white,
-                  backgroundColor: state.undoList.isNotEmpty
-                      ? AppColors.purple
-                      : Colors.grey[200],
-                  shape: const CircleBorder(),
-                  padding: const EdgeInsets.all(10),
-                ),
-                child: const Icon(Icons.redo, size: 40),
-              ),
-              ElevatedButton(
-                onPressed: controller.clear,
-                style: ElevatedButton.styleFrom(
-                  foregroundColor: Colors.white,
-                  shape: const CircleBorder(),
-                  backgroundColor: AppColors.intensePink,
-                  padding: const EdgeInsets.all(10),
-                ),
-                child: const Icon(Icons.delete, size: 40),
-              ),
-            ],
-          ),
-        ],
+            ),
+            const Expanded(child: SizedBox()),
+            PaintEditButton(
+                iconData: Icons.abc_outlined,
+                onPressed: () => showDialog(
+                    context: context,
+                    builder: (_) => AlertDialog(
+                            title: const Text('TODO'),
+                            content: const Text('テキスト入力'),
+                            actions: [
+                              ElevatedButton(
+                                child: const Text('OK'),
+                                onPressed: () => Navigator.pop(context),
+                              )
+                            ]))),
+            PaintEditButton(iconData: Icons.undo, onPressed: controller.undo),
+            PaintEditButton(iconData: Icons.redo, onPressed: controller.redo),
+            PaintEditButton(
+                iconData: Icons.delete, onPressed: controller.clear),
+          ],
+        ),
       ),
     );
   }

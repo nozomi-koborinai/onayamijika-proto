@@ -4,19 +4,27 @@ import 'package:onayamijika/utils/app_values.dart';
 class CommonCircleButton extends StatelessWidget {
   final IconData iconData;
   final Function onPressed;
+  final Color foregroundColor;
+  final Color backgroundColor;
+  final double size;
   const CommonCircleButton(
-      {required this.iconData, required this.onPressed, super.key});
+      {required this.iconData,
+      required this.onPressed,
+      required this.foregroundColor,
+      required this.backgroundColor,
+      this.size = 27,
+      super.key});
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      style: ButtonStyle(
-        shape: MaterialStateProperty.all<CircleBorder>(
-          const CircleBorder(),
-        ),
+      style: ElevatedButton.styleFrom(
+        foregroundColor: foregroundColor,
+        backgroundColor: backgroundColor,
+        shape: const CircleBorder(),
       ),
       onPressed: () => onPressed.call(),
-      child: Icon(iconData),
+      child: Icon(iconData, size: size),
     );
   }
 }

@@ -39,9 +39,9 @@ class SealMakingSheet extends ConsumerWidget {
             // シールヘッダーエリア
             SealHeaderArea(height: height * 0.1),
             // シール編集エリア
-            SealPaintArea(height: height * 0.7),
-            // シール編集ツールエリア
-            SealFooterArea(height: height * 0.2)
+            SealPaintArea(height: height * 0.8),
+            // シールフッターエリア
+            SealFooterArea(height: height * 0.1)
           ],
         ));
   }
