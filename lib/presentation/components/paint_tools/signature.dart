@@ -9,7 +9,7 @@ class Signature extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    const strokeWigth = 12.0;
+    const strokeWigth = 7.0;
 
     final paint = Paint()
       ..color = Colors.black
