@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:onayamijika/presentation/components/onayami_card.dart';
-import 'package:onayamijika/presentation/components/seal_making_sheet.dart';
+import 'package:onayamijika/presentation/components/paint_tools/seal_making_sheet.dart';
 import 'package:onayamijika/presentation/views/onayamijika/screen_view_model.dart';
 import 'package:onayamijika/utils/app_values.dart';
 

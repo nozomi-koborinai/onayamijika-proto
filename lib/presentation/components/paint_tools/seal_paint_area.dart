@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:onayamijika/presentation/components/signature.dart';
+import 'package:onayamijika/presentation/components/paint_tools/signature.dart';
 import 'package:onayamijika/presentation/states/seal_paint_state.dart';
 
 /// お悩みシールの描画エリア
