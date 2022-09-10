@@ -1,10 +1,12 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:onayamijika/presentation/components/onayami_card.dart';
+import 'package:onayamijika/presentation/views/onayamijika/onayami_cards_page_view_model.dart';
 
 /// OnayamiCardsPageViewModelのインスタンスを返却するプロバイダ
-final sealMakingSheetViewModelProvider =
-    Provider.family<SealMakingSheetViewModel, OnayamiCard>(
-        (ref, card) => SealMakingSheetViewModel(ref: ref, targetCard: card));
+final sealMakingSheetViewModelProvider = Provider<SealMakingSheetViewModel>(
+    (ref) => SealMakingSheetViewModel(
+        ref: ref,
+        targetCard: ref.watch(selectedOnayamiCardProvider.state).state));
 
 /// 送り先名前ラベル
 final sendNameProvider = Provider<String>((_) => '');

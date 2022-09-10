@@ -10,6 +10,10 @@ final onayamiCardsPageViewModelProvider = Provider<OnayamiCardsPageViewModel>(
     (ref) => OnayamiCardsPageViewModel(
         ref: ref, screenViewModel: ref.watch(screenViewModelProvider)));
 
+/// 選択中お悩みカードプロバイダ
+final selectedOnayamiCardProvider = StateProvider<OnayamiCard>(
+    (ref) => ref.watch(onayamiCardsPageViewModelProvider).cards.first);
+
 class OnayamiCardsPageViewModel {
   final ProviderRef ref;
   final ScreenViewModel screenViewModel;
@@ -41,13 +45,12 @@ class OnayamiCardsPageViewModel {
   ];
 
   /// constructor
-  OnayamiCardsPageViewModel(
-      {required this.ref, required this.screenViewModel}) {
-    selectedCard = cards.first;
-  }
+  OnayamiCardsPageViewModel({required this.ref, required this.screenViewModel});
 
-  /// 選択中お悩みカード
-  late OnayamiCard selectedCard;
+  /// 選択中お悩みカード変更時
+  void onCardIndexChanged(int index) {
+    ref.watch(selectedOnayamiCardProvider.state).state = cards[index];
+  }
 
   /// お悩み解決シールボタン押下時
   void onPressed(BuildContext context) async {
@@ -57,7 +60,7 @@ class OnayamiCardsPageViewModel {
       context: context,
       enableDrag: false,
       builder: (BuildContext context) {
-        return SealMakingSheet(targetCard: selectedCard);
+        return const SealMakingSheet();
       },
     );
   }

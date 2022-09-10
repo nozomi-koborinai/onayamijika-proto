@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:onayamijika/presentation/components/onayami_card.dart';
 import 'package:onayamijika/presentation/components/paint_tools/seal_header_area.dart';
 import 'package:onayamijika/presentation/components/paint_tools/seal_paint_area.dart';
 import 'package:onayamijika/presentation/components/paint_tools/seal_footer_area.dart';
@@ -10,13 +9,12 @@ import 'package:onayamijika/utils/app_values.dart';
 /// シール作成シート
 /// ※モーダル表示
 class SealMakingSheet extends ConsumerWidget {
-  final OnayamiCard targetCard;
-  const SealMakingSheet({required this.targetCard, super.key});
+  const SealMakingSheet({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final SealMakingSheetViewModel vm =
-        ref.watch(sealMakingSheetViewModelProvider(targetCard));
+        ref.watch(sealMakingSheetViewModelProvider);
     final height = MediaQuery.of(context).size.height * 0.85;
 
     return Container(

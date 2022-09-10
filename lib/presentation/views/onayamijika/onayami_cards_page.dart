@@ -28,7 +28,7 @@ class OnayamiCardsPage extends ConsumerWidget {
               itemCount: vm.cards.length,
               viewportFraction: 0.8,
               scale: 0.9,
-              onIndexChanged: (int value) => vm.selectedCard = vm.cards[value],
+              onIndexChanged: (int value) => vm.onCardIndexChanged(value),
             ),
           ),
           Container(
