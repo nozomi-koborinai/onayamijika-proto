@@ -16,7 +16,7 @@ abstract class SealPaintState with _$SealPaintState {
 
 /// シール描画を管理するためのコントローラのプロバイダ
 final sealPaintStateNotifierProvider =
-    StateNotifierProvider.autoDispose<SealPaintController, SealPaintState>(
+    StateNotifierProvider<SealPaintController, SealPaintState>(
         (_) => SealPaintController());
 
 class SealPaintController extends StateNotifier<SealPaintState> {

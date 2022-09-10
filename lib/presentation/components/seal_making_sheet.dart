@@ -1,20 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:onayamijika/presentation/components/paint_tools/seal_header_area.dart';
 import 'package:onayamijika/presentation/components/paint_tools/seal_paint_area.dart';
 import 'package:onayamijika/presentation/components/paint_tools/seal_footer_area.dart';
-import 'package:onayamijika/presentation/components/seal_making_sheet_model.dart';
 import 'package:onayamijika/utils/app_values.dart';
 
 /// シール作成シート
 /// ※モーダル表示
-class SealMakingSheet extends ConsumerWidget {
+class SealMakingSheet extends StatelessWidget {
   const SealMakingSheet({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final SealMakingSheetViewModel vm =
-        ref.watch(sealMakingSheetViewModelProvider);
+  Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height * 0.85;
 
     return Container(
