@@ -11,8 +11,14 @@ final onayamiCardsPageViewModelProvider = Provider<OnayamiCardsPageViewModel>(
         ref: ref, screenViewModel: ref.watch(screenViewModelProvider)));
 
 /// 選択中お悩みカードプロバイダ
-final selectedOnayamiCardProvider = StateProvider<OnayamiCard>(
-    (ref) => ref.watch(onayamiCardsPageViewModelProvider).cards.first);
+final selectedOnayamiCardProvider = StateProvider<OnayamiCard>((_) =>
+    OnayamiCard(
+        cardName: '',
+        accountImageUrl: '',
+        accountName: '',
+        distance: '',
+        content: '',
+        cardColor: AppColors.brown));
 
 class OnayamiCardsPageViewModel {
   final ProviderRef ref;
