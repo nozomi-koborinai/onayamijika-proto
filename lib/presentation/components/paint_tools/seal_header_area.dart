@@ -25,7 +25,7 @@ class SealHeaderArea extends ConsumerWidget {
             Padding(
               padding: const EdgeInsets.only(left: 10),
               child: Opacity(
-                opacity: 0.35,
+                opacity: 0.8,
                 child: CommonCircleButton(
                     iconData: Icons.arrow_back_ios_outlined,
                     onPressed: () => Navigator.pop(context),

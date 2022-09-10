@@ -16,16 +16,10 @@ class SealMakingSheet extends StatelessWidget {
     return Container(
         height: height,
         decoration: BoxDecoration(
-          color: AppColors.lightGray,
+          color: AppColors.lightGray.withOpacity(0.5),
           borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(70),
           ),
-          boxShadow: const [
-            BoxShadow(
-              color: Colors.grey,
-              blurRadius: 100,
-            )
-          ],
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -33,9 +27,9 @@ class SealMakingSheet extends StatelessWidget {
             // シールヘッダーエリア
             SealHeaderArea(height: height * 0.1),
             // シール編集エリア
-            SealPaintArea(height: height * 0.8),
+            SealPaintArea(height: height * 0.78),
             // シールフッターエリア
-            SealFooterArea(height: height * 0.1)
+            SealFooterArea(height: height * 0.12)
           ],
         ));
   }
