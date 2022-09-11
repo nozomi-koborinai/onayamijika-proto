@@ -52,6 +52,29 @@ class CommonRegistButton extends StatelessWidget {
   }
 }
 
+class CommonOnayamiSealButton extends StatelessWidget {
+  final Color color;
+  final IconData iconData;
+  final String caption;
+  final Function onPressed;
+  const CommonOnayamiSealButton(
+      {required this.color,
+      required this.iconData,
+      required this.caption,
+      required this.onPressed,
+      super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return FloatingActionButton.extended(
+        heroTag: '1',
+        backgroundColor: color,
+        icon: Icon(iconData),
+        label: Text(caption),
+        onPressed: () => onPressed.call());
+  }
+}
+
 class CommonFloatingActionButton extends StatelessWidget {
   final Function() onPressed;
   const CommonFloatingActionButton({required this.onPressed, Key? key})
