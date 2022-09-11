@@ -12,6 +12,7 @@ class SealMakingSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height * 0.85;
+    final globalKey = GlobalKey();
 
     return Container(
         height: height,
@@ -27,9 +28,9 @@ class SealMakingSheet extends StatelessWidget {
             // シールヘッダーエリア
             SealHeaderArea(height: height * 0.1),
             // シール編集エリア
-            SealPaintArea(height: height * 0.78),
+            SealPaintArea(height: height * 0.65, globalKey: globalKey),
             // シールフッターエリア
-            SealFooterArea(height: height * 0.12)
+            SealFooterArea(height: height * 0.25, globalKey: globalKey)
           ],
         ));
   }

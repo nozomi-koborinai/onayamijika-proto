@@ -6,7 +6,9 @@ import 'package:onayamijika/presentation/states/seal_paint_state.dart';
 /// お悩みシールの描画エリア
 class SealPaintArea extends ConsumerWidget {
   final double height;
-  const SealPaintArea({required this.height, super.key});
+  final GlobalKey globalKey;
+  const SealPaintArea(
+      {required this.height, required this.globalKey, super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -16,13 +18,16 @@ class SealPaintArea extends ConsumerWidget {
     return SizedBox(
       height: height,
       width: MediaQuery.of(context).size.width,
-      child: GestureDetector(
-        onPanStart: (details) => controller.addPaint(details.localPosition),
-        onPanUpdate: (details) {
-          controller.updatePaint(_getPosition(height, details.localPosition));
-        },
-        onPanEnd: (_) => controller.endPaint(),
-        child: CustomPaint(painter: Signature(state, context)),
+      child: RepaintBoundary(
+        key: globalKey,
+        child: GestureDetector(
+          onPanStart: (details) => controller.addPaint(details.localPosition),
+          onPanUpdate: (details) {
+            controller.updatePaint(_getPosition(height, details.localPosition));
+          },
+          onPanEnd: (_) => controller.endPaint(),
+          child: CustomPaint(painter: Signature(state, context)),
+        ),
       ),
     );
   }
