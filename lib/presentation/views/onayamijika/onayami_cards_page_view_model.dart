@@ -47,15 +47,7 @@ class OnayamiCardsPageViewModel {
         accountName: 'sto',
         distance: '800km',
         content: '帰る？',
-        cardColor: AppColors.skyGreen),
-    OnayamiCard(
-        cardName: '仕事終わらん',
-        accountImageUrl:
-            'https://www.pakutaso.com/shared/img/thumb/KUMA1892073_TP_V.jpg',
-        accountName: 'sto',
-        distance: '800km',
-        content: '帰る？',
-        cardColor: AppColors.purple)
+        cardColor: AppColors.skyGreen)
   ];
 
   /// constructor
