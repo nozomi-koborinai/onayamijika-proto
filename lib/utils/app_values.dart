@@ -42,3 +42,11 @@ class AppColors {
     return colorsForOnayamiCard[rand.nextInt(7)];
   }
 }
+
+/// アプリ内共通で使用するメッセージ
+class AppMessages {
+  static const String ok = 'OK';
+  static const String error = 'エラー';
+  static const String yes = 'はい';
+  static const String no = 'いいえ';
+}
