@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:onayamijika/infrastructure/authentication/authentication.dart';
 import 'package:onayamijika/presentation/views/onayamijika/screen.dart';
 
 /// SignUpPageViewModelのインスタンスを返却するプロバイダ
@@ -33,16 +34,10 @@ class SignUpPageViewModel {
       ref.watch(passWordIdControllerStateProvider.state).state;
 
   /// 登録ボタン押下時
-  Future<void> onPressedFromRegist(BuildContext context) async {
+  Future<void> onPressedFromRegist({required BuildContext context}) async {
     // 登録処理
     // 失敗したら以降の処理はやる必要ないのでここで処理終了
-    if (!await userRegist()) return;
-
-    debugPrint(
-        emailController.text + userIdController.text + passWordController.text);
-    emailController.text = '';
-    userIdController.text = '';
-    passWordController.text = '';
+    if (!await userRegist(context: context)) return;
 
     // 画面遷移処理 -> お悩みカード一覧ページへ
     await Navigator.push(
@@ -54,7 +49,14 @@ class SignUpPageViewModel {
   }
 
   /// ユーザ登録処理
-  Future<bool> userRegist() async {
+  Future<bool> userRegist({required BuildContext context}) async {
+    // TODO：ユーザ認証。一旦成功状態にしておく。
     return true;
+
+    final result = await Authentication.instance.signUp(
+        email: emailController.text,
+        pass: passWordController.text,
+        context: context);
+    return result == true ? true : false;
   }
 }

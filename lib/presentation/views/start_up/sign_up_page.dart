@@ -51,7 +51,7 @@ class SignUpPage extends ConsumerWidget {
               width: 75,
               child: CommonRegistButton(
                   caption: '登録',
-                  onPressed: () => vm.onPressedFromRegist(context)),
+                  onPressed: () => vm.onPressedFromRegist(context: context)),
             ),
           ),
         ]),
