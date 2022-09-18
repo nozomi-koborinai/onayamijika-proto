@@ -20,6 +20,8 @@ dependencies:
   salomon_bottom_bar: ^3.3.1
   flip_card: ^0.6.0
   card_swiper: ^2.0.4
+  firebase_auth: ^3.9.0
+  google_sign_in: ^5.4.1
 
 dev_dependencies:
   flutter_test:
