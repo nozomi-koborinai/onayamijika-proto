@@ -30,11 +30,11 @@ mixin _$OnayamiCard {
 
   /// 緯度
   @JsonKey(name: 'latitude')
-  String get latitude => throw _privateConstructorUsedError;
+  int get latitude => throw _privateConstructorUsedError;
 
   /// 経度
   @JsonKey(name: 'longitude')
-  String get longitude => throw _privateConstructorUsedError;
+  int get longitude => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -50,8 +50,8 @@ abstract class $OnayamiCardCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'card_title') String cardTitle,
       @JsonKey(name: 'content') String content,
-      @JsonKey(name: 'latitude') String latitude,
-      @JsonKey(name: 'longitude') String longitude});
+      @JsonKey(name: 'latitude') int latitude,
+      @JsonKey(name: 'longitude') int longitude});
 }
 
 /// @nodoc
@@ -81,11 +81,11 @@ class _$OnayamiCardCopyWithImpl<$Res> implements $OnayamiCardCopyWith<$Res> {
       latitude: latitude == freezed
           ? _value.latitude
           : latitude // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       longitude: longitude == freezed
           ? _value.longitude
           : longitude // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
     ));
   }
 }
@@ -100,8 +100,8 @@ abstract class _$$_OnayamiCardCopyWith<$Res>
   $Res call(
       {@JsonKey(name: 'card_title') String cardTitle,
       @JsonKey(name: 'content') String content,
-      @JsonKey(name: 'latitude') String latitude,
-      @JsonKey(name: 'longitude') String longitude});
+      @JsonKey(name: 'latitude') int latitude,
+      @JsonKey(name: 'longitude') int longitude});
 }
 
 /// @nodoc
@@ -133,11 +133,11 @@ class __$$_OnayamiCardCopyWithImpl<$Res> extends _$OnayamiCardCopyWithImpl<$Res>
       latitude: latitude == freezed
           ? _value.latitude
           : latitude // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       longitude: longitude == freezed
           ? _value.longitude
           : longitude // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
     ));
   }
 }
@@ -167,12 +167,12 @@ class _$_OnayamiCard implements _OnayamiCard {
   /// 緯度
   @override
   @JsonKey(name: 'latitude')
-  final String latitude;
+  final int latitude;
 
   /// 経度
   @override
   @JsonKey(name: 'longitude')
-  final String longitude;
+  final int longitude;
 
   @override
   String toString() {
@@ -216,8 +216,8 @@ abstract class _OnayamiCard implements OnayamiCard {
   const factory _OnayamiCard(
           {@JsonKey(name: 'card_title') required final String cardTitle,
           @JsonKey(name: 'content') required final String content,
-          @JsonKey(name: 'latitude') required final String latitude,
-          @JsonKey(name: 'longitude') required final String longitude}) =
+          @JsonKey(name: 'latitude') required final int latitude,
+          @JsonKey(name: 'longitude') required final int longitude}) =
       _$_OnayamiCard;
 
   factory _OnayamiCard.fromJson(Map<String, dynamic> json) =
@@ -237,12 +237,12 @@ abstract class _OnayamiCard implements OnayamiCard {
 
   /// 緯度
   @JsonKey(name: 'latitude')
-  String get latitude;
+  int get latitude;
   @override
 
   /// 経度
   @JsonKey(name: 'longitude')
-  String get longitude;
+  int get longitude;
   @override
   @JsonKey(ignore: true)
   _$$_OnayamiCardCopyWith<_$_OnayamiCard> get copyWith =>

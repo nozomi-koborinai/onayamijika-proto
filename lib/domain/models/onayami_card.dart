@@ -15,10 +15,10 @@ class OnayamiCard with _$OnayamiCard {
     @JsonKey(name: 'content') required String content,
 
     /// 緯度
-    @JsonKey(name: 'latitude') required String latitude,
+    @JsonKey(name: 'latitude') required int latitude,
 
     /// 経度
-    @JsonKey(name: 'longitude') required String longitude,
+    @JsonKey(name: 'longitude') required int longitude,
   }) = _OnayamiCard;
 
   factory OnayamiCard.fromJson(Map<String, dynamic> json) =>
