@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:onayamijika/domain/interfaces/i_onayami_card_repository.dart';
 import 'package:onayamijika/infrastructure/repositories/onayami_card_repository.dart';
 import 'package:onayamijika/presentation/views/start_up/start_up_page.dart';
+import 'package:onayamijika/utils/function_utils.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -12,6 +13,9 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  // 位置情報確認ダイアログを表示
+  FunctionUtils.instance.determinePosition();
+
   runApp(ProviderScope(
     overrides: [
       onayamiCardRepositoryProvider

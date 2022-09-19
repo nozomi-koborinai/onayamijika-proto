@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:onayamijika/presentation/views/onayamijika/card_making_page.dart';
 import 'package:onayamijika/utils/app_values.dart';
-import 'package:onayamijika/utils/function_utils.dart';
 
 /// アプリ内共通のアプリバー
 class CommonAppBar extends StatelessWidget with PreferredSizeWidget {
@@ -40,7 +39,6 @@ class CommonAppBar extends StatelessWidget with PreferredSizeWidget {
                   icon: Icon(Icons.add_card_outlined,
                       color: AppColors.intensePurple, size: 28),
                   onPressed: () {
-                    FunctionUtils.instance.determinePosition();
                     Navigator.push(
                         context,
                         MaterialPageRoute(
