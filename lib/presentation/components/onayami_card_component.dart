@@ -2,7 +2,7 @@ import 'package:flip_card/flip_card.dart';
 import 'package:flutter/material.dart';
 import 'package:onayamijika/utils/app_values.dart';
 
-class OnayamiCard extends StatelessWidget {
+class OnayamiCardComponent extends StatelessWidget {
   final String cardName;
   final String accountImageUrl;
   final String accountName;
@@ -10,7 +10,7 @@ class OnayamiCard extends StatelessWidget {
   final String content;
   final Color cardColor;
 
-  const OnayamiCard(
+  const OnayamiCardComponent(
       {required this.cardName,
       required this.accountImageUrl,
       required this.accountName,

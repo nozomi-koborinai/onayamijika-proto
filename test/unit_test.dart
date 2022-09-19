@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:onayamijika/presentation/components/onayami_card.dart';
+import 'package:onayamijika/presentation/components/onayami_card_component.dart';
 import 'package:onayamijika/presentation/components/seal_making_sheet_model.dart';
 import 'package:onayamijika/presentation/views/onayamijika/onayami_cards_page_view_model.dart';
 import 'package:onayamijika/utils/app_values.dart';
@@ -8,13 +8,14 @@ import 'package:onayamijika/utils/app_values.dart';
 final container = ProviderContainer();
 
 void main() {
-  container.read(selectedOnayamiCardProvider.state).state = OnayamiCard(
-      cardName: 'testcard',
-      accountImageUrl: 'testurl',
-      accountName: 'testname',
-      distance: 'testkm',
-      content: 'testcontent',
-      cardColor: AppColors.brown);
+  container.read(selectedOnayamiCardProvider.state).state =
+      OnayamiCardComponent(
+          cardName: 'testcard',
+          accountImageUrl: 'testurl',
+          accountName: 'testname',
+          distance: 'testkm',
+          content: 'testcontent',
+          cardColor: AppColors.brown);
   final OnayamiCardsPageViewModel cardVm =
       container.read(onayamiCardsPageViewModelProvider);
   final SealMakingSheetViewModel sealVm =
