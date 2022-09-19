@@ -11,8 +11,8 @@ final onayamiCardsPageViewModelProvider = Provider<OnayamiCardsPageViewModel>(
         ref: ref, screenViewModel: ref.watch(screenViewModelProvider)));
 
 /// 選択中お悩みカードプロバイダ
-final selectedOnayamiCardProvider = StateProvider<OnayamiCardComponent>((_) =>
-    OnayamiCardComponent(
+final selectedOnayamiCardProvider = StateProvider<OnayamiCardForDisp>((_) =>
+    OnayamiCardForDisp(
         cardName: '',
         accountImageUrl: '',
         accountName: '',
@@ -26,21 +26,21 @@ class OnayamiCardsPageViewModel {
 
   /// 後でStreamProviderに置き換える
   var cards = [
-    OnayamiCardComponent(
+    OnayamiCardForDisp(
         cardName: 'わんこそば100杯いけません',
         accountImageUrl: 'https://avatars.githubusercontent.com/u/39579511?v=4',
         accountName: 'cobo',
         distance: '6km',
         content: 'わんこそば100杯いく食べ方が知りたいです',
         cardColor: AppColors.intenseBlue),
-    OnayamiCardComponent(
+    OnayamiCardForDisp(
         cardName: '仕事終わらん',
         accountImageUrl: 'https://pro-foto.jp/img/category_tn_35.jpg',
         accountName: 'tes',
         distance: '16km',
         content: 'どうやって終わるのかな？',
         cardColor: AppColors.salmonPink),
-    OnayamiCardComponent(
+    OnayamiCardForDisp(
         cardName: '仕事終わらん',
         accountImageUrl:
             'https://www.pakutaso.com/shared/img/thumb/KUMA1892073_TP_V.jpg',

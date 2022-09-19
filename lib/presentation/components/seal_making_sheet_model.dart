@@ -19,5 +19,5 @@ class SealMakingSheetViewModel {
   SealMakingSheetViewModel({required this.ref, required this.targetCard});
 
   final ProviderRef ref;
-  final OnayamiCardComponent targetCard;
+  final OnayamiCardForDisp targetCard;
 }

@@ -8,14 +8,13 @@ import 'package:onayamijika/utils/app_values.dart';
 final container = ProviderContainer();
 
 void main() {
-  container.read(selectedOnayamiCardProvider.state).state =
-      OnayamiCardComponent(
-          cardName: 'testcard',
-          accountImageUrl: 'testurl',
-          accountName: 'testname',
-          distance: 'testkm',
-          content: 'testcontent',
-          cardColor: AppColors.brown);
+  container.read(selectedOnayamiCardProvider.state).state = OnayamiCardForDisp(
+      cardName: 'testcard',
+      accountImageUrl: 'testurl',
+      accountName: 'testname',
+      distance: 'testkm',
+      content: 'testcontent',
+      cardColor: AppColors.brown);
   final OnayamiCardsPageViewModel cardVm =
       container.read(onayamiCardsPageViewModelProvider);
   final SealMakingSheetViewModel sealVm =
