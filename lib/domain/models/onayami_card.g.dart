@@ -10,8 +10,8 @@ _$_OnayamiCard _$$_OnayamiCardFromJson(Map<String, dynamic> json) =>
     _$_OnayamiCard(
       cardTitle: json['card_title'] as String,
       content: json['content'] as String,
-      latitude: json['latitude'] as int,
-      longitude: json['longitude'] as int,
+      latitude: (json['latitude'] as num).toDouble(),
+      longitude: (json['longitude'] as num).toDouble(),
     );
 
 Map<String, dynamic> _$$_OnayamiCardToJson(_$_OnayamiCard instance) =>
