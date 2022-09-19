@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:onayamijika/infrastructure/authentication/authentication.dart';
@@ -57,6 +58,6 @@ class SignUpPageViewModel {
         email: emailController.text,
         pass: passWordController.text,
         context: context);
-    return result == true ? true : false;
+    return result is UserCredential;
   }
 }
