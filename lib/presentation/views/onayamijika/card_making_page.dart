@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:onayamijika/infrastructure/authentication/authentication.dart';
 import 'package:onayamijika/presentation/components/common_app_bar.dart';
 import 'package:onayamijika/presentation/components/common_button.dart';
 import 'package:onayamijika/presentation/components/onayami_card_component.dart';
@@ -24,8 +25,8 @@ class CardMakingPage extends ConsumerWidget {
               child: OnayamiCardForCreate(
                   accountImageUrl:
                       'https://blogger.googleusercontent.com/img/a/AVvXsEgM85LEvtgJrUmGx95tmMptVQWhITwGOun2FEdThRoHM1iA2IV7J9KA94UtTJco4GVIvitht8kY-nc9U6SBQ6oLlsGCLSlr2S0dv9m04sUFE_suAa77Z8V-HxOFVxSsPMEqRgGGlC0ilOpb-a_tAjkvTr_ux8GfLjdCFWkj8HVQ-kGVukNz9WfrQ9_s1g=s400',
-                  accountName: 'cb',
-                  cardColor: AppColors.skyGreen),
+                  accountName: Authentication.myAccount.accountName,
+                  cardColor: AppColors.intenseBlue),
             ),
             SizedBox(
                 height: 40,

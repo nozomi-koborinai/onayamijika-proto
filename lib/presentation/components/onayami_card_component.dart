@@ -252,13 +252,14 @@ class OnayamiCardForCreate extends ConsumerWidget {
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.all(4.0),
+                  padding: const EdgeInsets.all(16.0),
                   child: SingleChildScrollView(
                       child: Column(
                     children: [
                       CommonTextField(
                           labelText: 'お悩みカードタイトル',
                           controller: vm.cardTitleController),
+                      const SizedBox(height: 17),
                       CommonTextField(
                           labelText: 'お悩み内容',
                           controller: vm.cardContentController),
