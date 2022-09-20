@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:onayamijika/domain/interfaces/i_account_repository.dart';
 import 'package:onayamijika/domain/interfaces/i_onayami_card_repository.dart';
+import 'package:onayamijika/infrastructure/repositories/account_repository.dart';
 import 'package:onayamijika/infrastructure/repositories/onayami_card_repository.dart';
 import 'package:onayamijika/presentation/views/start_up/start_up_page.dart';
 import 'package:onayamijika/utils/function_utils.dart';
@@ -20,6 +22,8 @@ void main() async {
     overrides: [
       onayamiCardRepositoryProvider
           .overrideWithProvider(firebaseOnayamiCardRepositoryProvider),
+      accountRepositoryProvider
+          .overrideWithProvider(firebaseAccountRepositoryProvider)
     ],
     child: const MyApp(),
   ));
