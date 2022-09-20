@@ -33,7 +33,7 @@ class CardMakingPage extends ConsumerWidget {
                     caption: 'お悩みカード作成！',
                     color: AppColors.purple,
                     iconData: Icons.add_reaction_outlined,
-                    onPressed: () => vm.onPressed()))
+                    onPressed: () => vm.onPressed(context: context)))
           ],
         ),
       ),
