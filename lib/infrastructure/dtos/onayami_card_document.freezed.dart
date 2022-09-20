@@ -35,6 +35,8 @@ mixin _$OnayamiCardDocument {
   /// 経度
   @JsonKey(name: 'longitude')
   double get longitude => throw _privateConstructorUsedError;
+  @JsonKey(name: 'create_account_uid')
+  String get createAccountUid => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -51,7 +53,8 @@ abstract class $OnayamiCardDocumentCopyWith<$Res> {
       {@JsonKey(name: 'card_title') String cardTitle,
       @JsonKey(name: 'content') String content,
       @JsonKey(name: 'latitude') double latitude,
-      @JsonKey(name: 'longitude') double longitude});
+      @JsonKey(name: 'longitude') double longitude,
+      @JsonKey(name: 'create_account_uid') String createAccountUid});
 }
 
 /// @nodoc
@@ -69,6 +72,7 @@ class _$OnayamiCardDocumentCopyWithImpl<$Res>
     Object? content = freezed,
     Object? latitude = freezed,
     Object? longitude = freezed,
+    Object? createAccountUid = freezed,
   }) {
     return _then(_value.copyWith(
       cardTitle: cardTitle == freezed
@@ -87,6 +91,10 @@ class _$OnayamiCardDocumentCopyWithImpl<$Res>
           ? _value.longitude
           : longitude // ignore: cast_nullable_to_non_nullable
               as double,
+      createAccountUid: createAccountUid == freezed
+          ? _value.createAccountUid
+          : createAccountUid // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -102,7 +110,8 @@ abstract class _$$_OnayamiCardDocumentCopyWith<$Res>
       {@JsonKey(name: 'card_title') String cardTitle,
       @JsonKey(name: 'content') String content,
       @JsonKey(name: 'latitude') double latitude,
-      @JsonKey(name: 'longitude') double longitude});
+      @JsonKey(name: 'longitude') double longitude,
+      @JsonKey(name: 'create_account_uid') String createAccountUid});
 }
 
 /// @nodoc
@@ -122,6 +131,7 @@ class __$$_OnayamiCardDocumentCopyWithImpl<$Res>
     Object? content = freezed,
     Object? latitude = freezed,
     Object? longitude = freezed,
+    Object? createAccountUid = freezed,
   }) {
     return _then(_$_OnayamiCardDocument(
       cardTitle: cardTitle == freezed
@@ -140,6 +150,10 @@ class __$$_OnayamiCardDocumentCopyWithImpl<$Res>
           ? _value.longitude
           : longitude // ignore: cast_nullable_to_non_nullable
               as double,
+      createAccountUid: createAccountUid == freezed
+          ? _value.createAccountUid
+          : createAccountUid // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -151,7 +165,8 @@ class _$_OnayamiCardDocument implements _OnayamiCardDocument {
       {@JsonKey(name: 'card_title') required this.cardTitle,
       @JsonKey(name: 'content') required this.content,
       @JsonKey(name: 'latitude') required this.latitude,
-      @JsonKey(name: 'longitude') required this.longitude});
+      @JsonKey(name: 'longitude') required this.longitude,
+      @JsonKey(name: 'create_account_uid') required this.createAccountUid});
 
   factory _$_OnayamiCardDocument.fromJson(Map<String, dynamic> json) =>
       _$$_OnayamiCardDocumentFromJson(json);
@@ -175,10 +190,13 @@ class _$_OnayamiCardDocument implements _OnayamiCardDocument {
   @override
   @JsonKey(name: 'longitude')
   final double longitude;
+  @override
+  @JsonKey(name: 'create_account_uid')
+  final String createAccountUid;
 
   @override
   String toString() {
-    return 'OnayamiCardDocument(cardTitle: $cardTitle, content: $content, latitude: $latitude, longitude: $longitude)';
+    return 'OnayamiCardDocument(cardTitle: $cardTitle, content: $content, latitude: $latitude, longitude: $longitude, createAccountUid: $createAccountUid)';
   }
 
   @override
@@ -189,7 +207,9 @@ class _$_OnayamiCardDocument implements _OnayamiCardDocument {
             const DeepCollectionEquality().equals(other.cardTitle, cardTitle) &&
             const DeepCollectionEquality().equals(other.content, content) &&
             const DeepCollectionEquality().equals(other.latitude, latitude) &&
-            const DeepCollectionEquality().equals(other.longitude, longitude));
+            const DeepCollectionEquality().equals(other.longitude, longitude) &&
+            const DeepCollectionEquality()
+                .equals(other.createAccountUid, createAccountUid));
   }
 
   @JsonKey(ignore: true)
@@ -199,7 +219,8 @@ class _$_OnayamiCardDocument implements _OnayamiCardDocument {
       const DeepCollectionEquality().hash(cardTitle),
       const DeepCollectionEquality().hash(content),
       const DeepCollectionEquality().hash(latitude),
-      const DeepCollectionEquality().hash(longitude));
+      const DeepCollectionEquality().hash(longitude),
+      const DeepCollectionEquality().hash(createAccountUid));
 
   @JsonKey(ignore: true)
   @override
@@ -217,11 +238,16 @@ class _$_OnayamiCardDocument implements _OnayamiCardDocument {
 
 abstract class _OnayamiCardDocument implements OnayamiCardDocument {
   const factory _OnayamiCardDocument(
-          {@JsonKey(name: 'card_title') required final String cardTitle,
-          @JsonKey(name: 'content') required final String content,
-          @JsonKey(name: 'latitude') required final double latitude,
-          @JsonKey(name: 'longitude') required final double longitude}) =
-      _$_OnayamiCardDocument;
+      {@JsonKey(name: 'card_title')
+          required final String cardTitle,
+      @JsonKey(name: 'content')
+          required final String content,
+      @JsonKey(name: 'latitude')
+          required final double latitude,
+      @JsonKey(name: 'longitude')
+          required final double longitude,
+      @JsonKey(name: 'create_account_uid')
+          required final String createAccountUid}) = _$_OnayamiCardDocument;
 
   factory _OnayamiCardDocument.fromJson(Map<String, dynamic> json) =
       _$_OnayamiCardDocument.fromJson;
@@ -246,6 +272,9 @@ abstract class _OnayamiCardDocument implements OnayamiCardDocument {
   /// 経度
   @JsonKey(name: 'longitude')
   double get longitude;
+  @override
+  @JsonKey(name: 'create_account_uid')
+  String get createAccountUid;
   @override
   @JsonKey(ignore: true)
   _$$_OnayamiCardDocumentCopyWith<_$_OnayamiCardDocument> get copyWith =>

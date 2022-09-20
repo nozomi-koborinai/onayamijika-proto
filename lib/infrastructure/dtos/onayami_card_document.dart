@@ -19,6 +19,7 @@ class OnayamiCardDocument with _$OnayamiCardDocument {
 
     /// 経度
     @JsonKey(name: 'longitude') required double longitude,
+    @JsonKey(name: 'create_account_uid') required String createAccountUid,
   }) = _OnayamiCardDocument;
 
   factory OnayamiCardDocument.fromJson(Map<String, dynamic> json) =>
