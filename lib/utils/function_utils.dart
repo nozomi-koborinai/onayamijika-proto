@@ -23,7 +23,10 @@ class FunctionUtils {
     return byteData?.buffer.asUint8List();
   }
 
+  /// 指定したdouble型のデ
+
   /// 地図上の2つの位置(緯度経度)から距離(km)を求める
+  /// 少数３位を四捨五入して少数第２位まで表示
   double distanceBetween({
     required double latitude1,
     required double longitude1,
@@ -39,7 +42,7 @@ class FunctionUtils {
     final num a = pow(sin((f2 - f1) / 2), 2);
     final double b = cos(f1) * cos(f2) * pow(sin((l2 - l1) / 2), 2);
     final double d = 2 * r * asin(sqrt(a + b));
-    return d;
+    return double.parse(d.toStringAsFixed(2));
   }
 
   /// デバイスの現在位置を決定する。
