@@ -22,7 +22,6 @@ class CardMakingPageViewModel {
     // 位置情報を取得
     final Position position = await Geolocator.getCurrentPosition();
     // お悩みカード(新規作成)ウィジェットからOnayamiCardデータを取得
-    // TODO：必要であればインフラ層のモデルをドメイン層のモデルに変える
     final OnayamiCardDocument newOnayamiCard =
         ref.watch(createOnayamiCardDataProvider(position));
     await repository.addCard(newCard: newOnayamiCard);

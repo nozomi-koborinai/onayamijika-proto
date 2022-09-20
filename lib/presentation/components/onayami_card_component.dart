@@ -2,111 +2,116 @@ import 'package:flip_card/flip_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:onayamijika/domain/models/onayami_card_view.dart';
+import 'package:onayamijika/infrastructure/authentication/authentication.dart';
 import 'package:onayamijika/infrastructure/dtos/onayami_card_document.dart';
 import 'package:onayamijika/presentation/components/common_text_field.dart';
+import 'package:onayamijika/presentation/components/onayami_card_disp_view_model.dart';
 import 'package:onayamijika/presentation/components/onayami_card_view_model.dart';
 import 'package:onayamijika/utils/app_values.dart';
+import 'package:onayamijika/utils/hex_color.dart';
 
 /// お悩みカードウィジェット_一覧表示用
-class OnayamiCardForDisp extends StatelessWidget {
-  final String cardName;
-  final String accountImageUrl;
-  final String accountName;
-  final String distance;
-  final String content;
-  final Color cardColor;
+class OnayamiCardForDisp extends ConsumerWidget {
+  final OnayamiCardDocument cardDocument;
+  final Color cardColor = AppColors.skyGreen;
 
-  const OnayamiCardForDisp(
-      {required this.cardName,
-      required this.accountImageUrl,
-      required this.accountName,
-      required this.distance,
-      required this.content,
-      required this.cardColor,
-      Key? key})
-      : super(key: key);
+  OnayamiCardForDisp({required this.cardDocument, Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final OnayamiCardDispViewModel vm =
+        ref.watch(onayamiCardDispViewModelProvider(cardDocument));
+
     return FlipCard(
       fill: Fill.fillBack,
       direction: FlipDirection.HORIZONTAL,
-      front: createFrontCard(),
+      front: createFrontCard(vm),
       back: createBackCard(),
     );
   }
 
   /// 表面のお悩みカードを生成
-  Card createFrontCard() {
-    return Card(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(20),
-      ),
-      color: cardColor, // Card自体の色
-      margin: const EdgeInsets.symmetric(horizontal: 4, vertical: 40.0),
-      elevation: 10, // 影の離れ具合
-      shadowColor: cardColor,
-      child: Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(
-                      left: 4, right: 13, top: 4, bottom: 8),
-                  child: CircleAvatar(
-                    radius: 35,
-                    foregroundColor: AppColors.gray,
-                    backgroundColor: AppColors.white,
-                    backgroundImage: NetworkImage(accountImageUrl),
-                  ),
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(accountName,
-                        style: TextStyle(
-                            color: AppColors.white,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold)),
-                    Text(distance,
-                        style: TextStyle(color: AppColors.white, fontSize: 15))
-                  ],
-                ),
-              ],
+  Widget createFrontCard(OnayamiCardDispViewModel vm) {
+    return FutureBuilder(
+        future: vm.createOnayamiCardView(),
+        builder:
+            (BuildContext context, AsyncSnapshot<OnayamiCardView> snapshot) {
+          if (!snapshot.hasData) return const OnayamiCardForDispLoading();
+          final cardView = snapshot.data!;
+          return Card(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20),
             ),
-            Expanded(
-              child: Container(
-                width: double.infinity,
-                margin: const EdgeInsets.only(top: 10, bottom: 10),
-                decoration: BoxDecoration(
-                  // 枠線
-                  border: Border.all(color: AppColors.white, width: 1),
-                  // 角丸
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(4.0),
-                  child: SingleChildScrollView(
-                      child: Column(
+            color: cardView.cardColor, // Card自体の色
+            margin: const EdgeInsets.symmetric(horizontal: 4, vertical: 40.0),
+            elevation: 10, // 影の離れ具合
+            shadowColor: cardView.cardColor,
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Text(cardName,
-                          style: TextStyle(
-                              color: AppColors.white,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold)),
-                      Text(content, style: TextStyle(color: AppColors.gray)),
+                      Padding(
+                        padding: const EdgeInsets.only(
+                            left: 4, right: 13, top: 4, bottom: 8),
+                        child: CircleAvatar(
+                          radius: 35,
+                          foregroundColor: AppColors.gray,
+                          backgroundColor: AppColors.white,
+                          backgroundImage:
+                              NetworkImage(cardView.accountImageUrl),
+                        ),
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(cardView.accountName,
+                              style: TextStyle(
+                                  color: AppColors.white,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold)),
+                          Text('${cardView.distance} km',
+                              style: TextStyle(
+                                  color: AppColors.white, fontSize: 15))
+                        ],
+                      ),
                     ],
-                  )),
-                ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      width: double.infinity,
+                      margin: const EdgeInsets.only(top: 10, bottom: 10),
+                      decoration: BoxDecoration(
+                        // 枠線
+                        border: Border.all(color: AppColors.white, width: 1),
+                        // 角丸
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(4.0),
+                        child: SingleChildScrollView(
+                            child: Column(
+                          children: [
+                            Text(cardView.cardTitle,
+                                style: TextStyle(
+                                    color: AppColors.white,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold)),
+                            Text(cardView.cardContent,
+                                style: TextStyle(color: AppColors.gray)),
+                          ],
+                        )),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
-          ],
-        ),
-      ),
-    );
+          );
+        });
   }
 
   /// 裏面のお悩みカードを生成
@@ -173,14 +178,14 @@ class OnayamiCardForDisp extends StatelessWidget {
 }
 
 /// お悩みカードウィジェット_新規作成用の入力データからOnayamiCardデータを作成
-// TODO：必要であればインフラ層のモデルをドメイン層のモデルに変える
 final createOnayamiCardDataProvider = Provider.family<OnayamiCardDocument,
         Position>(
     (ref, position) => OnayamiCardDocument(
         cardTitle: ref.watch(cardTitleControllerStateProvider.state).state.text,
         content: ref.watch(cardContentControllerStateProvider.state).state.text,
         latitude: position.latitude,
-        longitude: position.longitude));
+        longitude: position.longitude,
+        createAccountUid: Authentication.myAccount.accountUid));
 
 /// お悩みカードウィジェット_新規作成用
 class OnayamiCardForCreate extends ConsumerWidget {
@@ -266,5 +271,90 @@ class OnayamiCardForCreate extends ConsumerWidget {
         ),
       ),
     );
+  }
+}
+
+/// お悩みカードウィジェット_一覧表示読み込み用
+class OnayamiCardForDispLoading extends StatefulWidget {
+  const OnayamiCardForDispLoading({super.key});
+
+  @override
+  _OnayamiCardForDispLoadingState createState() =>
+      _OnayamiCardForDispLoadingState();
+}
+
+/// お悩みカード_ローディングアニメーション用
+class _OnayamiCardForDispLoadingState extends State<OnayamiCardForDispLoading>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<Color?> _backgroundColor;
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      duration: const Duration(milliseconds: 1250),
+      vsync: this,
+    );
+    _backgroundColor =
+        ColorTween(begin: HexColor('E8E8E8'), end: HexColor('CECECE'))
+            .animate(_controller);
+    _controller.repeat(reverse: true);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedBuilder(
+        animation: _backgroundColor,
+        builder: (context, child) {
+          return Card(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20),
+            ),
+            color: _backgroundColor.value, // Card自体の色
+            margin: const EdgeInsets.symmetric(horizontal: 4, vertical: 40.0),
+            elevation: 10, // 影の離れ具合
+            shadowColor: _backgroundColor.value,
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(
+                            left: 4, right: 13, top: 4, bottom: 8),
+                        child: CircleAvatar(
+                          radius: 30,
+                          foregroundColor: _backgroundColor.value,
+                          backgroundColor: _backgroundColor.value,
+                        ),
+                      ),
+                    ],
+                  ),
+                  Expanded(
+                    child: Container(
+                      width: double.infinity,
+                      margin: const EdgeInsets.only(top: 10, bottom: 10),
+                      decoration: BoxDecoration(
+                        // 枠線
+                        border: Border.all(color: AppColors.white, width: 1),
+                        // 角丸
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          );
+        });
   }
 }

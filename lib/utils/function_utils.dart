@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math';
 import 'dart:ui';
 
 import 'package:flutter/foundation.dart';
@@ -20,6 +21,25 @@ class FunctionUtils {
     final image = await boundary.toImage();
     final byteData = await image.toByteData(format: ImageByteFormat.png);
     return byteData?.buffer.asUint8List();
+  }
+
+  /// 地図上の2つの位置(緯度経度)から距離(km)を求める
+  double distanceBetween({
+    required double latitude1,
+    required double longitude1,
+    required double latitude2,
+    required double longitude2,
+  }) {
+    toRadians(double degree) => degree * pi / 180;
+    const double r = 6378137.0; // 地球の半径
+    final double f1 = toRadians(latitude1);
+    final double f2 = toRadians(latitude2);
+    final double l1 = toRadians(longitude1);
+    final double l2 = toRadians(longitude2);
+    final num a = pow(sin((f2 - f1) / 2), 2);
+    final double b = cos(f1) * cos(f2) * pow(sin((l2 - l1) / 2), 2);
+    final double d = 2 * r * asin(sqrt(a + b));
+    return d;
   }
 
   /// デバイスの現在位置を決定する。

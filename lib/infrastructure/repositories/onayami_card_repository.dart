@@ -21,17 +21,19 @@ final firebaseOnayamiCardRepositoryProvider = Provider<IOnayamiCardRepository>(
   ),
 );
 
-// /// 投稿一覧StreamProvider
-// final StreamProvider<List<OnayamiCard>> onayamiCardListStreamProvider =
-//     StreamProvider<List<OnayamiCard>>((ref) {
-//   return ref.watch(firebaseOnayamiCardRepositoryProvider).snapshots().map((snapshot) {
-//     final list = snapshot.docs.map((doc) {
-//       final jsonObject = PostDocument.fromJson(doc.data());
-//       return ConvertUtils.instance.toPost(postDoc: jsonObject, id: doc.id);
-//     }).toList();
-//     return list;
-//   });
-// });
+/// お悩みカード一覧StreamProvider
+final StreamProvider<List<OnayamiCardDocument>> onayamiCardListStreamProvider =
+    StreamProvider<List<OnayamiCardDocument>>((ref) {
+  return ref
+      .watch(onayamiCardCollectionRefProvider)
+      .snapshots()
+      .map((snapshot) {
+    final list = snapshot.docs.map((doc) {
+      return OnayamiCardDocument.fromJson(doc.data());
+    }).toList();
+    return list;
+  });
+});
 
 class OnayamiCardRepository implements IOnayamiCardRepository {
   OnayamiCardRepository({
@@ -43,7 +45,6 @@ class OnayamiCardRepository implements IOnayamiCardRepository {
   @override
   Future<void> addCard({required OnayamiCardDocument newCard}) async {
     try {
-      // TODO：ドメイン層のモデルをインフラ層のモデルに変換する
       await collectionRef.add(newCard.toJson());
     } on FirebaseException catch (e) {
       print(e.toString());

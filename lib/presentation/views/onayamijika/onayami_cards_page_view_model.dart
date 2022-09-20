@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:onayamijika/presentation/components/onayami_card_component.dart';
+import 'package:onayamijika/infrastructure/dtos/onayami_card_document.dart';
+import 'package:onayamijika/infrastructure/repositories/onayami_card_repository.dart';
 import 'package:onayamijika/presentation/components/seal_making_sheet.dart';
 import 'package:onayamijika/presentation/views/onayamijika/screen_view_model.dart';
-import 'package:onayamijika/utils/app_values.dart';
 
 /// OnayamiCardsPageViewModelのインスタンスを返却するプロバイダ
 final onayamiCardsPageViewModelProvider = Provider<OnayamiCardsPageViewModel>(
@@ -11,51 +11,28 @@ final onayamiCardsPageViewModelProvider = Provider<OnayamiCardsPageViewModel>(
         ref: ref, screenViewModel: ref.watch(screenViewModelProvider)));
 
 /// 選択中お悩みカードプロバイダ
-final selectedOnayamiCardProvider = StateProvider<OnayamiCardForDisp>((_) =>
-    OnayamiCardForDisp(
-        cardName: '',
-        accountImageUrl: '',
-        accountName: '',
-        distance: '',
+final selectedOnayamiCardDocumentProvider = StateProvider<OnayamiCardDocument>(
+    (_) => const OnayamiCardDocument(
+        cardTitle: '',
         content: '',
-        cardColor: AppColors.brown));
+        createAccountUid: '',
+        latitude: 0.0,
+        longitude: 0.0));
 
 class OnayamiCardsPageViewModel {
   final ProviderRef ref;
   final ScreenViewModel screenViewModel;
 
-  /// 後でStreamProviderに置き換える
-  var cards = [
-    OnayamiCardForDisp(
-        cardName: 'わんこそば100杯いけません',
-        accountImageUrl: 'https://avatars.githubusercontent.com/u/39579511?v=4',
-        accountName: 'cobo',
-        distance: '6km',
-        content: 'わんこそば100杯いく食べ方が知りたいです',
-        cardColor: AppColors.intenseBlue),
-    OnayamiCardForDisp(
-        cardName: '仕事終わらん',
-        accountImageUrl: 'https://pro-foto.jp/img/category_tn_35.jpg',
-        accountName: 'tes',
-        distance: '16km',
-        content: 'どうやって終わるのかな？',
-        cardColor: AppColors.salmonPink),
-    OnayamiCardForDisp(
-        cardName: '仕事終わらん',
-        accountImageUrl:
-            'https://www.pakutaso.com/shared/img/thumb/KUMA1892073_TP_V.jpg',
-        accountName: 'sto',
-        distance: '800km',
-        content: '帰る？',
-        cardColor: AppColors.skyGreen)
-  ];
-
   /// constructor
   OnayamiCardsPageViewModel({required this.ref, required this.screenViewModel});
 
+  // viewとのバインド用
+  /// カード一覧
+  get onayamiCards => ref.watch(onayamiCardListStreamProvider);
+
   /// 選択中お悩みカード変更時
-  void onCardIndexChanged(int index) {
-    ref.watch(selectedOnayamiCardProvider.state).state = cards[index];
+  void onCardIndexChanged(OnayamiCardDocument cardDocument) {
+    ref.watch(selectedOnayamiCardDocumentProvider.state).state = cardDocument;
   }
 
   /// お悩み解決シールボタン押下時
