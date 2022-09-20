@@ -75,4 +75,5 @@ ios/Flutter/Debug.xcconfig
 # 管理不要ファイル
 ios/Flutter/AppFrameworkInfo.plist
 ios/Podfile.lock
+ios/ios/Runner.xcworkspace
 pubspec.lock
