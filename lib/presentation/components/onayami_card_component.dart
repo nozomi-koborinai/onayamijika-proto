@@ -2,7 +2,7 @@ import 'package:flip_card/flip_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:onayamijika/domain/models/onayami_card.dart';
+import 'package:onayamijika/infrastructure/dtos/onayami_card.dart';
 import 'package:onayamijika/presentation/components/common_text_field.dart';
 import 'package:onayamijika/presentation/components/onayami_card_view_model.dart';
 import 'package:onayamijika/utils/app_values.dart';

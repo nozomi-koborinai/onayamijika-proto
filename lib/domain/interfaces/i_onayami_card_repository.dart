@@ -1,5 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:onayamijika/domain/models/onayami_card.dart';
+import 'package:onayamijika/infrastructure/dtos/onayami_card.dart';
 
 final onayamiCardRepositoryProvider = Provider<IOnayamiCardRepository>(
   (_) => throw UnimplementedError(),

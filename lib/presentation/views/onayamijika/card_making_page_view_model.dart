@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:onayamijika/domain/interfaces/i_onayami_card_repository.dart';
-import 'package:onayamijika/domain/models/onayami_card.dart';
+import 'package:onayamijika/infrastructure/dtos/onayami_card.dart';
 import 'package:onayamijika/presentation/components/onayami_card_component.dart';
 
 /// OnayamiCardViewModelのインスタンスを返却するプロバイダ
