@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:onayamijika/domain/interfaces/i_onayami_card_repository.dart';
 import 'package:onayamijika/infrastructure/%20infrastructure_providers.dart';
-import 'package:onayamijika/infrastructure/dtos/onayami_card.dart';
+import 'package:onayamijika/infrastructure/dtos/onayami_card_document.dart';
 
 /// お悩みカードコレクション名のプロバイダ
 final onayamiCardsCollectionNameProvider = Provider((_) => 'onayami_cards');
@@ -41,8 +41,9 @@ class OnayamiCardRepository implements IOnayamiCardRepository {
   final CollectionReference<Map<String, dynamic>> collectionRef;
 
   @override
-  Future<void> addCard({required OnayamiCard newCard}) async {
+  Future<void> addCard({required OnayamiCardDocument newCard}) async {
     try {
+      // TODO：ドメイン層のモデルをインフラ層のモデルに変換する
       await collectionRef.add(newCard.toJson());
     } on FirebaseException catch (e) {
       print(e.toString());

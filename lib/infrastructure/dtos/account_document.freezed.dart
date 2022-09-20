@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'account.dart';
+part of 'account_document.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-Account _$AccountFromJson(Map<String, dynamic> json) {
-  return _Account.fromJson(json);
+AccountDocument _$AccountDocumentFromJson(Map<String, dynamic> json) {
+  return _AccountDocument.fromJson(json);
 }
 
 /// @nodoc
-mixin _$Account {
+mixin _$AccountDocument {
   /// アカウントID
   @JsonKey(name: 'account_id')
   String get accountId => throw _privateConstructorUsedError;
@@ -34,13 +34,15 @@ mixin _$Account {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $AccountCopyWith<Account> get copyWith => throw _privateConstructorUsedError;
+  $AccountDocumentCopyWith<AccountDocument> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $AccountCopyWith<$Res> {
-  factory $AccountCopyWith(Account value, $Res Function(Account) then) =
-      _$AccountCopyWithImpl<$Res>;
+abstract class $AccountDocumentCopyWith<$Res> {
+  factory $AccountDocumentCopyWith(
+          AccountDocument value, $Res Function(AccountDocument) then) =
+      _$AccountDocumentCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(name: 'account_id') String accountId,
       @JsonKey(name: 'account_name') String accountName,
@@ -48,12 +50,13 @@ abstract class $AccountCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$AccountCopyWithImpl<$Res> implements $AccountCopyWith<$Res> {
-  _$AccountCopyWithImpl(this._value, this._then);
+class _$AccountDocumentCopyWithImpl<$Res>
+    implements $AccountDocumentCopyWith<$Res> {
+  _$AccountDocumentCopyWithImpl(this._value, this._then);
 
-  final Account _value;
+  final AccountDocument _value;
   // ignore: unused_field
-  final $Res Function(Account) _then;
+  final $Res Function(AccountDocument) _then;
 
   @override
   $Res call({
@@ -79,10 +82,11 @@ class _$AccountCopyWithImpl<$Res> implements $AccountCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$$_AccountCopyWith<$Res> implements $AccountCopyWith<$Res> {
-  factory _$$_AccountCopyWith(
-          _$_Account value, $Res Function(_$_Account) then) =
-      __$$_AccountCopyWithImpl<$Res>;
+abstract class _$$_AccountDocumentCopyWith<$Res>
+    implements $AccountDocumentCopyWith<$Res> {
+  factory _$$_AccountDocumentCopyWith(
+          _$_AccountDocument value, $Res Function(_$_AccountDocument) then) =
+      __$$_AccountDocumentCopyWithImpl<$Res>;
   @override
   $Res call(
       {@JsonKey(name: 'account_id') String accountId,
@@ -91,13 +95,15 @@ abstract class _$$_AccountCopyWith<$Res> implements $AccountCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_AccountCopyWithImpl<$Res> extends _$AccountCopyWithImpl<$Res>
-    implements _$$_AccountCopyWith<$Res> {
-  __$$_AccountCopyWithImpl(_$_Account _value, $Res Function(_$_Account) _then)
-      : super(_value, (v) => _then(v as _$_Account));
+class __$$_AccountDocumentCopyWithImpl<$Res>
+    extends _$AccountDocumentCopyWithImpl<$Res>
+    implements _$$_AccountDocumentCopyWith<$Res> {
+  __$$_AccountDocumentCopyWithImpl(
+      _$_AccountDocument _value, $Res Function(_$_AccountDocument) _then)
+      : super(_value, (v) => _then(v as _$_AccountDocument));
 
   @override
-  _$_Account get _value => super._value as _$_Account;
+  _$_AccountDocument get _value => super._value as _$_AccountDocument;
 
   @override
   $Res call({
@@ -105,7 +111,7 @@ class __$$_AccountCopyWithImpl<$Res> extends _$AccountCopyWithImpl<$Res>
     Object? accountName = freezed,
     Object? accountImageUrl = freezed,
   }) {
-    return _then(_$_Account(
+    return _then(_$_AccountDocument(
       accountId: accountId == freezed
           ? _value.accountId
           : accountId // ignore: cast_nullable_to_non_nullable
@@ -124,14 +130,14 @@ class __$$_AccountCopyWithImpl<$Res> extends _$AccountCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Account implements _Account {
-  const _$_Account(
+class _$_AccountDocument implements _AccountDocument {
+  const _$_AccountDocument(
       {@JsonKey(name: 'account_id') required this.accountId,
       @JsonKey(name: 'account_name') required this.accountName,
       @JsonKey(name: 'account_image_url') required this.accountImageUrl});
 
-  factory _$_Account.fromJson(Map<String, dynamic> json) =>
-      _$$_AccountFromJson(json);
+  factory _$_AccountDocument.fromJson(Map<String, dynamic> json) =>
+      _$$_AccountDocumentFromJson(json);
 
   /// アカウントID
   @override
@@ -150,14 +156,14 @@ class _$_Account implements _Account {
 
   @override
   String toString() {
-    return 'Account(accountId: $accountId, accountName: $accountName, accountImageUrl: $accountImageUrl)';
+    return 'AccountDocument(accountId: $accountId, accountName: $accountName, accountImageUrl: $accountImageUrl)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Account &&
+            other is _$_AccountDocument &&
             const DeepCollectionEquality().equals(other.accountId, accountId) &&
             const DeepCollectionEquality()
                 .equals(other.accountName, accountName) &&
@@ -175,27 +181,28 @@ class _$_Account implements _Account {
 
   @JsonKey(ignore: true)
   @override
-  _$$_AccountCopyWith<_$_Account> get copyWith =>
-      __$$_AccountCopyWithImpl<_$_Account>(this, _$identity);
+  _$$_AccountDocumentCopyWith<_$_AccountDocument> get copyWith =>
+      __$$_AccountDocumentCopyWithImpl<_$_AccountDocument>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AccountToJson(
+    return _$$_AccountDocumentToJson(
       this,
     );
   }
 }
 
-abstract class _Account implements Account {
-  const factory _Account(
+abstract class _AccountDocument implements AccountDocument {
+  const factory _AccountDocument(
       {@JsonKey(name: 'account_id')
           required final String accountId,
       @JsonKey(name: 'account_name')
           required final String accountName,
       @JsonKey(name: 'account_image_url')
-          required final String accountImageUrl}) = _$_Account;
+          required final String accountImageUrl}) = _$_AccountDocument;
 
-  factory _Account.fromJson(Map<String, dynamic> json) = _$_Account.fromJson;
+  factory _AccountDocument.fromJson(Map<String, dynamic> json) =
+      _$_AccountDocument.fromJson;
 
   @override
 
@@ -214,6 +221,6 @@ abstract class _Account implements Account {
   String get accountImageUrl;
   @override
   @JsonKey(ignore: true)
-  _$$_AccountCopyWith<_$_Account> get copyWith =>
+  _$$_AccountDocumentCopyWith<_$_AccountDocument> get copyWith =>
       throw _privateConstructorUsedError;
 }

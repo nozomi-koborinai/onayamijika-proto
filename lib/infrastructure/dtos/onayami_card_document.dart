@@ -1,13 +1,13 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'onayami_card.freezed.dart';
-part 'onayami_card.g.dart';
+part 'onayami_card_document.freezed.dart';
+part 'onayami_card_document.g.dart';
 
 @freezed
 
 /// お悩みカード_モデル
-class OnayamiCard with _$OnayamiCard {
-  const factory OnayamiCard({
+class OnayamiCardDocument with _$OnayamiCardDocument {
+  const factory OnayamiCardDocument({
     /// カード名
     @JsonKey(name: 'card_title') required String cardTitle,
 
@@ -19,8 +19,8 @@ class OnayamiCard with _$OnayamiCard {
 
     /// 経度
     @JsonKey(name: 'longitude') required double longitude,
-  }) = _OnayamiCard;
+  }) = _OnayamiCardDocument;
 
-  factory OnayamiCard.fromJson(Map<String, dynamic> json) =>
-      _$OnayamiCardFromJson(json);
+  factory OnayamiCardDocument.fromJson(Map<String, dynamic> json) =>
+      _$OnayamiCardDocumentFromJson(json);
 }

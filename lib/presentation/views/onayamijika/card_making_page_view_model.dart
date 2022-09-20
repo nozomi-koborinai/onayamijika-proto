@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:onayamijika/domain/interfaces/i_onayami_card_repository.dart';
-import 'package:onayamijika/infrastructure/dtos/onayami_card.dart';
+import 'package:onayamijika/infrastructure/dtos/onayami_card_document.dart';
 import 'package:onayamijika/presentation/components/onayami_card_component.dart';
 
 /// OnayamiCardViewModelのインスタンスを返却するプロバイダ
@@ -22,7 +22,8 @@ class CardMakingPageViewModel {
     // 位置情報を取得
     final Position position = await Geolocator.getCurrentPosition();
     // お悩みカード(新規作成)ウィジェットからOnayamiCardデータを取得
-    final OnayamiCard newOnayamiCard =
+    // TODO：必要であればインフラ層のモデルをドメイン層のモデルに変える
+    final OnayamiCardDocument newOnayamiCard =
         ref.watch(createOnayamiCardDataProvider(position));
     await repository.addCard(newCard: newOnayamiCard);
   }

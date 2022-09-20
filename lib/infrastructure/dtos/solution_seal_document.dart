@@ -1,13 +1,13 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'solution_seal.freezed.dart';
-part 'solution_seal.g.dart';
+part 'solution_seal_document.freezed.dart';
+part 'solution_seal_document.g.dart';
 
 @freezed
 
 /// お悩み解決シール_モデル
-class SolutionSeal with _$SolutionSeal {
-  const factory SolutionSeal({
+class SolutionSealDocument with _$SolutionSealDocument {
+  const factory SolutionSealDocument({
     /// シールデータの種類
     @JsonKey(name: 'seal_type') required String sealType,
 
@@ -20,10 +20,10 @@ class SolutionSeal with _$SolutionSeal {
 
     /// お気に入りに認定されたシールかどうか(true：お気に入り、false：通常)
     @JsonKey(name: 'is_favorite') required String isFavorite,
-  }) = _SolutionSeal;
+  }) = _SolutionSealDocument;
 
-  factory SolutionSeal.fromJson(Map<String, dynamic> json) =>
-      _$SolutionSealFromJson(json);
+  factory SolutionSealDocument.fromJson(Map<String, dynamic> json) =>
+      _$SolutionSealDocumentFromJson(json);
 }
 
 /// お悩みシール_データタイプ

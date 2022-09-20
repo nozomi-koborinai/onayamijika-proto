@@ -2,7 +2,7 @@ import 'package:flip_card/flip_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:onayamijika/infrastructure/dtos/onayami_card.dart';
+import 'package:onayamijika/infrastructure/dtos/onayami_card_document.dart';
 import 'package:onayamijika/presentation/components/common_text_field.dart';
 import 'package:onayamijika/presentation/components/onayami_card_view_model.dart';
 import 'package:onayamijika/utils/app_values.dart';
@@ -173,8 +173,10 @@ class OnayamiCardForDisp extends StatelessWidget {
 }
 
 /// お悩みカードウィジェット_新規作成用の入力データからOnayamiCardデータを作成
-final createOnayamiCardDataProvider = Provider.family<OnayamiCard, Position>(
-    (ref, position) => OnayamiCard(
+// TODO：必要であればインフラ層のモデルをドメイン層のモデルに変える
+final createOnayamiCardDataProvider = Provider.family<OnayamiCardDocument,
+        Position>(
+    (ref, position) => OnayamiCardDocument(
         cardTitle: ref.watch(cardTitleControllerStateProvider.state).state.text,
         content: ref.watch(cardContentControllerStateProvider.state).state.text,
         latitude: position.latitude,

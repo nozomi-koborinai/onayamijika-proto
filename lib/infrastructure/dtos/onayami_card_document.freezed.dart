@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'onayami_card.dart';
+part of 'onayami_card_document.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-OnayamiCard _$OnayamiCardFromJson(Map<String, dynamic> json) {
-  return _OnayamiCard.fromJson(json);
+OnayamiCardDocument _$OnayamiCardDocumentFromJson(Map<String, dynamic> json) {
+  return _OnayamiCardDocument.fromJson(json);
 }
 
 /// @nodoc
-mixin _$OnayamiCard {
+mixin _$OnayamiCardDocument {
   /// カード名
   @JsonKey(name: 'card_title')
   String get cardTitle => throw _privateConstructorUsedError;
@@ -38,15 +38,15 @@ mixin _$OnayamiCard {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $OnayamiCardCopyWith<OnayamiCard> get copyWith =>
+  $OnayamiCardDocumentCopyWith<OnayamiCardDocument> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $OnayamiCardCopyWith<$Res> {
-  factory $OnayamiCardCopyWith(
-          OnayamiCard value, $Res Function(OnayamiCard) then) =
-      _$OnayamiCardCopyWithImpl<$Res>;
+abstract class $OnayamiCardDocumentCopyWith<$Res> {
+  factory $OnayamiCardDocumentCopyWith(
+          OnayamiCardDocument value, $Res Function(OnayamiCardDocument) then) =
+      _$OnayamiCardDocumentCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(name: 'card_title') String cardTitle,
       @JsonKey(name: 'content') String content,
@@ -55,12 +55,13 @@ abstract class $OnayamiCardCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$OnayamiCardCopyWithImpl<$Res> implements $OnayamiCardCopyWith<$Res> {
-  _$OnayamiCardCopyWithImpl(this._value, this._then);
+class _$OnayamiCardDocumentCopyWithImpl<$Res>
+    implements $OnayamiCardDocumentCopyWith<$Res> {
+  _$OnayamiCardDocumentCopyWithImpl(this._value, this._then);
 
-  final OnayamiCard _value;
+  final OnayamiCardDocument _value;
   // ignore: unused_field
-  final $Res Function(OnayamiCard) _then;
+  final $Res Function(OnayamiCardDocument) _then;
 
   @override
   $Res call({
@@ -91,11 +92,11 @@ class _$OnayamiCardCopyWithImpl<$Res> implements $OnayamiCardCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$$_OnayamiCardCopyWith<$Res>
-    implements $OnayamiCardCopyWith<$Res> {
-  factory _$$_OnayamiCardCopyWith(
-          _$_OnayamiCard value, $Res Function(_$_OnayamiCard) then) =
-      __$$_OnayamiCardCopyWithImpl<$Res>;
+abstract class _$$_OnayamiCardDocumentCopyWith<$Res>
+    implements $OnayamiCardDocumentCopyWith<$Res> {
+  factory _$$_OnayamiCardDocumentCopyWith(_$_OnayamiCardDocument value,
+          $Res Function(_$_OnayamiCardDocument) then) =
+      __$$_OnayamiCardDocumentCopyWithImpl<$Res>;
   @override
   $Res call(
       {@JsonKey(name: 'card_title') String cardTitle,
@@ -105,14 +106,15 @@ abstract class _$$_OnayamiCardCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_OnayamiCardCopyWithImpl<$Res> extends _$OnayamiCardCopyWithImpl<$Res>
-    implements _$$_OnayamiCardCopyWith<$Res> {
-  __$$_OnayamiCardCopyWithImpl(
-      _$_OnayamiCard _value, $Res Function(_$_OnayamiCard) _then)
-      : super(_value, (v) => _then(v as _$_OnayamiCard));
+class __$$_OnayamiCardDocumentCopyWithImpl<$Res>
+    extends _$OnayamiCardDocumentCopyWithImpl<$Res>
+    implements _$$_OnayamiCardDocumentCopyWith<$Res> {
+  __$$_OnayamiCardDocumentCopyWithImpl(_$_OnayamiCardDocument _value,
+      $Res Function(_$_OnayamiCardDocument) _then)
+      : super(_value, (v) => _then(v as _$_OnayamiCardDocument));
 
   @override
-  _$_OnayamiCard get _value => super._value as _$_OnayamiCard;
+  _$_OnayamiCardDocument get _value => super._value as _$_OnayamiCardDocument;
 
   @override
   $Res call({
@@ -121,7 +123,7 @@ class __$$_OnayamiCardCopyWithImpl<$Res> extends _$OnayamiCardCopyWithImpl<$Res>
     Object? latitude = freezed,
     Object? longitude = freezed,
   }) {
-    return _then(_$_OnayamiCard(
+    return _then(_$_OnayamiCardDocument(
       cardTitle: cardTitle == freezed
           ? _value.cardTitle
           : cardTitle // ignore: cast_nullable_to_non_nullable
@@ -144,15 +146,15 @@ class __$$_OnayamiCardCopyWithImpl<$Res> extends _$OnayamiCardCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_OnayamiCard implements _OnayamiCard {
-  const _$_OnayamiCard(
+class _$_OnayamiCardDocument implements _OnayamiCardDocument {
+  const _$_OnayamiCardDocument(
       {@JsonKey(name: 'card_title') required this.cardTitle,
       @JsonKey(name: 'content') required this.content,
       @JsonKey(name: 'latitude') required this.latitude,
       @JsonKey(name: 'longitude') required this.longitude});
 
-  factory _$_OnayamiCard.fromJson(Map<String, dynamic> json) =>
-      _$$_OnayamiCardFromJson(json);
+  factory _$_OnayamiCardDocument.fromJson(Map<String, dynamic> json) =>
+      _$$_OnayamiCardDocumentFromJson(json);
 
   /// カード名
   @override
@@ -176,14 +178,14 @@ class _$_OnayamiCard implements _OnayamiCard {
 
   @override
   String toString() {
-    return 'OnayamiCard(cardTitle: $cardTitle, content: $content, latitude: $latitude, longitude: $longitude)';
+    return 'OnayamiCardDocument(cardTitle: $cardTitle, content: $content, latitude: $latitude, longitude: $longitude)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_OnayamiCard &&
+            other is _$_OnayamiCardDocument &&
             const DeepCollectionEquality().equals(other.cardTitle, cardTitle) &&
             const DeepCollectionEquality().equals(other.content, content) &&
             const DeepCollectionEquality().equals(other.latitude, latitude) &&
@@ -201,27 +203,28 @@ class _$_OnayamiCard implements _OnayamiCard {
 
   @JsonKey(ignore: true)
   @override
-  _$$_OnayamiCardCopyWith<_$_OnayamiCard> get copyWith =>
-      __$$_OnayamiCardCopyWithImpl<_$_OnayamiCard>(this, _$identity);
+  _$$_OnayamiCardDocumentCopyWith<_$_OnayamiCardDocument> get copyWith =>
+      __$$_OnayamiCardDocumentCopyWithImpl<_$_OnayamiCardDocument>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_OnayamiCardToJson(
+    return _$$_OnayamiCardDocumentToJson(
       this,
     );
   }
 }
 
-abstract class _OnayamiCard implements OnayamiCard {
-  const factory _OnayamiCard(
+abstract class _OnayamiCardDocument implements OnayamiCardDocument {
+  const factory _OnayamiCardDocument(
           {@JsonKey(name: 'card_title') required final String cardTitle,
           @JsonKey(name: 'content') required final String content,
           @JsonKey(name: 'latitude') required final double latitude,
           @JsonKey(name: 'longitude') required final double longitude}) =
-      _$_OnayamiCard;
+      _$_OnayamiCardDocument;
 
-  factory _OnayamiCard.fromJson(Map<String, dynamic> json) =
-      _$_OnayamiCard.fromJson;
+  factory _OnayamiCardDocument.fromJson(Map<String, dynamic> json) =
+      _$_OnayamiCardDocument.fromJson;
 
   @override
 
@@ -245,6 +248,6 @@ abstract class _OnayamiCard implements OnayamiCard {
   double get longitude;
   @override
   @JsonKey(ignore: true)
-  _$$_OnayamiCardCopyWith<_$_OnayamiCard> get copyWith =>
+  _$$_OnayamiCardDocumentCopyWith<_$_OnayamiCardDocument> get copyWith =>
       throw _privateConstructorUsedError;
 }
