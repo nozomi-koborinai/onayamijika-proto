@@ -304,7 +304,7 @@ class _OnayamiCardForDispLoadingState extends State<OnayamiCardForDispLoading>
       vsync: this,
     );
     _backgroundColor =
-        ColorTween(begin: HexColor('E8E8E8'), end: HexColor('CECECE'))
+        ColorTween(begin: HexColor('E8E8E8'), end: HexColor('B5B5B5'))
             .animate(_controller);
     _controller.repeat(reverse: true);
   }
