@@ -141,7 +141,9 @@ class OnayamiCardForDisp extends ConsumerWidget {
                   child: CircleAvatar(
                     foregroundColor: AppColors.gray,
                     backgroundColor: AppColors.white,
-                    child: const Icon(Icons.umbrella, size: 30),
+                    child: const Image(
+                        image: NetworkImage(
+                            'https://firebasestorage.googleapis.com/v0/b/onayamijika.appspot.com/o/users%2FUOWrnZEvRJWEuy5hoMYHGtn9OZM2%2F2022-09-22%2002:09:31.093160.png?alt=media&token=78ddb619-ffb4-407c-b546-4253ba795056')),
                   ),
                 ),
                 Padding(
