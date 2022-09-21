@@ -14,7 +14,7 @@ final sealCollectionRefProvider =
         .watch(firebaseFirestoreProvider)
         .collection(ref.watch(sealCollectionNameProvider)));
 
-/// AccountRepositoryのインスタンスを保持するプロバイダ
+/// SolutionSealRepositoryのインスタンスを保持するプロバイダ
 final firebaseSolutionSealRepositoryProvider =
     Provider<ISolutionSealRepository>(
   (ref) => SolutionSealRepository(
