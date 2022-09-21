@@ -7,5 +7,6 @@ final storageServiceProvider = Provider<IStorageService>(
 );
 
 abstract class IStorageService {
-  Future<String> uploadImageFile(File image);
+  Future<String> uploadImageFile(
+      {required String uId, required File sealImage});
 }
