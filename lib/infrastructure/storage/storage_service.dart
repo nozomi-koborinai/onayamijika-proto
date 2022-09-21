@@ -1,15 +1,19 @@
-import 'dart:async';
 import 'dart:io';
 
-/// Firebase Storageを操作するためのサービスを提供するクラス
-class StorageService {
-  /// singleton
-  static final StorageService instance = StorageService._();
-  StorageService._();
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:onayamijika/domain/interfaces/i_storage_service.dart';
 
+/// StorageServiceのインスタンスを保持するプロバイダ
+final storageServiceProvider = Provider<IStorageService>(
+  (ref) => StorageService(),
+);
+
+/// Firebase Storageを操作するためのサービスを提供するクラス
+class StorageService implements IStorageService {
   /// 画像データを保存する
-  Future<bool> saveImage({required File file}) async {
-    /// TODO：保存処理
-    return true;
+  @override
+  Future<String> uploadImageFile(File image) {
+    // TODO: implement uploadImageFile
+    throw UnimplementedError();
   }
 }
