@@ -1,5 +1,6 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/src/widgets/image.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:onayamijika/domain/interfaces/i_solution_seal_repository.dart';
 import 'package:onayamijika/infrastructure/%20infrastructure_providers.dart';
@@ -32,7 +33,7 @@ class SolutionSealRepository implements ISolutionSealRepository {
   /// storageへシール保存 + firestoreへシールドキュメント追加
   @override
   Future<bool> addSeal(
-      {required SolutionSealDocument newSeal, required Image sealImage}) {
+      {required SolutionSealDocument newSeal, required File sealImage}) {
     // TODO: implement addSeal
     throw UnimplementedError();
   }
