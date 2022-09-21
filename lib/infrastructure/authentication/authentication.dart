@@ -11,7 +11,7 @@ class Authentication {
 
   /// ログインしている自分のアカウント
   /// TODO：後からデータ取得
-  static final myAccount = const Account(
+  final myAccount = const Account(
       accountId: 'coboKobo',
       accountName: 'cobokobo',
       accountImageUrl: 'https://pro-foto.jp/img/category_tn_35.jpg',
