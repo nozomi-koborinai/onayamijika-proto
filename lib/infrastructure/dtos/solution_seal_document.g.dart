@@ -12,7 +12,7 @@ _$_SolutionSealDocument _$$_SolutionSealDocumentFromJson(
       sealType: json['seal_type'] as String,
       text: json['text'] as String,
       imageUrl: json['image_url'] as String,
-      isFavorite: json['is_favorite'] as String,
+      isFavorite: json['is_favorite'] as bool,
       cardId: json['card_id'] as String,
     );
 

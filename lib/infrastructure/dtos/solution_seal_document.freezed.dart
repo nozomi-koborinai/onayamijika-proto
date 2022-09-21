@@ -35,7 +35,7 @@ mixin _$SolutionSealDocument {
 
   /// お気に入りに認定されたシールかどうか(true：お気に入り、false：通常)
   @JsonKey(name: 'is_favorite')
-  String get isFavorite => throw _privateConstructorUsedError;
+  bool get isFavorite => throw _privateConstructorUsedError;
 
   /// シールを貼る対象のお悩みカードのドキュメントID
   @JsonKey(name: 'card_id')
@@ -56,7 +56,7 @@ abstract class $SolutionSealDocumentCopyWith<$Res> {
       {@JsonKey(name: 'seal_type') String sealType,
       @JsonKey(name: 'text') String text,
       @JsonKey(name: 'image_url') String imageUrl,
-      @JsonKey(name: 'is_favorite') String isFavorite,
+      @JsonKey(name: 'is_favorite') bool isFavorite,
       @JsonKey(name: 'card_id') String cardId});
 }
 
@@ -93,7 +93,7 @@ class _$SolutionSealDocumentCopyWithImpl<$Res>
       isFavorite: isFavorite == freezed
           ? _value.isFavorite
           : isFavorite // ignore: cast_nullable_to_non_nullable
-              as String,
+              as bool,
       cardId: cardId == freezed
           ? _value.cardId
           : cardId // ignore: cast_nullable_to_non_nullable
@@ -113,7 +113,7 @@ abstract class _$$_SolutionSealDocumentCopyWith<$Res>
       {@JsonKey(name: 'seal_type') String sealType,
       @JsonKey(name: 'text') String text,
       @JsonKey(name: 'image_url') String imageUrl,
-      @JsonKey(name: 'is_favorite') String isFavorite,
+      @JsonKey(name: 'is_favorite') bool isFavorite,
       @JsonKey(name: 'card_id') String cardId});
 }
 
@@ -152,7 +152,7 @@ class __$$_SolutionSealDocumentCopyWithImpl<$Res>
       isFavorite: isFavorite == freezed
           ? _value.isFavorite
           : isFavorite // ignore: cast_nullable_to_non_nullable
-              as String,
+              as bool,
       cardId: cardId == freezed
           ? _value.cardId
           : cardId // ignore: cast_nullable_to_non_nullable
@@ -193,7 +193,7 @@ class _$_SolutionSealDocument implements _SolutionSealDocument {
   /// お気に入りに認定されたシールかどうか(true：お気に入り、false：通常)
   @override
   @JsonKey(name: 'is_favorite')
-  final String isFavorite;
+  final bool isFavorite;
 
   /// シールを貼る対象のお悩みカードのドキュメントID
   @override
@@ -247,7 +247,7 @@ abstract class _SolutionSealDocument implements SolutionSealDocument {
           {@JsonKey(name: 'seal_type') required final String sealType,
           @JsonKey(name: 'text') required final String text,
           @JsonKey(name: 'image_url') required final String imageUrl,
-          @JsonKey(name: 'is_favorite') required final String isFavorite,
+          @JsonKey(name: 'is_favorite') required final bool isFavorite,
           @JsonKey(name: 'card_id') required final String cardId}) =
       _$_SolutionSealDocument;
 
@@ -274,7 +274,7 @@ abstract class _SolutionSealDocument implements SolutionSealDocument {
 
   /// お気に入りに認定されたシールかどうか(true：お気に入り、false：通常)
   @JsonKey(name: 'is_favorite')
-  String get isFavorite;
+  bool get isFavorite;
   @override
 
   /// シールを貼る対象のお悩みカードのドキュメントID

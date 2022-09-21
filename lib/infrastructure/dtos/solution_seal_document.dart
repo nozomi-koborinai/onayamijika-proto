@@ -19,7 +19,7 @@ class SolutionSealDocument with _$SolutionSealDocument {
     @JsonKey(name: 'image_url') required String imageUrl,
 
     /// お気に入りに認定されたシールかどうか(true：お気に入り、false：通常)
-    @JsonKey(name: 'is_favorite') required String isFavorite,
+    @JsonKey(name: 'is_favorite') required bool isFavorite,
 
     /// シールを貼る対象のお悩みカードのドキュメントID
     @JsonKey(name: 'card_id') required String cardId,
