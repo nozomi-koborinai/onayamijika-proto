@@ -1,5 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:onayamijika/infrastructure/dtos/onayami_card_document.dart';
+import 'package:onayamijika/domain/models/onayami_card.dart';
 import 'package:onayamijika/presentation/views/onayamijika/onayami_cards_page_view_model.dart';
 
 /// OnayamiCardsPageViewModelのインスタンスを返却するプロバイダ
@@ -20,5 +20,5 @@ class SealMakingSheetViewModel {
   SealMakingSheetViewModel({required this.ref, required this.targetCard});
 
   final ProviderRef ref;
-  final OnayamiCardDocument targetCard;
+  final OnayamiCard targetCard;
 }
