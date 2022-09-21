@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -54,8 +53,7 @@ class SealFooterArea extends ConsumerWidget {
     // ・シール作成シートをクリア
     // ・シール作成シートを閉じる
     final imageUrl = await ref.watch(storageServiceProvider).uploadImageFile(
-        uId: Authentication.instance.myAccount.accountUid,
-        sealImage: File.fromRawPath(image));
+        uId: Authentication.instance.myAccount.accountUid, sealImage: image);
 
     final newSeal = SolutionSealDocument(
         sealType: SealType.paint.name,

@@ -3,8 +3,10 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:onayamijika/domain/interfaces/i_account_repository.dart';
 import 'package:onayamijika/domain/interfaces/i_onayami_card_repository.dart';
+import 'package:onayamijika/domain/interfaces/i_solution_seal_repository.dart';
 import 'package:onayamijika/infrastructure/repositories/account_repository.dart';
 import 'package:onayamijika/infrastructure/repositories/onayami_card_repository.dart';
+import 'package:onayamijika/infrastructure/repositories/solution_seal_repository.dart';
 import 'package:onayamijika/presentation/views/start_up/start_up_page.dart';
 import 'package:onayamijika/utils/function_utils.dart';
 import 'firebase_options.dart';
@@ -20,6 +22,8 @@ void main() async {
 
   runApp(ProviderScope(
     overrides: [
+      solutionSealRepositoryProvider
+          .overrideWithProvider(firebaseSolutionSealRepositoryProvider),
       onayamiCardRepositoryProvider
           .overrideWithProvider(firebaseOnayamiCardRepositoryProvider),
       accountRepositoryProvider

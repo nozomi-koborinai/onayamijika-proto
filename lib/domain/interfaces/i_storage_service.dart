@@ -1,5 +1,4 @@
-import 'dart:io';
-
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final storageServiceProvider = Provider<IStorageService>(
@@ -8,5 +7,5 @@ final storageServiceProvider = Provider<IStorageService>(
 
 abstract class IStorageService {
   Future<String> uploadImageFile(
-      {required String uId, required File sealImage});
+      {required String uId, required Uint8List sealImage});
 }
