@@ -37,6 +37,10 @@ mixin _$SolutionSealDocument {
   @JsonKey(name: 'is_favorite')
   String get isFavorite => throw _privateConstructorUsedError;
 
+  /// シールを貼る対象のお悩みカードのドキュメントID
+  @JsonKey(name: 'card_id')
+  String get cardId => throw _privateConstructorUsedError;
+
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $SolutionSealDocumentCopyWith<SolutionSealDocument> get copyWith =>
@@ -52,7 +56,8 @@ abstract class $SolutionSealDocumentCopyWith<$Res> {
       {@JsonKey(name: 'seal_type') String sealType,
       @JsonKey(name: 'text') String text,
       @JsonKey(name: 'image_url') String imageUrl,
-      @JsonKey(name: 'is_favorite') String isFavorite});
+      @JsonKey(name: 'is_favorite') String isFavorite,
+      @JsonKey(name: 'card_id') String cardId});
 }
 
 /// @nodoc
@@ -70,6 +75,7 @@ class _$SolutionSealDocumentCopyWithImpl<$Res>
     Object? text = freezed,
     Object? imageUrl = freezed,
     Object? isFavorite = freezed,
+    Object? cardId = freezed,
   }) {
     return _then(_value.copyWith(
       sealType: sealType == freezed
@@ -88,6 +94,10 @@ class _$SolutionSealDocumentCopyWithImpl<$Res>
           ? _value.isFavorite
           : isFavorite // ignore: cast_nullable_to_non_nullable
               as String,
+      cardId: cardId == freezed
+          ? _value.cardId
+          : cardId // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -103,7 +113,8 @@ abstract class _$$_SolutionSealDocumentCopyWith<$Res>
       {@JsonKey(name: 'seal_type') String sealType,
       @JsonKey(name: 'text') String text,
       @JsonKey(name: 'image_url') String imageUrl,
-      @JsonKey(name: 'is_favorite') String isFavorite});
+      @JsonKey(name: 'is_favorite') String isFavorite,
+      @JsonKey(name: 'card_id') String cardId});
 }
 
 /// @nodoc
@@ -123,6 +134,7 @@ class __$$_SolutionSealDocumentCopyWithImpl<$Res>
     Object? text = freezed,
     Object? imageUrl = freezed,
     Object? isFavorite = freezed,
+    Object? cardId = freezed,
   }) {
     return _then(_$_SolutionSealDocument(
       sealType: sealType == freezed
@@ -141,6 +153,10 @@ class __$$_SolutionSealDocumentCopyWithImpl<$Res>
           ? _value.isFavorite
           : isFavorite // ignore: cast_nullable_to_non_nullable
               as String,
+      cardId: cardId == freezed
+          ? _value.cardId
+          : cardId // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -152,7 +168,8 @@ class _$_SolutionSealDocument implements _SolutionSealDocument {
       {@JsonKey(name: 'seal_type') required this.sealType,
       @JsonKey(name: 'text') required this.text,
       @JsonKey(name: 'image_url') required this.imageUrl,
-      @JsonKey(name: 'is_favorite') required this.isFavorite});
+      @JsonKey(name: 'is_favorite') required this.isFavorite,
+      @JsonKey(name: 'card_id') required this.cardId});
 
   factory _$_SolutionSealDocument.fromJson(Map<String, dynamic> json) =>
       _$$_SolutionSealDocumentFromJson(json);
@@ -178,9 +195,14 @@ class _$_SolutionSealDocument implements _SolutionSealDocument {
   @JsonKey(name: 'is_favorite')
   final String isFavorite;
 
+  /// シールを貼る対象のお悩みカードのドキュメントID
+  @override
+  @JsonKey(name: 'card_id')
+  final String cardId;
+
   @override
   String toString() {
-    return 'SolutionSealDocument(sealType: $sealType, text: $text, imageUrl: $imageUrl, isFavorite: $isFavorite)';
+    return 'SolutionSealDocument(sealType: $sealType, text: $text, imageUrl: $imageUrl, isFavorite: $isFavorite, cardId: $cardId)';
   }
 
   @override
@@ -192,7 +214,8 @@ class _$_SolutionSealDocument implements _SolutionSealDocument {
             const DeepCollectionEquality().equals(other.text, text) &&
             const DeepCollectionEquality().equals(other.imageUrl, imageUrl) &&
             const DeepCollectionEquality()
-                .equals(other.isFavorite, isFavorite));
+                .equals(other.isFavorite, isFavorite) &&
+            const DeepCollectionEquality().equals(other.cardId, cardId));
   }
 
   @JsonKey(ignore: true)
@@ -202,7 +225,8 @@ class _$_SolutionSealDocument implements _SolutionSealDocument {
       const DeepCollectionEquality().hash(sealType),
       const DeepCollectionEquality().hash(text),
       const DeepCollectionEquality().hash(imageUrl),
-      const DeepCollectionEquality().hash(isFavorite));
+      const DeepCollectionEquality().hash(isFavorite),
+      const DeepCollectionEquality().hash(cardId));
 
   @JsonKey(ignore: true)
   @override
@@ -223,7 +247,8 @@ abstract class _SolutionSealDocument implements SolutionSealDocument {
           {@JsonKey(name: 'seal_type') required final String sealType,
           @JsonKey(name: 'text') required final String text,
           @JsonKey(name: 'image_url') required final String imageUrl,
-          @JsonKey(name: 'is_favorite') required final String isFavorite}) =
+          @JsonKey(name: 'is_favorite') required final String isFavorite,
+          @JsonKey(name: 'card_id') required final String cardId}) =
       _$_SolutionSealDocument;
 
   factory _SolutionSealDocument.fromJson(Map<String, dynamic> json) =
@@ -250,6 +275,11 @@ abstract class _SolutionSealDocument implements SolutionSealDocument {
   /// お気に入りに認定されたシールかどうか(true：お気に入り、false：通常)
   @JsonKey(name: 'is_favorite')
   String get isFavorite;
+  @override
+
+  /// シールを貼る対象のお悩みカードのドキュメントID
+  @JsonKey(name: 'card_id')
+  String get cardId;
   @override
   @JsonKey(ignore: true)
   _$$_SolutionSealDocumentCopyWith<_$_SolutionSealDocument> get copyWith =>

@@ -20,6 +20,9 @@ class SolutionSealDocument with _$SolutionSealDocument {
 
     /// お気に入りに認定されたシールかどうか(true：お気に入り、false：通常)
     @JsonKey(name: 'is_favorite') required String isFavorite,
+
+    /// シールを貼る対象のお悩みカードのドキュメントID
+    @JsonKey(name: 'card_id') required String cardId,
   }) = _SolutionSealDocument;
 
   factory SolutionSealDocument.fromJson(Map<String, dynamic> json) =>
