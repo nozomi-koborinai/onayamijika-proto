@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 import 'dart:math';
 import 'dart:ui';
 
@@ -23,7 +24,10 @@ class FunctionUtils {
     return byteData?.buffer.asUint8List();
   }
 
-  /// 指定したdouble型のデ
+  /// 指定したファイルのファイル名を取得する
+  String getFileName(File file) {
+    return file.path.split("/").last;
+  }
 
   /// 地図上の2つの位置(緯度経度)から距離(km)を求める
   /// 少数３位を四捨五入して少数第２位まで表示

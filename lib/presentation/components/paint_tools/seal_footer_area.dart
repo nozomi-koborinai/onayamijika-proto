@@ -1,10 +1,16 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:onayamijika/domain/interfaces/i_solution_seal_repository.dart';
+import 'package:onayamijika/infrastructure/authentication/authentication.dart';
+import 'package:onayamijika/infrastructure/dtos/solution_seal_document.dart';
+import 'package:onayamijika/infrastructure/storage/storage_service.dart';
 import 'package:onayamijika/presentation/components/common_button.dart';
 import 'package:onayamijika/presentation/states/seal_paint_state.dart';
+import 'package:onayamijika/presentation/views/onayamijika/onayami_cards_page_view_model.dart';
 import 'package:onayamijika/utils/app_values.dart';
 import 'package:onayamijika/utils/function_utils.dart';
 
@@ -34,9 +40,12 @@ class SealFooterArea extends ConsumerWidget {
 
   /// シール確認ダイアログを表示
   Future<void> onPressed(BuildContext context, WidgetRef ref) async {
+    final Uint8List? image =
+        await FunctionUtils.instance.widgetToImage(globalKey: globalKey);
+    if (image == null) return;
+
     // NGならシール作成ウィンドウを閉じるだけ
-    if (!await showSealQuestionDialog(context, 'シール作成イメージ',
-        await FunctionUtils.instance.widgetToImage(globalKey: globalKey))) {
+    if (!await showSealQuestionDialog(context, 'シール作成イメージ', image)) {
       return;
     }
 
@@ -44,6 +53,20 @@ class SealFooterArea extends ConsumerWidget {
     // ・Firesbaseに書き込み
     // ・シール作成シートをクリア
     // ・シール作成シートを閉じる
+    final imageUrl = await ref.watch(storageServiceProvider).uploadImageFile(
+        uId: Authentication.instance.myAccount.accountUid,
+        sealImage: File.fromRawPath(image));
+
+    final newSeal = SolutionSealDocument(
+        sealType: SealType.paint.name,
+        text: '',
+        imageUrl: imageUrl,
+        isFavorite: false,
+        cardId:
+            ref.watch(selectedOnayamiCardDocumentProvider.state).state.cardId);
+    await ref.watch(solutionSealRepositoryProvider).addSeal(newSeal: newSeal);
+
+    // ペイントエリアをクリアして前ページに戻る
     ref.read(sealPaintStateNotifierProvider.notifier).clear();
     Navigator.pop(context);
   }
