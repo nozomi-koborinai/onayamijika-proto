@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:onayamijika/domain/interfaces/i_onayami_card_repository.dart';
+import 'package:onayamijika/domain/models/onayami_card.dart';
 import 'package:onayamijika/infrastructure/%20infrastructure_providers.dart';
 import 'package:onayamijika/infrastructure/dtos/onayami_card_document.dart';
 
@@ -22,14 +23,16 @@ final firebaseOnayamiCardRepositoryProvider = Provider<IOnayamiCardRepository>(
 );
 
 /// お悩みカード一覧StreamProvider
-final StreamProvider<List<OnayamiCardDocument>> onayamiCardListStreamProvider =
-    StreamProvider<List<OnayamiCardDocument>>((ref) {
+final StreamProvider<List<OnayamiCard>> onayamiCardListStreamProvider =
+    StreamProvider<List<OnayamiCard>>((ref) {
   return ref
       .watch(onayamiCardCollectionRefProvider)
       .snapshots()
       .map((snapshot) {
     final list = snapshot.docs.map((doc) {
-      return OnayamiCardDocument.fromJson(doc.data());
+      return OnayamiCard(
+          cardId: doc.id,
+          cardDocument: OnayamiCardDocument.fromJson(doc.data()));
     }).toList();
     return list;
   });

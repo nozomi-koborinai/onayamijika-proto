@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:onayamijika/domain/models/onayami_card.dart';
 import 'package:onayamijika/infrastructure/dtos/onayami_card_document.dart';
 import 'package:onayamijika/infrastructure/repositories/onayami_card_repository.dart';
 import 'package:onayamijika/presentation/components/seal_making_sheet.dart';
@@ -11,13 +12,15 @@ final onayamiCardsPageViewModelProvider = Provider<OnayamiCardsPageViewModel>(
         ref: ref, screenViewModel: ref.watch(screenViewModelProvider)));
 
 /// 選択中お悩みカードプロバイダ
-final selectedOnayamiCardDocumentProvider = StateProvider<OnayamiCardDocument>(
-    (_) => const OnayamiCardDocument(
-        cardTitle: '',
-        content: '',
-        createAccountUid: '',
-        latitude: 0.0,
-        longitude: 0.0));
+final selectedOnayamiCardDocumentProvider = StateProvider<OnayamiCard>((_) =>
+    OnayamiCard(
+        cardId: '',
+        cardDocument: const OnayamiCardDocument(
+            cardTitle: '',
+            content: '',
+            createAccountUid: '',
+            latitude: 0.0,
+            longitude: 0.0)));
 
 class OnayamiCardsPageViewModel {
   final ProviderRef ref;
@@ -31,8 +34,8 @@ class OnayamiCardsPageViewModel {
   get onayamiCards => ref.watch(onayamiCardListStreamProvider);
 
   /// 選択中お悩みカード変更時
-  void onCardIndexChanged(OnayamiCardDocument cardDocument) {
-    ref.watch(selectedOnayamiCardDocumentProvider.state).state = cardDocument;
+  void onCardIndexChanged(OnayamiCard card) {
+    ref.watch(selectedOnayamiCardDocumentProvider.state).state = card;
   }
 
   /// お悩み解決シールボタン押下時

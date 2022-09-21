@@ -1,7 +1,7 @@
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:onayamijika/infrastructure/dtos/onayami_card_document.dart';
+import 'package:onayamijika/domain/models/onayami_card.dart';
 import 'package:onayamijika/presentation/components/common_app_bar.dart';
 import 'package:onayamijika/presentation/components/common_button.dart';
 import 'package:onayamijika/presentation/components/onayami_card_component.dart';
@@ -14,7 +14,7 @@ class OnayamiCardsPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final vm = ref.watch(onayamiCardsPageViewModelProvider);
-    final AsyncValue<List<OnayamiCardDocument>> asyncValue = vm.onayamiCards;
+    final AsyncValue<List<OnayamiCard>> asyncValue = vm.onayamiCards;
 
     return Scaffold(
       appBar: CommonAppBar(
@@ -28,10 +28,11 @@ class OnayamiCardsPage extends ConsumerWidget {
             child: asyncValue.when(
                 error: (e, stackTrace) => Text(stackTrace.toString()),
                 loading: () => const OnayamiCardForDispLoading(),
-                data: (List<OnayamiCardDocument> data) {
+                data: (List<OnayamiCard> data) {
                   return Swiper(
                       itemBuilder: (context, index) {
-                        return OnayamiCardForDisp(cardDocument: data[index]);
+                        return OnayamiCardForDisp(
+                            cardDocument: data[index].cardDocument);
                       },
                       itemCount: data.length,
                       viewportFraction: 0.8,
