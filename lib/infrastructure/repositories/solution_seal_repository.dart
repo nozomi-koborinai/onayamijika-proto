@@ -44,7 +44,8 @@ class SolutionSealRepository implements ISolutionSealRepository {
   @override
   Future<List<SolutionSeal>> fetchSealsFromCardId(
       {required String cardId}) async {
-    final snapshot = await collectionRef.get();
+    final snapshot =
+        await collectionRef.where('card_id', isEqualTo: cardId).get();
     return snapshot.docs
         .map((doc) => SolutionSeal(
             sealId: doc.id,
