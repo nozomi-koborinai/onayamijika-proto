@@ -41,6 +41,11 @@ mixin _$SolutionSealDocument {
   @JsonKey(name: 'card_id')
   String get cardId => throw _privateConstructorUsedError;
 
+  /// シール作成日時
+  @JsonKey(name: 'created_date_time')
+  @TimestampConverter()
+  DateTime get createdDateTime => throw _privateConstructorUsedError;
+
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $SolutionSealDocumentCopyWith<SolutionSealDocument> get copyWith =>
@@ -53,11 +58,19 @@ abstract class $SolutionSealDocumentCopyWith<$Res> {
           $Res Function(SolutionSealDocument) then) =
       _$SolutionSealDocumentCopyWithImpl<$Res>;
   $Res call(
-      {@JsonKey(name: 'seal_type') String sealType,
-      @JsonKey(name: 'text') String text,
-      @JsonKey(name: 'image_url') String imageUrl,
-      @JsonKey(name: 'is_favorite') bool isFavorite,
-      @JsonKey(name: 'card_id') String cardId});
+      {@JsonKey(name: 'seal_type')
+          String sealType,
+      @JsonKey(name: 'text')
+          String text,
+      @JsonKey(name: 'image_url')
+          String imageUrl,
+      @JsonKey(name: 'is_favorite')
+          bool isFavorite,
+      @JsonKey(name: 'card_id')
+          String cardId,
+      @JsonKey(name: 'created_date_time')
+      @TimestampConverter()
+          DateTime createdDateTime});
 }
 
 /// @nodoc
@@ -76,6 +89,7 @@ class _$SolutionSealDocumentCopyWithImpl<$Res>
     Object? imageUrl = freezed,
     Object? isFavorite = freezed,
     Object? cardId = freezed,
+    Object? createdDateTime = freezed,
   }) {
     return _then(_value.copyWith(
       sealType: sealType == freezed
@@ -98,6 +112,10 @@ class _$SolutionSealDocumentCopyWithImpl<$Res>
           ? _value.cardId
           : cardId // ignore: cast_nullable_to_non_nullable
               as String,
+      createdDateTime: createdDateTime == freezed
+          ? _value.createdDateTime
+          : createdDateTime // ignore: cast_nullable_to_non_nullable
+              as DateTime,
     ));
   }
 }
@@ -110,11 +128,19 @@ abstract class _$$_SolutionSealDocumentCopyWith<$Res>
       __$$_SolutionSealDocumentCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@JsonKey(name: 'seal_type') String sealType,
-      @JsonKey(name: 'text') String text,
-      @JsonKey(name: 'image_url') String imageUrl,
-      @JsonKey(name: 'is_favorite') bool isFavorite,
-      @JsonKey(name: 'card_id') String cardId});
+      {@JsonKey(name: 'seal_type')
+          String sealType,
+      @JsonKey(name: 'text')
+          String text,
+      @JsonKey(name: 'image_url')
+          String imageUrl,
+      @JsonKey(name: 'is_favorite')
+          bool isFavorite,
+      @JsonKey(name: 'card_id')
+          String cardId,
+      @JsonKey(name: 'created_date_time')
+      @TimestampConverter()
+          DateTime createdDateTime});
 }
 
 /// @nodoc
@@ -135,6 +161,7 @@ class __$$_SolutionSealDocumentCopyWithImpl<$Res>
     Object? imageUrl = freezed,
     Object? isFavorite = freezed,
     Object? cardId = freezed,
+    Object? createdDateTime = freezed,
   }) {
     return _then(_$_SolutionSealDocument(
       sealType: sealType == freezed
@@ -157,6 +184,10 @@ class __$$_SolutionSealDocumentCopyWithImpl<$Res>
           ? _value.cardId
           : cardId // ignore: cast_nullable_to_non_nullable
               as String,
+      createdDateTime: createdDateTime == freezed
+          ? _value.createdDateTime
+          : createdDateTime // ignore: cast_nullable_to_non_nullable
+              as DateTime,
     ));
   }
 }
@@ -165,11 +196,19 @@ class __$$_SolutionSealDocumentCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_SolutionSealDocument implements _SolutionSealDocument {
   const _$_SolutionSealDocument(
-      {@JsonKey(name: 'seal_type') required this.sealType,
-      @JsonKey(name: 'text') required this.text,
-      @JsonKey(name: 'image_url') required this.imageUrl,
-      @JsonKey(name: 'is_favorite') required this.isFavorite,
-      @JsonKey(name: 'card_id') required this.cardId});
+      {@JsonKey(name: 'seal_type')
+          required this.sealType,
+      @JsonKey(name: 'text')
+          required this.text,
+      @JsonKey(name: 'image_url')
+          required this.imageUrl,
+      @JsonKey(name: 'is_favorite')
+          required this.isFavorite,
+      @JsonKey(name: 'card_id')
+          required this.cardId,
+      @JsonKey(name: 'created_date_time')
+      @TimestampConverter()
+          required this.createdDateTime});
 
   factory _$_SolutionSealDocument.fromJson(Map<String, dynamic> json) =>
       _$$_SolutionSealDocumentFromJson(json);
@@ -200,9 +239,15 @@ class _$_SolutionSealDocument implements _SolutionSealDocument {
   @JsonKey(name: 'card_id')
   final String cardId;
 
+  /// シール作成日時
+  @override
+  @JsonKey(name: 'created_date_time')
+  @TimestampConverter()
+  final DateTime createdDateTime;
+
   @override
   String toString() {
-    return 'SolutionSealDocument(sealType: $sealType, text: $text, imageUrl: $imageUrl, isFavorite: $isFavorite, cardId: $cardId)';
+    return 'SolutionSealDocument(sealType: $sealType, text: $text, imageUrl: $imageUrl, isFavorite: $isFavorite, cardId: $cardId, createdDateTime: $createdDateTime)';
   }
 
   @override
@@ -215,7 +260,9 @@ class _$_SolutionSealDocument implements _SolutionSealDocument {
             const DeepCollectionEquality().equals(other.imageUrl, imageUrl) &&
             const DeepCollectionEquality()
                 .equals(other.isFavorite, isFavorite) &&
-            const DeepCollectionEquality().equals(other.cardId, cardId));
+            const DeepCollectionEquality().equals(other.cardId, cardId) &&
+            const DeepCollectionEquality()
+                .equals(other.createdDateTime, createdDateTime));
   }
 
   @JsonKey(ignore: true)
@@ -226,7 +273,8 @@ class _$_SolutionSealDocument implements _SolutionSealDocument {
       const DeepCollectionEquality().hash(text),
       const DeepCollectionEquality().hash(imageUrl),
       const DeepCollectionEquality().hash(isFavorite),
-      const DeepCollectionEquality().hash(cardId));
+      const DeepCollectionEquality().hash(cardId),
+      const DeepCollectionEquality().hash(createdDateTime));
 
   @JsonKey(ignore: true)
   @override
@@ -244,12 +292,19 @@ class _$_SolutionSealDocument implements _SolutionSealDocument {
 
 abstract class _SolutionSealDocument implements SolutionSealDocument {
   const factory _SolutionSealDocument(
-          {@JsonKey(name: 'seal_type') required final String sealType,
-          @JsonKey(name: 'text') required final String text,
-          @JsonKey(name: 'image_url') required final String imageUrl,
-          @JsonKey(name: 'is_favorite') required final bool isFavorite,
-          @JsonKey(name: 'card_id') required final String cardId}) =
-      _$_SolutionSealDocument;
+      {@JsonKey(name: 'seal_type')
+          required final String sealType,
+      @JsonKey(name: 'text')
+          required final String text,
+      @JsonKey(name: 'image_url')
+          required final String imageUrl,
+      @JsonKey(name: 'is_favorite')
+          required final bool isFavorite,
+      @JsonKey(name: 'card_id')
+          required final String cardId,
+      @JsonKey(name: 'created_date_time')
+      @TimestampConverter()
+          required final DateTime createdDateTime}) = _$_SolutionSealDocument;
 
   factory _SolutionSealDocument.fromJson(Map<String, dynamic> json) =
       _$_SolutionSealDocument.fromJson;
@@ -280,6 +335,12 @@ abstract class _SolutionSealDocument implements SolutionSealDocument {
   /// シールを貼る対象のお悩みカードのドキュメントID
   @JsonKey(name: 'card_id')
   String get cardId;
+  @override
+
+  /// シール作成日時
+  @JsonKey(name: 'created_date_time')
+  @TimestampConverter()
+  DateTime get createdDateTime;
   @override
   @JsonKey(ignore: true)
   _$$_SolutionSealDocumentCopyWith<_$_SolutionSealDocument> get copyWith =>

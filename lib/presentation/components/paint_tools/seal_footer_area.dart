@@ -61,7 +61,8 @@ class SealFooterArea extends ConsumerWidget {
         imageUrl: imageUrl,
         isFavorite: false,
         cardId:
-            ref.watch(selectedOnayamiCardDocumentProvider.state).state.cardId);
+            ref.watch(selectedOnayamiCardDocumentProvider.state).state.cardId,
+        createdDateTime: DateTime.now());
     await ref.watch(solutionSealRepositoryProvider).addSeal(newSeal: newSeal);
 
     // ペイントエリアをクリアして前ページに戻る
