@@ -2,6 +2,7 @@ import 'package:flip_card/flip_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:onayamijika/domain/models/onayami_card.dart';
 import 'package:onayamijika/domain/models/onayami_card_view.dart';
 import 'package:onayamijika/infrastructure/authentication/authentication.dart';
 import 'package:onayamijika/infrastructure/dtos/onayami_card_document.dart';
@@ -13,15 +14,15 @@ import 'package:onayamijika/utils/hex_color.dart';
 
 /// お悩みカードウィジェット_一覧表示用
 class OnayamiCardForDisp extends ConsumerWidget {
-  final OnayamiCardDocument cardDocument;
+  final OnayamiCard card;
   final Color cardColor = AppColors.skyGreen;
 
-  OnayamiCardForDisp({required this.cardDocument, Key? key}) : super(key: key);
+  OnayamiCardForDisp({required this.card, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final OnayamiCardDispViewModel vm =
-        ref.watch(onayamiCardDispViewModelProvider(cardDocument));
+        ref.watch(onayamiCardDispViewModelProvider(card));
 
     return FlipCard(
       fill: Fill.fillBack,

@@ -31,8 +31,7 @@ class OnayamiCardsPage extends ConsumerWidget {
                 data: (List<OnayamiCard> data) {
                   return Swiper(
                       itemBuilder: (context, index) {
-                        return OnayamiCardForDisp(
-                            cardDocument: data[index].cardDocument);
+                        return OnayamiCardForDisp(card: data[index]);
                       },
                       itemCount: data.length,
                       viewportFraction: 0.8,

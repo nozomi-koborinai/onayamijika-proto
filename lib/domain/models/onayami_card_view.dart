@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:onayamijika/infrastructure/dtos/onayami_card_document.dart';
+import 'package:onayamijika/domain/models/onayami_card.dart';
 
 /// お悩みカード一覧を表示するために必要な情報を一つにまとめた表示用モデル
 class OnayamiCardView {
@@ -22,7 +22,7 @@ class OnayamiCardView {
   Color cardColor;
 
   /// 表示対象になっているカードのデータ元
-  OnayamiCardDocument cardDocument;
+  OnayamiCard card;
 
   /// コンストラクタ
   OnayamiCardView(
@@ -31,6 +31,6 @@ class OnayamiCardView {
       required this.distance,
       required this.cardTitle,
       required this.cardContent,
-      required this.cardDocument,
+      required this.card,
       required this.cardColor});
 }
