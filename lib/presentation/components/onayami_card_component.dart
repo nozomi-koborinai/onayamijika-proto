@@ -17,7 +17,7 @@ import 'package:onayamijika/utils/hex_color.dart';
 /// お悩みカードウィジェット_一覧表示用
 class OnayamiCardForDisp extends ConsumerWidget {
   final OnayamiCard card;
-  final Color cardColor = AppColors.skyGreen;
+  final Color cardColor = AppColors.purple;
 
   OnayamiCardForDisp({required this.card, Key? key}) : super(key: key);
 
