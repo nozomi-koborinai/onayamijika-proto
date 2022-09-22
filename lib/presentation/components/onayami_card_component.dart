@@ -145,14 +145,15 @@ class OnayamiCardForDisp extends ConsumerWidget {
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Row(
+                child: Wrap(
                   children: [
                     for (SolutionSeal seal in sealView.seals)
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 3.0),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 3.0, vertical: 5.0),
                         child: CircleAvatar(
-                          foregroundColor: AppColors.gray,
-                          backgroundColor: AppColors.white,
+                          radius: 35,
+                          backgroundColor: AppColors.lightGray,
                           child: Image(
                               image: NetworkImage(seal.sealDocument.imageUrl)),
                         ),
