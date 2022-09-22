@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:onayamijika/domain/interfaces/i_solution_seal_repository.dart';
+import 'package:onayamijika/domain/models/%20solution_seal.dart';
 import 'package:onayamijika/infrastructure/%20infrastructure_providers.dart';
 import 'package:onayamijika/infrastructure/dtos/solution_seal_document.dart';
 
@@ -37,5 +38,17 @@ class SolutionSealRepository implements ISolutionSealRepository {
       print(e.toString());
       return false;
     }
+  }
+
+  /// お悩みカードのドキュメントIDを元にそのカードに貼り付けられた複数のシールドキュメントを取得
+  @override
+  Future<List<SolutionSeal>> fetchSealsFromCardId(
+      {required String cardId}) async {
+    final snapshot = await collectionRef.get();
+    return snapshot.docs
+        .map((doc) => SolutionSeal(
+            sealId: doc.id,
+            sealDocument: SolutionSealDocument.fromJson(doc.data())))
+        .toList();
   }
 }
