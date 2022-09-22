@@ -14,6 +14,8 @@ _$_SolutionSealDocument _$$_SolutionSealDocumentFromJson(
       imageUrl: json['image_url'] as String,
       isFavorite: json['is_favorite'] as bool,
       cardId: json['card_id'] as String,
+      createdDateTime: const TimestampConverter()
+          .fromJson(json['created_date_time'] as Timestamp),
     );
 
 Map<String, dynamic> _$$_SolutionSealDocumentToJson(
@@ -24,4 +26,6 @@ Map<String, dynamic> _$$_SolutionSealDocumentToJson(
       'image_url': instance.imageUrl,
       'is_favorite': instance.isFavorite,
       'card_id': instance.cardId,
+      'created_date_time':
+          const TimestampConverter().toJson(instance.createdDateTime),
     };
