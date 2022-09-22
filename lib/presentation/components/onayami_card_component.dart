@@ -2,6 +2,8 @@ import 'package:flip_card/flip_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:onayamijika/domain/models/%20solution_seal.dart';
+import 'package:onayamijika/domain/models/%20solution_seal_view.dart';
 import 'package:onayamijika/domain/models/onayami_card.dart';
 import 'package:onayamijika/domain/models/onayami_card_view.dart';
 import 'package:onayamijika/infrastructure/authentication/authentication.dart';
@@ -28,7 +30,7 @@ class OnayamiCardForDisp extends ConsumerWidget {
       fill: Fill.fillBack,
       direction: FlipDirection.HORIZONTAL,
       front: createFrontCard(vm),
-      back: createBackCard(),
+      back: createBackCard(vm),
     );
   }
 
@@ -116,66 +118,52 @@ class OnayamiCardForDisp extends ConsumerWidget {
   }
 
   /// 裏面のお悩みカードを生成
-  Card createBackCard() {
-    return Card(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(20),
-      ),
-      color: cardColor, // Card自体の色
-      margin: const EdgeInsets.symmetric(horizontal: 4.0, vertical: 40.0),
-      elevation: 10, // 影の離れ具合
-      shadowColor: cardColor,
-      child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text('お悩み解決シール',
-                style: TextStyle(
-                    color: AppColors.gray, fontWeight: FontWeight.w200)),
+  Widget createBackCard(OnayamiCardDispViewModel vm) {
+    return FutureBuilder(
+      future: vm.createSealsView(),
+      builder:
+          (BuildContext context, AsyncSnapshot<SolutionSealView> snapshot) {
+        if (!snapshot.hasData) {
+          return const OnayamiCardForDispLoading();
+        } //TODO：裏面用の読み込み中ウィジェット作成
+        final sealView = snapshot.data!;
+        return Card(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 3.0),
-                  child: CircleAvatar(
-                    foregroundColor: AppColors.gray,
-                    backgroundColor: AppColors.white,
-                    child: const Image(
-                        image: NetworkImage(
-                            'https://firebasestorage.googleapis.com/v0/b/onayamijika.appspot.com/o/users%2FUOWrnZEvRJWEuy5hoMYHGtn9OZM2%2F2022-09-22%2002:09:31.093160.png?alt=media&token=78ddb619-ffb4-407c-b546-4253ba795056')),
-                  ),
+          color: cardColor, // Card自体の色
+          margin: const EdgeInsets.symmetric(horizontal: 4.0, vertical: 40.0),
+          elevation: 10, // 影の離れ具合
+          shadowColor: cardColor,
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text('お悩み解決シール',
+                    style: TextStyle(
+                        color: AppColors.gray, fontWeight: FontWeight.w200)),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  children: [
+                    for (SolutionSeal seal in sealView.seals)
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 3.0),
+                        child: CircleAvatar(
+                          foregroundColor: AppColors.gray,
+                          backgroundColor: AppColors.white,
+                          child: Image(
+                              image: NetworkImage(seal.sealDocument.imageUrl)),
+                        ),
+                      ),
+                  ],
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 3.0),
-                  child: CircleAvatar(
-                    foregroundColor: AppColors.gray,
-                    backgroundColor: AppColors.white,
-                    child: const Icon(Icons.sunny, size: 30),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 3.0),
-                  child: CircleAvatar(
-                    foregroundColor: AppColors.gray,
-                    backgroundColor: AppColors.white,
-                    child: const Icon(Icons.ac_unit, size: 30),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 3.0),
-                  child: CircleAvatar(
-                    foregroundColor: AppColors.gray,
-                    backgroundColor: AppColors.white,
-                    child: const Icon(Icons.music_note, size: 30),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
-      ), // 影の色
+              ),
+            ],
+          ), // 影の色
+        );
+      },
     );
   }
 }

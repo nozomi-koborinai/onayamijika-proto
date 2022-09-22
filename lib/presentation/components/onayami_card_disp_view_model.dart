@@ -49,7 +49,7 @@ class OnayamiCardDispViewModel {
   Future<SolutionSealView> createSealsView() async {
     final seals =
         await sealRepository.fetchSealsFromCardId(cardId: card.cardId);
-    return SolutionSealView(sealDocuments: seals);
+    return SolutionSealView(seals: seals);
   }
 
   /// 距離を計算する
