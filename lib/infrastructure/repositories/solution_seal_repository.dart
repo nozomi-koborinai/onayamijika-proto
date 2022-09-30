@@ -6,7 +6,7 @@ import 'package:onayamijika/infrastructure/%20infrastructure_providers.dart';
 import 'package:onayamijika/infrastructure/dtos/solution_seal_document.dart';
 
 /// お悩み解決シールコレクション名のプロバイダ
-final sealCollectionNameProvider = Provider((_) => ' solution_seals');
+final sealCollectionNameProvider = Provider((_) => 'solution_seals');
 
 /// お悩み解決シールコレクションReferenceのプロバイダ
 final sealCollectionRefProvider =
