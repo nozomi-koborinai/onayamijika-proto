@@ -19,7 +19,12 @@ class OnayamiCardDocument with _$OnayamiCardDocument {
 
     /// 経度
     @JsonKey(name: 'longitude') required double longitude,
+
+    /// 作成者アカウントuid
     @JsonKey(name: 'create_account_uid') required String createAccountUid,
+
+    /// カードの色
+    @JsonKey(name: 'color_code') required String colorCode,
   }) = _OnayamiCardDocument;
 
   factory OnayamiCardDocument.fromJson(Map<String, dynamic> json) =>

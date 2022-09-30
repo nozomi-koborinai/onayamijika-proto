@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:onayamijika/domain/interfaces/i_account_repository.dart';
@@ -5,7 +6,6 @@ import 'package:onayamijika/domain/interfaces/i_solution_seal_repository.dart';
 import 'package:onayamijika/domain/models/%20solution_seal_view.dart';
 import 'package:onayamijika/domain/models/onayami_card.dart';
 import 'package:onayamijika/domain/models/onayami_card_view.dart';
-import 'package:onayamijika/utils/app_values.dart';
 import 'package:onayamijika/utils/function_utils.dart';
 
 final onayamiCardDispViewModelProvider =
@@ -42,7 +42,7 @@ class OnayamiCardDispViewModel {
         cardTitle: card.cardDocument.cardTitle,
         cardContent: card.cardDocument.content,
         card: card,
-        cardColor: AppColors.purple);
+        cardColor: Color(int.parse(card.cardDocument.colorCode)));
   }
 
   /// 裏面の表示用オブジェクトを作成する

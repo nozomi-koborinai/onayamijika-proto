@@ -20,7 +20,8 @@ final selectedOnayamiCardDocumentProvider = StateProvider<OnayamiCard>((_) =>
             content: '',
             createAccountUid: '',
             latitude: 0.0,
-            longitude: 0.0)));
+            longitude: 0.0,
+            colorCode: '')));
 
 class OnayamiCardsPageViewModel {
   final ProviderRef ref;

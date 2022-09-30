@@ -6,6 +6,7 @@ import 'dart:ui';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/rendering.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:onayamijika/utils/app_values.dart';
 
 /// 汎用的に使用可能なメソッド群
@@ -27,9 +28,9 @@ class FunctionUtils {
   ];
 
   /// お悩みカードに使用する色をランダムで生成する
-  Color getRandomColorForOnayamiCard() {
+  String getRandomColorForOnayamiCard() {
     final rand = math.Random();
-    return cardColors[rand.nextInt(7)];
+    return ColorToHex(cardColors[rand.nextInt(7)]).value.toString();
   }
 
   /// ウィジェットを画像化する

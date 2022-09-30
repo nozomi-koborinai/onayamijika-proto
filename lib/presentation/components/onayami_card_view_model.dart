@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:onayamijika/utils/function_utils.dart';
 
 /// OnayamiCardViewModelのインスタンスを返却するプロバイダ
 final onayamiCardViewModelProvider =
@@ -11,6 +12,17 @@ final cardTitleControllerStateProvider = StateProvider<TextEditingController>(
 
 /// カード内容テキストコントローラProvider
 final cardContentControllerStateProvider = StateProvider<TextEditingController>(
+    (_) => TextEditingController(text: ''));
+
+/// カード色決定メソッドProvider
+final cardColorMethodProvider = Provider.autoDispose<String>((ref) {
+  final cardColorCode = FunctionUtils.instance.getRandomColorForOnayamiCard();
+  ref.read(cardColorProvider.state).state.text = cardColorCode;
+  return cardColorCode;
+});
+
+/// カード色Provider
+final cardColorProvider = StateProvider<TextEditingController>(
     (_) => TextEditingController(text: ''));
 
 /// お悩みカード(新規作成用)ViewModel

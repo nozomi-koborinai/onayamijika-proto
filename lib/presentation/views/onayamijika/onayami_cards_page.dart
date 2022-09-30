@@ -29,6 +29,7 @@ class OnayamiCardsPage extends ConsumerWidget {
                 error: (e, stackTrace) => Text(stackTrace.toString()),
                 loading: () => const OnayamiCardForDispLoading(),
                 data: (List<OnayamiCard> data) {
+                  if (data.isEmpty) return Container();
                   return Swiper(
                       itemBuilder: (context, index) {
                         return OnayamiCardForDisp(card: data[index]);

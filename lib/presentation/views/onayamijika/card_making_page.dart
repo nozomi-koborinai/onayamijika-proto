@@ -4,6 +4,7 @@ import 'package:onayamijika/infrastructure/authentication/authentication.dart';
 import 'package:onayamijika/presentation/components/common_app_bar.dart';
 import 'package:onayamijika/presentation/components/common_button.dart';
 import 'package:onayamijika/presentation/components/onayami_card_component.dart';
+import 'package:onayamijika/presentation/components/onayami_card_view_model.dart';
 import 'package:onayamijika/presentation/views/onayamijika/card_making_page_view_model.dart';
 import 'package:onayamijika/utils/app_values.dart';
 
@@ -26,7 +27,8 @@ class CardMakingPage extends ConsumerWidget {
                   accountImageUrl:
                       'https://blogger.googleusercontent.com/img/a/AVvXsEgM85LEvtgJrUmGx95tmMptVQWhITwGOun2FEdThRoHM1iA2IV7J9KA94UtTJco4GVIvitht8kY-nc9U6SBQ6oLlsGCLSlr2S0dv9m04sUFE_suAa77Z8V-HxOFVxSsPMEqRgGGlC0ilOpb-a_tAjkvTr_ux8GfLjdCFWkj8HVQ-kGVukNz9WfrQ9_s1g=s400',
                   accountName: Authentication.instance.myAccount.accountName,
-                  cardColor: AppColors.intenseBlue),
+                  cardColor:
+                      Color(int.parse(ref.read(cardColorMethodProvider)))),
             ),
             SizedBox(
                 height: 40,

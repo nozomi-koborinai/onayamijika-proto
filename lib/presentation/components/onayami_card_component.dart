@@ -2,6 +2,7 @@ import 'package:flip_card/flip_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:onayamijika/domain/models/%20solution_seal.dart';
 import 'package:onayamijika/domain/models/%20solution_seal_view.dart';
 import 'package:onayamijika/domain/models/onayami_card.dart';
@@ -12,14 +13,12 @@ import 'package:onayamijika/presentation/components/common_text_field.dart';
 import 'package:onayamijika/presentation/components/onayami_card_disp_view_model.dart';
 import 'package:onayamijika/presentation/components/onayami_card_view_model.dart';
 import 'package:onayamijika/utils/app_values.dart';
-import 'package:onayamijika/utils/hex_color.dart';
 
 /// お悩みカードウィジェット_一覧表示用
 class OnayamiCardForDisp extends ConsumerWidget {
   final OnayamiCard card;
-  final Color cardColor = AppColors.purple;
 
-  OnayamiCardForDisp({required this.card, Key? key}) : super(key: key);
+  const OnayamiCardForDisp({required this.card, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -131,10 +130,10 @@ class OnayamiCardForDisp extends ConsumerWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
           ),
-          color: cardColor, // Card自体の色
+          color: Color(int.parse(card.cardDocument.colorCode)), // Card自体の色
           margin: const EdgeInsets.symmetric(horizontal: 4.0, vertical: 40.0),
           elevation: 10, // 影の離れ具合
-          shadowColor: cardColor,
+          shadowColor: Color(int.parse(card.cardDocument.colorCode)),
           child: Column(
             children: [
               Padding(
@@ -177,7 +176,8 @@ final createOnayamiCardDataProvider = Provider.family<OnayamiCardDocument,
         content: ref.watch(cardContentControllerStateProvider.state).state.text,
         latitude: position.latitude,
         longitude: position.longitude,
-        createAccountUid: Authentication.instance.myAccount.accountUid));
+        createAccountUid: Authentication.instance.myAccount.accountUid,
+        colorCode: ref.read(cardColorProvider).text));
 
 /// お悩みカードウィジェット_新規作成用
 class OnayamiCardForCreate extends ConsumerWidget {

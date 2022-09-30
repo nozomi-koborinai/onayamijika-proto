@@ -14,6 +14,7 @@ _$_OnayamiCardDocument _$$_OnayamiCardDocumentFromJson(
       latitude: (json['latitude'] as num).toDouble(),
       longitude: (json['longitude'] as num).toDouble(),
       createAccountUid: json['create_account_uid'] as String,
+      colorCode: json['color_code'] as String,
     );
 
 Map<String, dynamic> _$$_OnayamiCardDocumentToJson(
@@ -24,4 +25,5 @@ Map<String, dynamic> _$$_OnayamiCardDocumentToJson(
       'latitude': instance.latitude,
       'longitude': instance.longitude,
       'create_account_uid': instance.createAccountUid,
+      'color_code': instance.colorCode,
     };
