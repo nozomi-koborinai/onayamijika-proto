@@ -1,11 +1,12 @@
 import 'dart:async';
 import 'dart:io';
-import 'dart:math';
+import 'dart:math' as math;
 import 'dart:ui';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/rendering.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:onayamijika/utils/app_values.dart';
 
 /// 汎用的に使用可能なメソッド群
 ///  => 使用方法：FunctionUtils.instance.hogehoge
@@ -13,6 +14,23 @@ class FunctionUtils {
   /// singleTon
   FunctionUtils._();
   static final instance = FunctionUtils._();
+
+  /// ランダムで生成するカード色のリスト
+  final List<Color> cardColors = [
+    AppColors.skyGreen,
+    AppColors.lightPink,
+    AppColors.salmonPink,
+    AppColors.grayPink,
+    AppColors.brown,
+    AppColors.intenseBlue,
+    AppColors.lightGreen,
+  ];
+
+  /// お悩みカードに使用する色をランダムで生成する
+  Color getRandomColorForOnayamiCard() {
+    final rand = math.Random();
+    return cardColors[rand.nextInt(7)];
+  }
 
   /// ウィジェットを画像化する
   Future<Uint8List?> widgetToImage({required globalKey}) async {
@@ -37,15 +55,16 @@ class FunctionUtils {
     required double latitude2,
     required double longitude2,
   }) {
-    toRadians(double degree) => degree * pi / 180;
+    toRadians(double degree) => degree * math.pi / 180;
     const double r = 6378137.0; // 地球の半径
     final double f1 = toRadians(latitude1);
     final double f2 = toRadians(latitude2);
     final double l1 = toRadians(longitude1);
     final double l2 = toRadians(longitude2);
-    final num a = pow(sin((f2 - f1) / 2), 2);
-    final double b = cos(f1) * cos(f2) * pow(sin((l2 - l1) / 2), 2);
-    final double d = 2 * r * asin(sqrt(a + b));
+    final num a = math.pow(math.sin((f2 - f1) / 2), 2);
+    final double b =
+        math.cos(f1) * math.cos(f2) * math.pow(math.sin((l2 - l1) / 2), 2);
+    final double d = 2 * r * math.asin(math.sqrt(a + b));
     return double.parse(d.toStringAsFixed(2));
   }
 

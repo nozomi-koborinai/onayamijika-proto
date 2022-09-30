@@ -4,10 +4,6 @@ import 'package:onayamijika/utils/hex_color.dart';
 
 /// アプリ内共通で使用する色
 class AppColors {
-  /// singleTon
-  AppColors._();
-  static final instance = AppColors._();
-
   // 淡い優しい色
   static final Color purple = HexColor('#cabbe9');
   static final Color gray = HexColor('#696969');
