@@ -16,8 +16,11 @@ class FunctionUtils {
   FunctionUtils._();
   static final instance = FunctionUtils._();
 
+  /// 端末の現在地（許可されていない場合は位置情報を取得できないのでnullを入れる）
+  late Position? currentPostion;
+
   /// ランダムで生成するカード色のリスト
-  final List<Color> cardColors = [
+  final List<Color> _cardColors = [
     AppColors.skyGreen,
     AppColors.lightPink,
     AppColors.salmonPink,
@@ -30,7 +33,7 @@ class FunctionUtils {
   /// お悩みカードに使用する色をランダムで生成する
   String getRandomColorForOnayamiCard() {
     final rand = math.Random();
-    return ColorToHex(cardColors[rand.nextInt(7)]).value.toString();
+    return ColorToHex(_cardColors[rand.nextInt(7)]).value.toString();
   }
 
   /// ウィジェットを画像化する
@@ -103,6 +106,7 @@ class FunctionUtils {
 
     // ここまでたどり着くと、位置情報に対しての権限が許可されているということなので
     // デバイスの位置情報を返す。
-    return await Geolocator.getCurrentPosition();
+    currentPostion = await Geolocator.getCurrentPosition();
+    return currentPostion!;
   }
 }

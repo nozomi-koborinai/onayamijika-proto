@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:onayamijika/domain/interfaces/i_account_repository.dart';
 import 'package:onayamijika/domain/interfaces/i_solution_seal_repository.dart';
 import 'package:onayamijika/domain/models/%20solution_seal_view.dart';
@@ -32,9 +31,22 @@ class OnayamiCardDispViewModel {
 
   /// 表面の表示用オブジェクトを作成する
   Future<OnayamiCardView> createOnayamiCardView() async {
+    // カード作成者を取得
     final cardAccount = await accountRepository.fetchAccountFromUid(
         uid: card.cardDocument.createAccountUid);
-    final distance = await calcDistance();
+    final utils = FunctionUtils.instance;
+
+    // 距離計算
+    // 端末に位置情報を許可していない場合は、位置情報が取得できていないのでその場合は0.0を表示するようにしておく
+    double distance = 0.0;
+    if (utils.currentPostion != null) {
+      distance = utils.distanceBetween(
+          latitude1: utils.currentPostion!.latitude,
+          longitude1: utils.currentPostion!.longitude,
+          latitude2: card.cardDocument.latitude,
+          longitude2: card.cardDocument.longitude);
+    }
+
     return OnayamiCardView(
         accountImageUrl: cardAccount.accountImageUrl,
         accountName: cardAccount.accountName,
@@ -50,15 +62,5 @@ class OnayamiCardDispViewModel {
     final seals =
         await sealRepository.fetchSealsFromCardId(cardId: card.cardId);
     return SolutionSealView(seals: seals);
-  }
-
-  /// 距離を計算する
-  Future<double> calcDistance() async {
-    final myPosition = await Geolocator.getCurrentPosition();
-    return FunctionUtils.instance.distanceBetween(
-        latitude1: myPosition.latitude,
-        longitude1: myPosition.longitude,
-        latitude2: card.cardDocument.latitude,
-        longitude2: card.cardDocument.longitude);
   }
 }

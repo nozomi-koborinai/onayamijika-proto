@@ -34,6 +34,7 @@ class OnayamiCardsPage extends ConsumerWidget {
                       itemBuilder: (context, index) {
                         return OnayamiCardForDisp(card: data[index]);
                       },
+                      loop: false,
                       itemCount: data.length,
                       viewportFraction: 0.8,
                       scale: 0.9,

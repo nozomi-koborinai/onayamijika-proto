@@ -18,6 +18,7 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   // 位置情報確認ダイアログを表示
+  // アプリ起動時の端末の位置情報も保持しておく
   FunctionUtils.instance.determinePosition();
 
   runApp(ProviderScope(
