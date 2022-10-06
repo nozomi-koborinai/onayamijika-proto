@@ -34,6 +34,16 @@ class OnayamiCardsPageViewModel {
   /// カード一覧
   get onayamiCards => ref.watch(onayamiCardListStreamProvider);
 
+  /// シール作成ボタン活性制御（true：活性、false：非活性）
+  get isEnable {
+    final values = ref.watch(onayamiCardListStreamProvider).value;
+    if (values == null) {
+      return false;
+    } else {
+      return values.isNotEmpty;
+    }
+  }
+
   /// 選択中お悩みカード変更時
   void onCardIndexChanged(OnayamiCard card) {
     ref.watch(selectedOnayamiCardDocumentProvider.state).state = card;
@@ -41,6 +51,8 @@ class OnayamiCardsPageViewModel {
 
   /// お悩み解決シールボタン押下時
   void onPressed(BuildContext context) async {
+    // ボタンが非活性なら何もせず処理終了
+    if (!isEnable) return;
     await showModalBottomSheet(
       backgroundColor: Colors.transparent,
       isScrollControlled: true,

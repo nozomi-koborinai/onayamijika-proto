@@ -47,7 +47,7 @@ class OnayamiCardsPage extends ConsumerWidget {
               margin: const EdgeInsets.only(bottom: 8),
               child: CommonOnayamiSealButton(
                   caption: 'お悩み解決シールを作る',
-                  color: AppColors.purple,
+                  color: vm.isEnable ? AppColors.purple : Colors.grey[200],
                   iconData: Icons.add_reaction_outlined,
                   onPressed: () => vm.onPressed(context)))
         ],

@@ -53,7 +53,7 @@ class CommonRegistButton extends StatelessWidget {
 }
 
 class CommonOnayamiSealButton extends StatelessWidget {
-  final Color color;
+  final Color? color;
   final IconData iconData;
   final String caption;
   final Function onPressed;
