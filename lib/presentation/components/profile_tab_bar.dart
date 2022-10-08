@@ -14,6 +14,15 @@ class ProfileTabBar extends ConsumerWidget {
         children: <Widget>[
           ButtonsTabBar(
             backgroundColor: AppColors.purple,
+            unselectedBackgroundColor: Colors.white,
+            borderColor: AppColors.purple,
+            labelStyle: const TextStyle(
+                color: Colors.white, fontWeight: FontWeight.bold),
+            unselectedLabelStyle:
+                TextStyle(color: AppColors.purple, fontWeight: FontWeight.bold),
+            borderWidth: 1,
+            unselectedBorderColor: AppColors.purple,
+            radius: 100,
             tabs: const [
               Tab(
                 text: 'マイカード',
