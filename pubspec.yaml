@@ -26,6 +26,7 @@ dependencies:
   geocoding: ^2.0.5
   firebase_storage: ^10.3.8
   hexcolor: ^2.0.7
+  buttons_tabbar: ^1.3.6
 
 dev_dependencies:
   flutter_test:
