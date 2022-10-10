@@ -1,6 +1,7 @@
 import 'package:buttons_tabbar/buttons_tabbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:onayamijika/presentation/components/my_cards.dart';
 import 'package:onayamijika/utils/app_values.dart';
 
 class ProfileTabBar extends ConsumerWidget {
@@ -37,7 +38,7 @@ class ProfileTabBar extends ConsumerWidget {
           Expanded(
             child: TabBarView(
               children: [
-                Container(child: const Text('マイカードページ')),
+                const MyCards(),
                 Container(child: const Text('シールを送ったカードページ')),
               ],
             ),
