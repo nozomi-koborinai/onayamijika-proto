@@ -33,7 +33,8 @@ class ProfilePage extends ConsumerWidget {
             Text('@${vm.accountId}',
                 style: TextStyle(color: AppColors.gray, fontSize: 15)),
             CommonRegistButton(
-                caption: '編集', onPressed: () => vm.onPressedFromEdit()),
+                caption: '編集',
+                onPressed: () async => await vm.onPressedFromEdit(context)),
             Divider(
               color: Colors.grey[475],
               thickness: 2,

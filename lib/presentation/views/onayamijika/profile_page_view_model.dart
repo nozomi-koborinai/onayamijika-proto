@@ -1,6 +1,8 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:onayamijika/domain/interfaces/i_account_repository.dart';
 import 'package:onayamijika/infrastructure/authentication/authentication.dart';
+import 'package:onayamijika/presentation/views/onayamijika/profile_edit_page.dart';
 
 /// ProfilePageViewModelのインスタンスを返却するプロバイダ
 final profilePageViewModelProvider = Provider<ProfilePageViewModel>((ref) =>
@@ -21,8 +23,8 @@ class ProfilePageViewModel {
 
   // イベントハンドラ
   /// 編集ボタンタップ時
-  void onPressedFromEdit() {
-    // TODO
-    throw UnimplementedError();
+  Future<void> onPressedFromEdit(BuildContext context) async {
+    await Navigator.push(context,
+        MaterialPageRoute(builder: (content) => const ProfileEditPage()));
   }
 }
