@@ -20,9 +20,7 @@ class MyCards extends ConsumerWidget {
           itemCount: cards.length,
           itemBuilder: (BuildContext context, int index) {
             return SizedBox(
-                height: 30,
-                width: 30,
-                child: OnayamiCardForDisp(card: cards[index]));
+                height: 300, child: OnayamiCardForDisp(card: cards[index]));
           },
         );
       },
