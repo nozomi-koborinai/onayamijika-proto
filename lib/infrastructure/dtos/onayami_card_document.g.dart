@@ -15,6 +15,8 @@ _$_OnayamiCardDocument _$$_OnayamiCardDocumentFromJson(
       longitude: (json['longitude'] as num).toDouble(),
       createAccountUid: json['create_account_uid'] as String,
       colorCode: json['color_code'] as String,
+      createdDateTime: const TimestampConverter()
+          .fromJson(json['created_date_time'] as Timestamp),
     );
 
 Map<String, dynamic> _$$_OnayamiCardDocumentToJson(
@@ -26,4 +28,6 @@ Map<String, dynamic> _$$_OnayamiCardDocumentToJson(
       'longitude': instance.longitude,
       'create_account_uid': instance.createAccountUid,
       'color_code': instance.colorCode,
+      'created_date_time':
+          const TimestampConverter().toJson(instance.createdDateTime),
     };

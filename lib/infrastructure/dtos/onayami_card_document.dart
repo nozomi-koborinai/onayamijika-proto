@@ -1,4 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:onayamijika/domain/%20converters/time_stamp_converter.dart';
 
 part 'onayami_card_document.freezed.dart';
 part 'onayami_card_document.g.dart';
@@ -25,6 +27,11 @@ class OnayamiCardDocument with _$OnayamiCardDocument {
 
     /// カードの色
     @JsonKey(name: 'color_code') required String colorCode,
+
+    /// カード作成日時
+    @JsonKey(name: 'created_date_time')
+    @TimestampConverter()
+        required DateTime createdDateTime,
   }) = _OnayamiCardDocument;
 
   factory OnayamiCardDocument.fromJson(Map<String, dynamic> json) =>

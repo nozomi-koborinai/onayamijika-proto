@@ -15,13 +15,14 @@ final onayamiCardsPageViewModelProvider = Provider<OnayamiCardsPageViewModel>(
 final selectedOnayamiCardDocumentProvider = StateProvider<OnayamiCard>((_) =>
     OnayamiCard(
         cardId: '',
-        cardDocument: const OnayamiCardDocument(
+        cardDocument: OnayamiCardDocument(
             cardTitle: '',
             content: '',
             createAccountUid: '',
             latitude: 0.0,
             longitude: 0.0,
-            colorCode: '')));
+            colorCode: '',
+            createdDateTime: DateTime.now())));
 
 class OnayamiCardsPageViewModel {
   final ProviderRef ref;
