@@ -1,17 +1,6 @@
 # onayamijika
+### 個人開発アプリ
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-# ONAYAMIJIKA
+- [進捗報告1](https://docs.google.com/presentation/d/1ErcSMmwz-674XfJYTtRT4F8eNZNHL2gjfDTsILgp5-k/edit#slide=id.g152fc1f29d6_2_0)
+- [進捗報告2](https://docs.google.com/presentation/d/17zNw86vuc75FjwqsBLo-hv0tkq9GjNRTnzFfyJgUY_o/edit#slide=id.g152ff5f4a51_0_194)
+- [進捗報告3](https://docs.google.com/presentation/d/1XbrTsIHvSzUC9geJhzD9cXDXP4uX9c2WzVjLTHiNhQ8/edit#slide=id.g152ff5f4a51_0_194)
