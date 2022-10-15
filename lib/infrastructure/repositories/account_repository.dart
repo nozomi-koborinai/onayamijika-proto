@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:onayamijika/domain/interfaces/i_account_repository.dart';
 import 'package:onayamijika/infrastructure/%20infrastructure_providers.dart';
+import 'package:onayamijika/infrastructure/authentication/authentication.dart';
 import 'package:onayamijika/infrastructure/dtos/account_document.dart';
 
 /// アカウントコレクション名のプロバイダ
@@ -48,8 +49,20 @@ class AccountRepository implements IAccountRepository {
 
   @override
   Future<void> updateAccount({required AccountDocument updateAccount}) async {
+    // TODO：uid
     await collectionRef
-        .doc('UOWrnZEvRJWEuy5hoMYHGtn9OZM2')
+        .doc('cGsEobJNVreqebdAAO1ATTL83L72')
         .update(updateAccount.toJson());
+    final updatedAccount =
+        await fetchAccountFromUid(uid: 'cGsEobJNVreqebdAAO1ATTL83L72');
+    if (updatedAccount == null) {
+      return;
+    }
+    Authentication.instance.myAccount = Authentication.instance.myAccount
+        .copyWith(
+            accountId: updatedAccount.accountId,
+            accountName: updatedAccount.accountName,
+            accountImageUrl: updatedAccount.accountImageUrl);
+    return;
   }
 }

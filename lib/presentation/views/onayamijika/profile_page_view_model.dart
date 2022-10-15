@@ -9,6 +9,13 @@ final profilePageViewModelProvider = Provider<ProfilePageViewModel>((ref) =>
     ProfilePageViewModel(
         ref: ref, repository: ref.watch(accountRepositoryProvider)));
 
+final imageURLStateProvider = StateProvider((_) => TextEditingController(
+    text: Authentication.instance.myAccount.accountImageUrl));
+final accountNameStateProvider = StateProvider((_) =>
+    TextEditingController(text: Authentication.instance.myAccount.accountName));
+final accountIdStateProvider = StateProvider((_) =>
+    TextEditingController(text: Authentication.instance.myAccount.accountId));
+
 class ProfilePageViewModel {
   final ProviderRef ref;
   final IAccountRepository repository;
@@ -17,9 +24,9 @@ class ProfilePageViewModel {
   ProfilePageViewModel({required this.ref, required this.repository});
 
   // バインド用 getter
-  get imageURL => Authentication.instance.myAccount.accountImageUrl;
-  get accountName => Authentication.instance.myAccount.accountName;
-  get accountId => Authentication.instance.myAccount.accountId;
+  get imageURL => ref.watch(imageURLStateProvider.state).state.text;
+  get accountName => ref.watch(accountNameStateProvider.state).state.text;
+  get accountId => ref.watch(accountIdStateProvider.state).state.text;
 
   // イベントハンドラ
   /// 編集ボタンタップ時

@@ -40,7 +40,7 @@ class ProfileEditPage extends ConsumerWidget {
             child: SizedBox(
               width: 75,
               child: CommonRegistButton(
-                  caption: '登録', onPressed: () => vm.onPressed()),
+                  caption: '登録', onPressed: () => vm.onPressed(context)),
             ),
           ),
         ]),
