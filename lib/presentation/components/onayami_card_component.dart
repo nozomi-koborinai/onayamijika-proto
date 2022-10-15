@@ -177,7 +177,8 @@ final createOnayamiCardDataProvider = Provider.family<OnayamiCardDocument,
         latitude: position.latitude,
         longitude: position.longitude,
         createAccountUid: Authentication.instance.myAccount.accountUid,
-        colorCode: ref.read(cardColorProvider).text));
+        colorCode: ref.read(cardColorProvider).text,
+        createdDateTime: DateTime.now()));
 
 /// お悩みカードウィジェット_新規作成用
 class OnayamiCardForCreate extends ConsumerWidget {

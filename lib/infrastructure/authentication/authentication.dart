@@ -1,7 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:onayamijika/domain/models/account.dart';
 import 'package:onayamijika/infrastructure/authentication/firebase_auth_error.dart';
+import 'package:onayamijika/infrastructure/dtos/account_document.dart';
 import 'package:onayamijika/utils/dialog_utils.dart';
 
 class Authentication {
@@ -10,12 +12,8 @@ class Authentication {
   static final instance = Authentication._();
 
   /// ログインしている自分のアカウント
-  /// TODO：後からデータ取得
-  final myAccount = const Account(
-      accountId: 'coboKobo',
-      accountName: 'cobokobo',
-      accountImageUrl: 'https://pro-foto.jp/img/category_tn_35.jpg',
-      accountUid: 'UOWrnZEvRJWEuy5hoMYHGtn9OZM2');
+  late Account myAccount = const Account(
+      accountId: '', accountName: '', accountImageUrl: '', accountUid: '');
 
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
@@ -33,6 +31,32 @@ class Authentication {
       final String message = FirebaseAuthError.instance
           .exceptionMessage(FirebaseAuthError.instance.handleException(e));
       DialogUtils.instance.showDialogError(context: context, msg: message);
+      return false;
+    }
+  }
+
+  ///ログイン処理
+  ///ログイン失敗時にException発生
+  Future<dynamic> emailSignIn(
+      {required String email, required String pass}) async {
+    try {
+      final UserCredential result = await _firebaseAuth
+          .signInWithEmailAndPassword(email: email, password: pass);
+      final snapshot = await FirebaseFirestore.instance
+          .collection('accounts')
+          .doc(result.user!.uid)
+          .get();
+      if (snapshot.data() == null) return false;
+      final accountDocument = AccountDocument.fromJson(snapshot.data()!);
+
+      Authentication.instance.myAccount = Account(
+          accountId: accountDocument.accountId,
+          accountName: accountDocument.accountName,
+          accountImageUrl: accountDocument.accountImageUrl,
+          accountUid: result.user!.uid);
+      return result;
+    } on FirebaseException {
+      // authサインインエラー
       return false;
     }
   }

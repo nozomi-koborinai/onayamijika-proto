@@ -44,6 +44,11 @@ mixin _$OnayamiCardDocument {
   @JsonKey(name: 'color_code')
   String get colorCode => throw _privateConstructorUsedError;
 
+  /// カード作成日時
+  @JsonKey(name: 'created_date_time')
+  @TimestampConverter()
+  DateTime get createdDateTime => throw _privateConstructorUsedError;
+
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $OnayamiCardDocumentCopyWith<OnayamiCardDocument> get copyWith =>
@@ -56,12 +61,21 @@ abstract class $OnayamiCardDocumentCopyWith<$Res> {
           OnayamiCardDocument value, $Res Function(OnayamiCardDocument) then) =
       _$OnayamiCardDocumentCopyWithImpl<$Res>;
   $Res call(
-      {@JsonKey(name: 'card_title') String cardTitle,
-      @JsonKey(name: 'content') String content,
-      @JsonKey(name: 'latitude') double latitude,
-      @JsonKey(name: 'longitude') double longitude,
-      @JsonKey(name: 'create_account_uid') String createAccountUid,
-      @JsonKey(name: 'color_code') String colorCode});
+      {@JsonKey(name: 'card_title')
+          String cardTitle,
+      @JsonKey(name: 'content')
+          String content,
+      @JsonKey(name: 'latitude')
+          double latitude,
+      @JsonKey(name: 'longitude')
+          double longitude,
+      @JsonKey(name: 'create_account_uid')
+          String createAccountUid,
+      @JsonKey(name: 'color_code')
+          String colorCode,
+      @JsonKey(name: 'created_date_time')
+      @TimestampConverter()
+          DateTime createdDateTime});
 }
 
 /// @nodoc
@@ -81,6 +95,7 @@ class _$OnayamiCardDocumentCopyWithImpl<$Res>
     Object? longitude = freezed,
     Object? createAccountUid = freezed,
     Object? colorCode = freezed,
+    Object? createdDateTime = freezed,
   }) {
     return _then(_value.copyWith(
       cardTitle: cardTitle == freezed
@@ -107,6 +122,10 @@ class _$OnayamiCardDocumentCopyWithImpl<$Res>
           ? _value.colorCode
           : colorCode // ignore: cast_nullable_to_non_nullable
               as String,
+      createdDateTime: createdDateTime == freezed
+          ? _value.createdDateTime
+          : createdDateTime // ignore: cast_nullable_to_non_nullable
+              as DateTime,
     ));
   }
 }
@@ -119,12 +138,21 @@ abstract class _$$_OnayamiCardDocumentCopyWith<$Res>
       __$$_OnayamiCardDocumentCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@JsonKey(name: 'card_title') String cardTitle,
-      @JsonKey(name: 'content') String content,
-      @JsonKey(name: 'latitude') double latitude,
-      @JsonKey(name: 'longitude') double longitude,
-      @JsonKey(name: 'create_account_uid') String createAccountUid,
-      @JsonKey(name: 'color_code') String colorCode});
+      {@JsonKey(name: 'card_title')
+          String cardTitle,
+      @JsonKey(name: 'content')
+          String content,
+      @JsonKey(name: 'latitude')
+          double latitude,
+      @JsonKey(name: 'longitude')
+          double longitude,
+      @JsonKey(name: 'create_account_uid')
+          String createAccountUid,
+      @JsonKey(name: 'color_code')
+          String colorCode,
+      @JsonKey(name: 'created_date_time')
+      @TimestampConverter()
+          DateTime createdDateTime});
 }
 
 /// @nodoc
@@ -146,6 +174,7 @@ class __$$_OnayamiCardDocumentCopyWithImpl<$Res>
     Object? longitude = freezed,
     Object? createAccountUid = freezed,
     Object? colorCode = freezed,
+    Object? createdDateTime = freezed,
   }) {
     return _then(_$_OnayamiCardDocument(
       cardTitle: cardTitle == freezed
@@ -172,6 +201,10 @@ class __$$_OnayamiCardDocumentCopyWithImpl<$Res>
           ? _value.colorCode
           : colorCode // ignore: cast_nullable_to_non_nullable
               as String,
+      createdDateTime: createdDateTime == freezed
+          ? _value.createdDateTime
+          : createdDateTime // ignore: cast_nullable_to_non_nullable
+              as DateTime,
     ));
   }
 }
@@ -180,12 +213,21 @@ class __$$_OnayamiCardDocumentCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_OnayamiCardDocument implements _OnayamiCardDocument {
   const _$_OnayamiCardDocument(
-      {@JsonKey(name: 'card_title') required this.cardTitle,
-      @JsonKey(name: 'content') required this.content,
-      @JsonKey(name: 'latitude') required this.latitude,
-      @JsonKey(name: 'longitude') required this.longitude,
-      @JsonKey(name: 'create_account_uid') required this.createAccountUid,
-      @JsonKey(name: 'color_code') required this.colorCode});
+      {@JsonKey(name: 'card_title')
+          required this.cardTitle,
+      @JsonKey(name: 'content')
+          required this.content,
+      @JsonKey(name: 'latitude')
+          required this.latitude,
+      @JsonKey(name: 'longitude')
+          required this.longitude,
+      @JsonKey(name: 'create_account_uid')
+          required this.createAccountUid,
+      @JsonKey(name: 'color_code')
+          required this.colorCode,
+      @JsonKey(name: 'created_date_time')
+      @TimestampConverter()
+          required this.createdDateTime});
 
   factory _$_OnayamiCardDocument.fromJson(Map<String, dynamic> json) =>
       _$$_OnayamiCardDocumentFromJson(json);
@@ -220,9 +262,15 @@ class _$_OnayamiCardDocument implements _OnayamiCardDocument {
   @JsonKey(name: 'color_code')
   final String colorCode;
 
+  /// カード作成日時
+  @override
+  @JsonKey(name: 'created_date_time')
+  @TimestampConverter()
+  final DateTime createdDateTime;
+
   @override
   String toString() {
-    return 'OnayamiCardDocument(cardTitle: $cardTitle, content: $content, latitude: $latitude, longitude: $longitude, createAccountUid: $createAccountUid, colorCode: $colorCode)';
+    return 'OnayamiCardDocument(cardTitle: $cardTitle, content: $content, latitude: $latitude, longitude: $longitude, createAccountUid: $createAccountUid, colorCode: $colorCode, createdDateTime: $createdDateTime)';
   }
 
   @override
@@ -236,7 +284,9 @@ class _$_OnayamiCardDocument implements _OnayamiCardDocument {
             const DeepCollectionEquality().equals(other.longitude, longitude) &&
             const DeepCollectionEquality()
                 .equals(other.createAccountUid, createAccountUid) &&
-            const DeepCollectionEquality().equals(other.colorCode, colorCode));
+            const DeepCollectionEquality().equals(other.colorCode, colorCode) &&
+            const DeepCollectionEquality()
+                .equals(other.createdDateTime, createdDateTime));
   }
 
   @JsonKey(ignore: true)
@@ -248,7 +298,8 @@ class _$_OnayamiCardDocument implements _OnayamiCardDocument {
       const DeepCollectionEquality().hash(latitude),
       const DeepCollectionEquality().hash(longitude),
       const DeepCollectionEquality().hash(createAccountUid),
-      const DeepCollectionEquality().hash(colorCode));
+      const DeepCollectionEquality().hash(colorCode),
+      const DeepCollectionEquality().hash(createdDateTime));
 
   @JsonKey(ignore: true)
   @override
@@ -277,7 +328,10 @@ abstract class _OnayamiCardDocument implements OnayamiCardDocument {
       @JsonKey(name: 'create_account_uid')
           required final String createAccountUid,
       @JsonKey(name: 'color_code')
-          required final String colorCode}) = _$_OnayamiCardDocument;
+          required final String colorCode,
+      @JsonKey(name: 'created_date_time')
+      @TimestampConverter()
+          required final DateTime createdDateTime}) = _$_OnayamiCardDocument;
 
   factory _OnayamiCardDocument.fromJson(Map<String, dynamic> json) =
       _$_OnayamiCardDocument.fromJson;
@@ -312,6 +366,12 @@ abstract class _OnayamiCardDocument implements OnayamiCardDocument {
   /// カードの色
   @JsonKey(name: 'color_code')
   String get colorCode;
+  @override
+
+  /// カード作成日時
+  @JsonKey(name: 'created_date_time')
+  @TimestampConverter()
+  DateTime get createdDateTime;
   @override
   @JsonKey(ignore: true)
   _$$_OnayamiCardDocumentCopyWith<_$_OnayamiCardDocument> get copyWith =>

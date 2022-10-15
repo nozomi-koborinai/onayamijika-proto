@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:onayamijika/domain/interfaces/i_onayami_card_repository.dart';
 import 'package:onayamijika/domain/models/onayami_card.dart';
 import 'package:onayamijika/infrastructure/%20infrastructure_providers.dart';
+import 'package:onayamijika/infrastructure/authentication/authentication.dart';
 import 'package:onayamijika/infrastructure/dtos/onayami_card_document.dart';
 
 /// お悩みカードコレクション名のプロバイダ
@@ -52,5 +53,20 @@ class OnayamiCardRepository implements IOnayamiCardRepository {
     } on FirebaseException catch (e) {
       print(e.toString());
     }
+  }
+
+  @override
+  Future<List<OnayamiCard>> fetchMyCards() async {
+    final snapshot = await collectionRef
+        .where('create_account_uid',
+            isEqualTo: Authentication.instance.myAccount.accountUid)
+        .orderBy('created_date_time', descending: true)
+        .get();
+
+    return snapshot.docs
+        .map((doc) => OnayamiCard(
+            cardId: doc.id,
+            cardDocument: OnayamiCardDocument.fromJson(doc.data())))
+        .toList();
   }
 }
