@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:onayamijika/infrastructure/authentication/authentication.dart';
 import 'package:onayamijika/presentation/components/common_app_bar.dart';
-import 'package:onayamijika/presentation/views/start_up/log_in_page.dart';
+import 'package:onayamijika/presentation/views/onayamijika/screen.dart';
 import 'package:onayamijika/presentation/views/start_up/sign_up_page.dart';
 import 'package:onayamijika/utils/app_values.dart';
 
@@ -51,10 +52,15 @@ class StartUpPage extends ConsumerWidget {
                   ),
                   child: const Text('Log In'),
                   onPressed: () async {
+                    final result = await Authentication.instance.emailSignIn(
+                        email: 'test@testes.com', pass: 'testtest');
+                    if (result == false) {
+                      return;
+                    }
                     await Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const LoginPage(),
+                        builder: (context) => Screen(),
                       ),
                     );
                   },
