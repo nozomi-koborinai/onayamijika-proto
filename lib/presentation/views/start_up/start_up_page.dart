@@ -43,8 +43,8 @@ class StartUpPage extends ConsumerWidget {
                 width: double.infinity,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    primary: AppColors.purple,
-                    onPrimary: AppColors.white,
+                    foregroundColor: AppColors.white,
+                    backgroundColor: AppColors.purple,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
@@ -70,8 +70,8 @@ class StartUpPage extends ConsumerWidget {
                 width: double.infinity,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    primary: AppColors.white,
-                    onPrimary: AppColors.gray,
+                    foregroundColor: AppColors.gray,
+                    backgroundColor: AppColors.white,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
