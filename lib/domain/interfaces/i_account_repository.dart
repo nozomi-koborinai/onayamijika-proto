@@ -7,5 +7,6 @@ final accountRepositoryProvider = Provider<IAccountRepository>(
 
 abstract class IAccountRepository {
   Future<void> addAccount({required AccountDocument newAccount});
-  Future<AccountDocument> fetchAccountFromUid({required String uid});
+  Future<AccountDocument?> fetchAccountFromUid({required String uid});
+  Future<void> updateAccount({required AccountDocument updateAccount});
 }

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:onayamijika/domain/interfaces/i_account_repository.dart';
@@ -37,10 +39,17 @@ class AccountRepository implements IAccountRepository {
   @override
 
   /// UserCredential.uidから紐づくAccountを1件取得
-  Future<AccountDocument> fetchAccountFromUid({required String uid}) async {
-    final snapshot =
-        await collectionRef.doc('UOWrnZEvRJWEuy5hoMYHGtn9OZM2').get();
+  Future<AccountDocument?> fetchAccountFromUid({required String uid}) async {
+    final snapshot = await collectionRef.doc(uid).get();
+    if (snapshot.data() == null) return null;
     final data = snapshot.data()!;
     return AccountDocument.fromJson(data);
+  }
+
+  @override
+  Future<void> updateAccount({required AccountDocument updateAccount}) async {
+    await collectionRef
+        .doc('UOWrnZEvRJWEuy5hoMYHGtn9OZM2')
+        .update(updateAccount.toJson());
   }
 }

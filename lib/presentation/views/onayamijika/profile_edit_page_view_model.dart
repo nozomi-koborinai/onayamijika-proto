@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:onayamijika/domain/interfaces/i_account_repository.dart';
+import 'package:onayamijika/infrastructure/authentication/authentication.dart';
+import 'package:onayamijika/infrastructure/dtos/account_document.dart';
 
 final profileEditPageViewModelProvider = Provider<ProfileEditPageViewModel>(
     (ref) => ProfileEditPageViewModel(
         ref: ref, repository: ref.watch(accountRepositoryProvider)));
 
-final emailControllerStateProvider = StateProvider<TextEditingController>(
-    (_) => TextEditingController(text: ''));
-final userIdControllerStateProvider = StateProvider<TextEditingController>(
-    (_) => TextEditingController(text: ''));
-final passWordIdControllerStateProvider = StateProvider<TextEditingController>(
-    (_) => TextEditingController(text: ''));
+final accountNameControllerStateProvider = StateProvider<TextEditingController>(
+    (_) => TextEditingController(
+        text: Authentication.instance.myAccount.accountName));
+final accountIdControllerStateProvider = StateProvider<TextEditingController>(
+    (_) => TextEditingController(
+        text: Authentication.instance.myAccount.accountId));
 
 class ProfileEditPageViewModel {
   final ProviderRef ref;
@@ -19,10 +21,19 @@ class ProfileEditPageViewModel {
 
   ProfileEditPageViewModel({required this.ref, required this.repository});
 
-  TextEditingController get emailController =>
-      ref.watch(emailControllerStateProvider.state).state;
-  TextEditingController get userIdController =>
-      ref.watch(userIdControllerStateProvider.state).state;
-  TextEditingController get passWordController =>
-      ref.watch(passWordIdControllerStateProvider.state).state;
+  TextEditingController get accountNameController =>
+      ref.watch(accountNameControllerStateProvider.state).state;
+  TextEditingController get accountIdController =>
+      ref.watch(accountIdControllerStateProvider.state).state;
+
+  get imageURL => Authentication.instance.myAccount.accountImageUrl;
+
+  void onPressed() async {
+    repository.updateAccount(
+        updateAccount: AccountDocument(
+            accountId: accountIdController.text,
+            accountName: accountNameController.text,
+            accountImageUrl:
+                Authentication.instance.myAccount.accountImageUrl));
+  }
 }

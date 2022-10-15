@@ -10,12 +10,8 @@ class Authentication {
   static final instance = Authentication._();
 
   /// ログインしている自分のアカウント
-  /// TODO：後からデータ取得
-  final myAccount = const Account(
-      accountId: 'coboKobo',
-      accountName: 'cobokobo',
-      accountImageUrl: 'https://pro-foto.jp/img/category_tn_35.jpg',
-      accountUid: 'UOWrnZEvRJWEuy5hoMYHGtn9OZM2');
+  late Account myAccount = const Account(
+      accountId: '', accountName: '', accountImageUrl: '', accountUid: '');
 
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 

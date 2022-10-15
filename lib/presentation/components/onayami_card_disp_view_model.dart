@@ -34,6 +34,7 @@ class OnayamiCardDispViewModel {
     // カード作成者を取得
     final cardAccount = await accountRepository.fetchAccountFromUid(
         uid: card.cardDocument.createAccountUid);
+
     final utils = FunctionUtils.instance;
 
     // 距離計算
@@ -48,7 +49,7 @@ class OnayamiCardDispViewModel {
     }
 
     return OnayamiCardView(
-        accountImageUrl: cardAccount.accountImageUrl,
+        accountImageUrl: cardAccount!.accountImageUrl,
         accountName: cardAccount.accountName,
         distance: distance,
         cardTitle: card.cardDocument.cardTitle,

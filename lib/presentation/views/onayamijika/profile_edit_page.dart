@@ -17,30 +17,30 @@ class ProfileEditPage extends ConsumerWidget {
         padding: const EdgeInsets.only(
             left: 10.0, top: 10.0, right: 25.0, bottom: 70.0),
         child: Column(children: [
-          CommonTextField(
-              labelText: 'メールアドレス',
-              hintText: 'example@gmail.com',
-              controller: vm.emailController),
+          CircleAvatar(
+            radius: 60,
+            backgroundImage: NetworkImage(vm.imageURL),
+          ),
           Padding(
             padding: const EdgeInsets.only(top: 15.0),
             child: CommonTextField(
-              labelText: 'ユーザーID',
-              controller: vm.userIdController,
+              labelText: 'ユーザー名',
+              controller: vm.accountNameController,
             ),
           ),
           Padding(
             padding: const EdgeInsets.only(top: 15.0),
             child: CommonTextField(
-              labelText: 'パスワード',
-              isPasswordText: true,
-              controller: vm.passWordController,
+              labelText: 'ユーザーID',
+              controller: vm.accountIdController,
             ),
           ),
           Padding(
             padding: const EdgeInsets.only(top: 50.0),
             child: SizedBox(
               width: 75,
-              child: CommonRegistButton(caption: '登録', onPressed: () => {}),
+              child: CommonRegistButton(
+                  caption: '登録', onPressed: () => vm.onPressed()),
             ),
           ),
         ]),
