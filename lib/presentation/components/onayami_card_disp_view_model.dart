@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:onayamijika/domain/interfaces/i_account_repository.dart';
 import 'package:onayamijika/domain/interfaces/i_solution_seal_repository.dart';
-import 'package:onayamijika/domain/models/%20solution_seal_view.dart';
 import 'package:onayamijika/domain/models/onayami_card.dart';
 import 'package:onayamijika/domain/models/onayami_card_view.dart';
+import 'package:onayamijika/infrastructure/repositories/solution_seal_repository.dart';
 import 'package:onayamijika/utils/function_utils.dart';
 
 final onayamiCardDispViewModelProvider =
@@ -28,6 +28,9 @@ class OnayamiCardDispViewModel {
       required this.accountRepository,
       required this.sealRepository,
       required this.card});
+
+  /// カードに紐づくシール一覧
+  get seals => ref.watch(sealListStreamProvider(card.cardId));
 
   /// 表面の表示用オブジェクトを作成する
   Future<OnayamiCardView> createOnayamiCardView() async {
@@ -56,12 +59,5 @@ class OnayamiCardDispViewModel {
         cardContent: card.cardDocument.content,
         card: card,
         cardColor: Color(int.parse(card.cardDocument.colorCode)));
-  }
-
-  /// 裏面の表示用オブジェクトを作成する
-  Future<SolutionSealView> createSealsView() async {
-    final seals =
-        await sealRepository.fetchSealsFromCardId(cardId: card.cardId);
-    return SolutionSealView(seals: seals);
   }
 }
