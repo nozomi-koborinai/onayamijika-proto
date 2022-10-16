@@ -22,6 +22,24 @@ final firebaseSolutionSealRepositoryProvider =
   ),
 );
 
+/// シール一覧StreamProvider
+final sealListStreamProvider =
+    StreamProvider.family<List<SolutionSeal>, String>((ref, cardId) {
+  return ref
+      .watch(sealCollectionRefProvider)
+      .where('card_id', isEqualTo: cardId)
+      .orderBy('created_date_time', descending: true)
+      .snapshots()
+      .map((snapshot) {
+    final list = snapshot.docs.map((doc) {
+      return SolutionSeal(
+          sealId: doc.id,
+          sealDocument: SolutionSealDocument.fromJson(doc.data()));
+    }).toList();
+    return list;
+  });
+});
+
 class SolutionSealRepository implements ISolutionSealRepository {
   final CollectionReference<Map<String, dynamic>> collectionRef;
   SolutionSealRepository({

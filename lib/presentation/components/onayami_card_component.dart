@@ -4,7 +4,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:onayamijika/domain/models/%20solution_seal.dart';
-import 'package:onayamijika/domain/models/%20solution_seal_view.dart';
 import 'package:onayamijika/domain/models/onayami_card.dart';
 import 'package:onayamijika/domain/models/onayami_card_view.dart';
 import 'package:onayamijika/infrastructure/authentication/authentication.dart';
@@ -118,53 +117,51 @@ class OnayamiCardForDisp extends ConsumerWidget {
 
   /// 裏面のお悩みカードを生成
   Widget createBackCard(OnayamiCardDispViewModel vm) {
-    return FutureBuilder(
-      future: vm.createSealsView(),
-      builder:
-          (BuildContext context, AsyncSnapshot<SolutionSealView> snapshot) {
-        if (!snapshot.hasData) {
-          return const OnayamiCardForDispLoading();
-        } //TODO：裏面用の読み込み中ウィジェット作成
-        final sealView = snapshot.data!;
-        return Card(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20),
-          ),
-          color: Color(int.parse(card.cardDocument.colorCode)), // Card自体の色
-          margin: const EdgeInsets.symmetric(horizontal: 4.0, vertical: 40.0),
-          elevation: 10, // 影の離れ具合
-          shadowColor: Color(int.parse(card.cardDocument.colorCode)),
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text('お悩み解決シール',
-                    style: TextStyle(
-                        color: AppColors.gray, fontWeight: FontWeight.w200)),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Wrap(
-                  children: [
-                    for (SolutionSeal seal in sealView.seals)
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 3.0, vertical: 5.0),
-                        child: CircleAvatar(
-                          radius: 35,
-                          backgroundColor: AppColors.lightGray,
-                          child: Image(
-                              image: NetworkImage(seal.sealDocument.imageUrl)),
-                        ),
-                      ),
-                  ],
+    final AsyncValue<List<SolutionSeal>> asyncValue = vm.seals;
+
+    return asyncValue.when(
+        error: (e, stackTrace) => Text(stackTrace.toString()),
+        loading: () => const OnayamiCardForDispLoading(),
+        data: (List<SolutionSeal> data) {
+          return Card(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20),
+            ),
+            color: Color(int.parse(card.cardDocument.colorCode)), // Card自体の色
+            margin: const EdgeInsets.symmetric(horizontal: 4.0, vertical: 40.0),
+            elevation: 10, // 影の離れ具合
+            shadowColor: Color(int.parse(card.cardDocument.colorCode)),
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text('お悩み解決シール',
+                      style: TextStyle(
+                          color: AppColors.gray, fontWeight: FontWeight.w200)),
                 ),
-              ),
-            ],
-          ), // 影の色
-        );
-      },
-    );
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Wrap(
+                    children: [
+                      for (SolutionSeal seal in data)
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 3.0, vertical: 5.0),
+                          child: CircleAvatar(
+                            radius: 35,
+                            backgroundColor: AppColors.lightGray,
+                            child: Image(
+                                image:
+                                    NetworkImage(seal.sealDocument.imageUrl)),
+                          ),
+                        ),
+                    ],
+                  ),
+                ),
+              ],
+            ), // 影の色
+          );
+        });
   }
 }
 
