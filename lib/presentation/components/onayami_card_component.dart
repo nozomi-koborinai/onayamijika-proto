@@ -60,7 +60,7 @@ class OnayamiCardForDisp extends ConsumerWidget {
                             left: 4, right: 13, top: 4, bottom: 8),
                         child: CircleAvatar(
                           radius: 35,
-                          foregroundColor: AppColors.gray,
+                          foregroundColor: AppColors.grey,
                           backgroundColor: AppColors.white,
                           backgroundImage:
                               NetworkImage(cardView.accountImageUrl),
@@ -102,7 +102,7 @@ class OnayamiCardForDisp extends ConsumerWidget {
                                     fontSize: 20,
                                     fontWeight: FontWeight.bold)),
                             Text(cardView.cardContent,
-                                style: TextStyle(color: AppColors.gray)),
+                                style: TextStyle(color: AppColors.grey)),
                           ],
                         )),
                       ),
@@ -137,7 +137,7 @@ class OnayamiCardForDisp extends ConsumerWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: Text('お悩み解決シール',
                       style: TextStyle(
-                          color: AppColors.gray, fontWeight: FontWeight.w200)),
+                          color: AppColors.grey, fontWeight: FontWeight.w200)),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -149,7 +149,7 @@ class OnayamiCardForDisp extends ConsumerWidget {
                               horizontal: 3.0, vertical: 5.0),
                           child: CircleAvatar(
                             radius: 35,
-                            backgroundColor: AppColors.lightGray,
+                            backgroundColor: AppColors.lightGrey,
                             child: Image(
                                 image:
                                     NetworkImage(seal.sealDocument.imageUrl)),
@@ -214,7 +214,7 @@ class OnayamiCardForCreate extends ConsumerWidget {
                       left: 4, right: 13, top: 4, bottom: 8),
                   child: CircleAvatar(
                     radius: 35,
-                    foregroundColor: AppColors.gray,
+                    foregroundColor: AppColors.grey,
                     backgroundColor: AppColors.white,
                     backgroundImage: NetworkImage(accountImageUrl),
                   ),

@@ -30,7 +30,7 @@ class StartUpPage extends ConsumerWidget {
                 'Welcome\nto オナヤミジカ',
                 style: TextStyle(
                   fontSize: 30,
-                  color: AppColors.gray,
+                  color: AppColors.grey,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -76,7 +76,7 @@ class StartUpPage extends ConsumerWidget {
                 width: double.infinity,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    foregroundColor: AppColors.gray,
+                    foregroundColor: AppColors.grey,
                     backgroundColor: AppColors.white,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),

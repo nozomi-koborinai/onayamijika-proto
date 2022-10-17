@@ -28,7 +28,7 @@ class Screen extends ConsumerWidget {
         height: 100,
         child: SalomonBottomBar(
           selectedColorOpacity: 0.15,
-          unselectedItemColor: AppColors.gray,
+          unselectedItemColor: AppColors.grey,
           items: [
             SalomonBottomBarItem(
                 icon: const Icon(Icons.home_outlined),

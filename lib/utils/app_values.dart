@@ -4,8 +4,8 @@ import 'package:hexcolor/hexcolor.dart';
 /// アプリ内共通で使用する色
 class AppColors {
   static final Color purple = HexColor('#cabbe9');
-  static final Color gray = HexColor('#696969');
-  static final Color lightGray = HexColor('#f5f5f5');
+  static final Color grey = HexColor('#696969');
+  static final Color lightGrey = HexColor('#f5f5f5');
   static final Color white = HexColor('#fdfdfd');
   static final Color intensePink = HexColor('#f469a9');
   static final Color intensePurple = HexColor('#ba53de');

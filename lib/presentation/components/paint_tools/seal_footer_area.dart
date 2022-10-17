@@ -97,7 +97,7 @@ class SealFooterArea extends ConsumerWidget {
                         style: TextStyle(
                             fontSize: 18.0,
                             fontWeight: FontWeight.bold,
-                            color: AppColors.gray),
+                            color: AppColors.grey),
                       )),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 24),
@@ -119,13 +119,13 @@ class SealFooterArea extends ConsumerWidget {
                     children: [
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          foregroundColor: AppColors.gray,
+                          foregroundColor: AppColors.grey,
                           side: BorderSide(
                             width: 1.0,
                             color: AppColors.purple,
                           ),
-                          backgroundColor: AppColors.lightGray,
-                          shadowColor: AppColors.gray,
+                          backgroundColor: AppColors.lightGrey,
+                          shadowColor: AppColors.grey,
                           elevation: 5,
                           shape: const StadiumBorder(),
                         ),
@@ -139,7 +139,7 @@ class SealFooterArea extends ConsumerWidget {
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
                           foregroundColor: AppColors.white,
-                          shadowColor: AppColors.gray,
+                          shadowColor: AppColors.grey,
                           backgroundColor: AppColors.purple,
                           elevation: 5,
                           shape: const StadiumBorder(),

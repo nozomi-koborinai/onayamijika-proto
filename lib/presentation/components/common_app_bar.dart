@@ -24,10 +24,10 @@ class CommonAppBar extends StatelessWidget with PreferredSizeWidget {
     return AppBar(
       automaticallyImplyLeading: automaticallyImplyLeading,
       centerTitle: true,
-      iconTheme: IconThemeData(color: AppColors.gray),
+      iconTheme: IconThemeData(color: AppColors.grey),
       title: Text(
         title,
-        style: TextStyle(color: AppColors.gray),
+        style: TextStyle(color: AppColors.grey),
       ),
       backgroundColor: Theme.of(context).canvasColor,
       elevation: isDispBoundary ? 2 : 0,

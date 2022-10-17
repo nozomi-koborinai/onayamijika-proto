@@ -17,7 +17,7 @@ class SealMakingSheet extends StatelessWidget {
     return Container(
         height: height,
         decoration: BoxDecoration(
-          color: AppColors.lightGray.withOpacity(0.5),
+          color: AppColors.lightGrey.withOpacity(0.5),
           borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(70),
           ),

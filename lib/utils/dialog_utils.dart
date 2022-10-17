@@ -66,7 +66,7 @@ class DialogUtils {
             style:
                 const TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
           ),
-          content: Text(msg, style: TextStyle(color: AppColors.gray)),
+          content: Text(msg, style: TextStyle(color: AppColors.grey)),
           actions: [
             SizedBox(
               height: 40,

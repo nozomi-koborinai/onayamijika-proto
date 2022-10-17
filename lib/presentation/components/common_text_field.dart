@@ -33,7 +33,7 @@ class _CommonTextFieldState extends State<CommonTextField> {
       decoration: InputDecoration(
           labelText: widget.labelText,
           hintText: widget.hintText,
-          labelStyle: TextStyle(color: AppColors.gray),
+          labelStyle: TextStyle(color: AppColors.grey),
           focusedBorder: OutlineInputBorder(
             borderRadius: const BorderRadius.all(Radius.circular(10.0)),
             borderSide: BorderSide(width: 1, color: AppColors.purple),
@@ -47,7 +47,7 @@ class _CommonTextFieldState extends State<CommonTextField> {
           ),
           suffixIcon: widget.isPasswordText
               ? IconButton(
-                  color: AppColors.gray,
+                  color: AppColors.grey,
                   icon: Icon(widget._isObscure
                       ? Icons.visibility_off
                       : Icons.visibility),

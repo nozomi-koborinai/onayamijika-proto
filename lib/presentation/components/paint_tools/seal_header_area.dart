@@ -29,7 +29,7 @@ class SealHeaderArea extends ConsumerWidget {
                 child: CommonCircleButton(
                     iconData: Icons.arrow_back_ios_outlined,
                     onPressed: () => Navigator.pop(context),
-                    backgroundColor: AppColors.gray,
+                    backgroundColor: AppColors.grey,
                     foregroundColor: AppColors.white,
                     size: 20),
               ),
