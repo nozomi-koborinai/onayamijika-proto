@@ -26,20 +26,26 @@ class OnayamiCardsPage extends ConsumerWidget {
         children: [
           Expanded(
             child: asyncValue.when(
-                error: (e, stackTrace) => Text(stackTrace.toString()),
+                error: (e, stackTrace) => Text(
+                      stackTrace.toString(),
+                    ),
                 loading: () => const OnayamiCardForDispLoading(),
                 data: (List<OnayamiCard> data) {
                   if (data.isEmpty) return Container();
                   return Swiper(
-                      itemBuilder: (context, index) {
-                        return OnayamiCardForDisp(card: data[index]);
-                      },
-                      loop: false,
-                      itemCount: data.length,
-                      viewportFraction: 0.8,
-                      scale: 0.9,
-                      onIndexChanged: (int value) =>
-                          vm.onCardIndexChanged(data[value]));
+                    itemBuilder: (context, index) {
+                      return OnayamiCardForDisp(
+                        card: data[index],
+                      );
+                    },
+                    loop: false,
+                    itemCount: data.length,
+                    viewportFraction: 0.8,
+                    scale: 0.9,
+                    onIndexChanged: (int value) => vm.onCardIndexChanged(
+                      data[value],
+                    ),
+                  );
                 }),
           ),
           Container(
